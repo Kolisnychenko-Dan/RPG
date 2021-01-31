@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  bodyDissapearTime: 10
 --- !u!114 &1574426075741265477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +213,11 @@ PrefabInstance:
     - target: {fileID: 6966710831967275939, guid: a42e3199f2655b1448c071113b4efe54,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6966710831967275939, guid: a42e3199f2655b1448c071113b4efe54,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []

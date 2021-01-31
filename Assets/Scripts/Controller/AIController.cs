@@ -9,9 +9,9 @@ namespace RPG.Controller
 {
     public class AIController : MonoBehaviour
     {
-        [SerializeField] bool startChaseAtChaseDistance = true;
+        [SerializeField] bool startChaseAtChaseDistance;
         [SerializeField] float chaseDistance = 5f;
-        [SerializeField] bool returnToGurdPos = true;
+        [SerializeField] bool returnToGurdPos;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
 
@@ -27,12 +27,16 @@ namespace RPG.Controller
             characters = GameObject.FindGameObjectsWithTag("Player");
             guardPosition = transform.position;
             mover = GetComponent<Mover>();
+            lastEnemyPosition = transform.position;
         }
         void Update()
         {
             if (GetComponent<CombatTarget>().IsDead) return;
-            if (returnToGurdPos) ReturnToGuarding();
-            if (patrolPath != null) Patrol();
+            if(target == null)
+            {
+                if (returnToGurdPos) ReturnToGuarding();
+                if (patrolPath != null) Patrol();
+            }
             if (startChaseAtChaseDistance) LocateNewTarget();
         }
 

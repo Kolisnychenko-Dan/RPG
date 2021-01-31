@@ -11,7 +11,6 @@ namespace RPG.Controller
         {
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
-            Debug.Log("On void");
         }
 
         private bool InteractWithCombat()
