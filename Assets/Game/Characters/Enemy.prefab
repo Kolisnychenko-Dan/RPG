@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 25
-  bodyDissapearTime: 10
 --- !u!114 &5830835146242997438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,6 +79,18 @@ MonoBehaviour:
   returnToGurdPos: 1
   patrolPath: {fileID: 0}
   waypointTolerance: 1
+--- !u!114 &5027952805885928698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6936266798559983557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f3e275559a462642a714cdcc09ed1e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &66475856348216422
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ namespace RPG.Controller
             mover = GetComponent<Mover>();
             lastEnemyPosition = transform.position;
         }
+        
         void Update()
         {
             if (GetComponent<CombatTarget>().IsDead) return;
