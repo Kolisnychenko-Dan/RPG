@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Bow
+  m_EditorClassIdentifier: Assembly-CSharp:RPG.Combat:RangeWeapon
+  weaponOverride: {fileID: 22100000, guid: 00c11e860cb10994ba6555771c5dcf0b, type: 2}
+  weaponPrefab: {fileID: 2823566898905436996, guid: e3d2b34b12aa64f40ba908eada491bf5,
+    type: 3}
+  weaponDamage: 15
+  weaponRange: 5
+  projectilePrefab: {fileID: 6305579302152559348, guid: b0e5010895849b943a50a3e71fcd7018,
+    type: 3}

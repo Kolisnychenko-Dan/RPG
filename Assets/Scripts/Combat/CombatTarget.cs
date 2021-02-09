@@ -61,7 +61,11 @@ namespace RPG.Combat
 
         private void RiseFromTheDead()
         {
-
+            isDead = false;
+            Destroy(GetComponent<Rigidbody>());
+            GetComponent<Animator>().SetTrigger("riseFromTheDead");
+            GetComponent<CapsuleCollider>().enabled = true;
+            GetComponent<NavMeshAgent>().enabled = true;
         }
 
         public void Cancel() 
@@ -78,14 +82,7 @@ namespace RPG.Combat
         {
             health = (float)state;
             if(health == 0) isDead = true;
-            else 
-            {
-                isDead = false;
-                Destroy(GetComponent<Rigidbody>());
-                GetComponent<Animator>().SetTrigger("riseFromTheDead");
-                GetComponent<CapsuleCollider>().enabled = true;
-                GetComponent<NavMeshAgent>().enabled = true;
-            }
+            else RiseFromTheDead();
         }
     }
 }

@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  bodyDissapearTime: 10
 --- !u!114 &1574426075741265477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,7 +59,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 7
+  m_Speed: 5.66
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -84,9 +83,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d87708d471604887622dbb3f21bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
-  waitTillAttackTime: 1
-  damage: 10
+  waitTillAttackTime: 0
+  handTransform: {fileID: 2337534221390636307}
+  currentWeapon: {fileID: 11400000, guid: b198d5c9b4341e74ab53cc4187ebe7df, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: 123c673c76cf1e74899ddecafe5cedb0, type: 2}
 --- !u!1001 &2337534221390221853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +148,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &2337534221390636307 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 2337534221390221853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4694229087686479595
 PrefabInstance:
   m_ObjectHideFlags: 0
