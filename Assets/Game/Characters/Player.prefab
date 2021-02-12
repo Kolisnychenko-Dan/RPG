@@ -84,9 +84,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitTillAttackTime: 0
-  handTransform: {fileID: 2337534221390636307}
-  currentWeapon: {fileID: 11400000, guid: b198d5c9b4341e74ab53cc4187ebe7df, type: 2}
-  defaultWeapon: {fileID: 11400000, guid: 123c673c76cf1e74899ddecafe5cedb0, type: 2}
+  rightHandTransform: {fileID: 2337534221390636307}
+  leftHandTransform: {fileID: 2337534221390693649}
+  currentWeaponName: Sword
+  defaultWeaponName: Unarmed
 --- !u!1001 &2337534221390221853
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,6 +149,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &2337534221390693649 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18,
+    type: 3}
+  m_PrefabInstance: {fileID: 2337534221390221853}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2337534221390636307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18,

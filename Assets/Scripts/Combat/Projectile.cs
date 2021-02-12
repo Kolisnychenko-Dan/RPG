@@ -8,8 +8,9 @@ namespace RPG.Combat
     {
         [SerializeField] float projectileSpeed = 3f;
         [SerializeField] float projectileHitTolerance = 0.5f;
-        [SerializeField] Vector3 projectileFlyHeight = Vector3.up/2;
-        [SerializeField] float projectileDamage = 0f;
+        [SerializeField] Vector3 projectileFlyHeight = Vector3.up;
+        [SerializeField] GameObject impactEffect = null;
+        float projectileDamage = 0f;
         CombatTarget target;
 
         void Update()
@@ -20,8 +21,7 @@ namespace RPG.Combat
             bool hasHitTheTarget = Vector3.Distance(transform.position,target.transform.position) < projectileHitTolerance; 
             if(hasHitTheTarget)
             {
-                target.TakeDamage(projectileDamage);
-                Destroy(gameObject);
+                OnHitTheTarget();
             }
         }
 
@@ -35,6 +35,17 @@ namespace RPG.Combat
         {
             set { projectileDamage = Mathf.Max(value,0); }
             get { return ProjectileDamage; }
+        }
+
+        void OnHitTheTarget()
+        {
+            if(impactEffect != null)
+            {
+                Instantiate(impactEffect,target.transform.position,transform.rotation);
+            }
+
+            target.TakeDamage(projectileDamage);
+            Destroy(gameObject);
         }
     }
 }

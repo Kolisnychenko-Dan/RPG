@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
+using RPG.Saving;
 
 namespace RPG.Combat
 {
     [RequireComponent(typeof(Mover))]
-    public class Atacker : MonoBehaviour, IAction
+    public class Atacker : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] float waitTillAttackTime = 1f;
-        [SerializeField] Transform handTransform = null;
-        [SerializeField] Weapon currentWeapon = null;
-        [SerializeField] Weapon defaultWeapon;
+        [SerializeField] Transform rightHandTransform = null;
+        [SerializeField] Transform leftHandTransform = null;
+        Weapon currentWeapon;
+        [SerializeField] string currentWeaponName = null;
+        [SerializeField] string defaultWeaponName;
         float timePassedAfterAttack = Mathf.Infinity;
         CombatTarget target;
 
         private void Start()
         {
-            if(currentWeapon == null) currentWeapon = defaultWeapon;
-            EquipWeapon(currentWeapon);
+            if(currentWeaponName == null) currentWeaponName = defaultWeaponName;
+            EquipWeapon(currentWeaponName);
         }
 
         private void Update()
@@ -41,9 +44,30 @@ namespace RPG.Combat
             }
         }
 
-        private void EquipWeapon(Weapon weapon)
+        private void EquipWeapon(string weaponName)
         {
-            weapon.SpawnWeapon(handTransform,GetComponent<Animator>());
+            if(currentWeapon != null)
+            {
+                currentWeapon.DestroyWeapon();
+                currentWeapon = null;
+            }
+
+            currentWeapon = Resources.Load<Weapon>(weaponName);
+
+            if(currentWeapon == null) 
+            {
+                Debug.Log("Weapon name doesn't correspond any weapon in resources directory");
+                currentWeapon = Resources.Load<Weapon>(defaultWeaponName);
+            }
+
+            if(currentWeapon.IsRightHandedWeapon)
+            {
+                currentWeapon.SpawnWeapon(rightHandTransform,GetComponent<Animator>());
+            }
+            else
+            {
+                currentWeapon.SpawnWeapon(leftHandTransform,GetComponent<Animator>());
+            }
         }
 
         private void AttackBehaviour()
@@ -74,7 +98,15 @@ namespace RPG.Combat
         {
             if(target != null)
             {
-                ((RangeWeapon)currentWeapon).Shoot(target,handTransform.position);
+                if(currentWeapon.IsRightHandedWeapon)
+                {
+                    ((RangeWeapon)currentWeapon).Shoot(target,rightHandTransform.position);
+                }
+                else
+                {
+                    ((RangeWeapon)currentWeapon).Shoot(target,rightHandTransform.position);
+                }
+                
             }
         }
         public void Cancel()
@@ -82,6 +114,17 @@ namespace RPG.Combat
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("stopAttack");
             target = null;
+        }
+
+        public object CaptureState()
+        {
+            return (object)currentWeaponName;
+        }
+
+        public void RestoreState(object state)
+        {
+            currentWeaponName = (string)state;
+            EquipWeapon(currentWeaponName);
         }
     }
 }
