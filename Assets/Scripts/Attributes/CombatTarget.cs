@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
-using System.Collections.Generic;
-using System.Collections;
 using RPG.Core;
 using RPG.Saving;
+using RPG.Stats;
+using RPG.Attributes;
 
 namespace RPG.Combat
 {    
     public class CombatTarget : MonoBehaviour, IAction, ISaveable
     {
-        [SerializeField]float health = 100f;
-//        [SerializeField]float bodyDissapearTime = 10f;
-        float timerBodyDissapear = 0f;
+        [SerializeField]float health = -1f;
         bool isDead = false;
-        
-        private void Update()
+        float maxHealth;
+
+        private void Start() 
         {
-            // if(isDead)
-            // {
-            //     timerBodyDissapear += Time.deltaTime;
-            //     if(timerBodyDissapear > bodyDissapearTime)
-            //     {
-            //         Destroy(gameObject);
-            //     }
-            // }
+            maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+
+            if(health == -1) 
+            {
+                health = maxHealth;
+            }
+
+            GetComponent<BaseStats>().OnAttributesChanged += OnMaxHealthUpdated;
         }
 
         public bool IsDead 
         {
             get { return isDead; }
         }
+
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0);
@@ -40,10 +40,19 @@ namespace RPG.Combat
             }
         }
 
+        public void OnMaxHealthUpdated()
+        {
+            float currentMaxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            health = health * (currentMaxHealth / maxHealth);
+            maxHealth = currentMaxHealth;
+        }
+
         private void Die()
         {
             isDead = true;
             GetComponent<ActionScheduler>().StartAction(this);
+
+            GetComponent<MobExperience>()?.Die();
             
             DieAnimation();
             GetComponent<Animator>().SetTrigger("die");
@@ -68,10 +77,7 @@ namespace RPG.Combat
             GetComponent<NavMeshAgent>().enabled = true;
         }
 
-        public void Cancel() 
-        {
-            //Destroy(gameObject);
-        }
+        public void Cancel() {}
 
         public object CaptureState()
         {
@@ -81,7 +87,7 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             health = (float)state;
-            if(health == 0) isDead = true;
+            if(health == 0) Die();
             else RiseFromTheDead();
         }
     }

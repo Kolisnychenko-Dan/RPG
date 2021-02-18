@@ -14,6 +14,7 @@ namespace RPG.Combat
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         Weapon currentWeapon;
+        GameObject currentWeaponObject;
         [SerializeField] string currentWeaponName = null;
         [SerializeField] string defaultWeaponName;
         float timePassedAfterAttack = Mathf.Infinity;
@@ -30,7 +31,7 @@ namespace RPG.Combat
             timePassedAfterAttack += Time.deltaTime;
             if(target != null && !target.IsDead && target != GetComponent<CombatTarget>())
             {
-                bool isInRangeOfAttack = Vector3.Distance(target.transform.position, transform.position) < currentWeapon.WeaponRange;
+                bool isInRangeOfAttack = Vector3.Distance(target.transform.position, transform.position) < currentWeapon.GetWeaponRange;
                 if(!isInRangeOfAttack)
                 {
                     GetComponent<Mover>().MoveTo(target.transform.position);
@@ -48,7 +49,7 @@ namespace RPG.Combat
         {
             if(currentWeapon != null)
             {
-                currentWeapon.DestroyWeapon();
+                Destroy(currentWeaponObject);
                 currentWeapon = null;
             }
 
@@ -60,16 +61,13 @@ namespace RPG.Combat
                 currentWeapon = Resources.Load<Weapon>(defaultWeaponName);
             }
 
-            if(currentWeapon.IsRightHandedWeapon)
-            {
-                currentWeapon.SpawnWeapon(rightHandTransform,GetComponent<Animator>());
-            }
-            else
-            {
-                currentWeapon.SpawnWeapon(leftHandTransform,GetComponent<Animator>());
-            }
+            currentWeaponObject = currentWeapon.SpawnWeapon(GetTransformOfHandWithWeapon(),GetComponent<Animator>());
         }
 
+        private Transform GetTransformOfHandWithWeapon()
+        {
+            return currentWeapon.IsRightHandedWeapon ? rightHandTransform : leftHandTransform;
+        }
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
@@ -90,7 +88,7 @@ namespace RPG.Combat
         // Invoked by an Animator component
         void Hit()
         {
-            target?.TakeDamage(currentWeapon.WeaponDamage);
+            target?.TakeDamage(currentWeapon.GetWeaponDamage);
         }
         
         // Invoked by an Animator component
@@ -98,15 +96,7 @@ namespace RPG.Combat
         {
             if(target != null)
             {
-                if(currentWeapon.IsRightHandedWeapon)
-                {
-                    ((RangeWeapon)currentWeapon).Shoot(target,rightHandTransform.position);
-                }
-                else
-                {
-                    ((RangeWeapon)currentWeapon).Shoot(target,rightHandTransform.position);
-                }
-                
+                ((RangeWeapon)currentWeapon).Shoot(target,GetTransformOfHandWithWeapon().position);
             }
         }
         public void Cancel()

@@ -10,32 +10,29 @@ namespace RPG.Combat
         [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] float weaponDamage = 0;
         [SerializeField] float weaponRange = 0;
-        GameObject weaponObject = null;
         
+        const string fileName = "Weapon";
         public bool IsRightHandedWeapon
         {
             get { return isRightHandedWeapon; }
         }
 
-        public float WeaponDamage
+        public float GetWeaponDamage
         {
             get { return weaponDamage; }
         }
 
-        public float WeaponRange
+        public float GetWeaponRange
         {
             get { return weaponRange; }
         }
 
-        public void SpawnWeapon(Transform handTransform, Animator animator)
+        public GameObject SpawnWeapon(Transform handTransform, Animator animator)
         {
-            if(weaponPrefab != null) Instantiate(weaponPrefab, handTransform);
+            GameObject weaponObject = null;
+            if(weaponPrefab != null) weaponObject = Instantiate(weaponPrefab, handTransform);
             animator.runtimeAnimatorController = weaponOverride;
-        }
-
-        public void DestroyWeapon()
-        {
-            Destroy(weaponObject);
+            return weaponObject;
         }
     }
 }

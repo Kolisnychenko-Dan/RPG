@@ -10,7 +10,7 @@ namespace RPG.SceneManagement
     {
         const string defaultSaveFile = "save";
         SavingSystem savingSystem;
-        [SerializeField] float fadeInDuration = 1f;
+//        [SerializeField] float fadeInDuration = 1f;
 
         private void Start()
         {

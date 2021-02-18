@@ -12,7 +12,7 @@ namespace RPG.Movement
         private void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
-            navMeshAgent.isStopped = true;
+            if(navMeshAgent.enabled) navMeshAgent.isStopped = true;
         }
         void Update()
         {
@@ -52,9 +52,13 @@ namespace RPG.Movement
 
         public void RestoreState(object state)
         {
-            GetComponent<NavMeshAgent>().enabled = false;
+            if(GetComponent<NavMeshAgent>().enabled)
+            {
+                GetComponent<NavMeshAgent>().enabled = false;
+                transform.position = ((SerializableVector3)state).ToVector();
+                GetComponent<NavMeshAgent>().enabled = true;
+            }
             transform.position = ((SerializableVector3)state).ToVector();
-            GetComponent<NavMeshAgent>().enabled = true;
         }
     }
 }

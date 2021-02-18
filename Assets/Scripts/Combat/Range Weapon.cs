@@ -15,7 +15,7 @@ namespace RPG.Combat
             projectile.transform.position = weaponPosition;
             
             Projectile projectileComponent = projectile.GetComponent<Projectile>();
-            projectileComponent.ProjectileDamage = base.WeaponDamage;
+            projectileComponent.ProjectileDamage = base.GetWeaponDamage;
             projectileComponent.Target = target;
         }
     }

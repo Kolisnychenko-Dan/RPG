@@ -44,7 +44,7 @@ namespace RPG.Combat
                 Instantiate(impactEffect,target.transform.position,transform.rotation);
             }
 
-            target.TakeDamage(projectileDamage);
+            if(!target.IsDead) target.TakeDamage(projectileDamage);
             Destroy(gameObject);
         }
     }
