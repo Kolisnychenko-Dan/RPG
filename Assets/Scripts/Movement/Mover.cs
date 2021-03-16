@@ -8,10 +8,13 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction, ISaveable
     {   
         NavMeshAgent navMeshAgent;
-
-        private void Start()
+        
+        private void Awake() 
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+        private void Start()
+        {
             if(navMeshAgent.enabled) navMeshAgent.isStopped = true;
         }
         void Update()

@@ -26,6 +26,11 @@ MonoBehaviour:
         - 20
         - 50
         - 100
+      - stat: 2
+        levelStats:
+        - 1
+        - 1.1
+        - 1.2
   - character: Swordman
     statsClass:
       stats:
@@ -35,6 +40,9 @@ MonoBehaviour:
       - stat: 1
         levelStats:
         - 15
+      - stat: 2
+        levelStats:
+        - 1
   - character: Archer
     statsClass:
       stats:
@@ -44,3 +52,6 @@ MonoBehaviour:
       - stat: 1
         levelStats:
         - 25
+      - stat: 2
+        levelStats:
+        - 1

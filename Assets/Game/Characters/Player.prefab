@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &7681180398633137109
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417301520184591688}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &273608954337778009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9,10 +25,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2417301520184591688}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a725e40d0e4844bab3a7c07c1e61c4, type: 3}
+  m_Script: {fileID: 11500000, guid: e4f3592899e7d444bae38a6496bfc5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: -1
+  dieAnimSpeed: 0.05
 --- !u!114 &1574426075741265477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,6 +54,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ac75b466a79ac4ba181bc94f865bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorMappings:
+  - type: 0
+    texture: {fileID: 2800000, guid: e9273bc404131a3409f922060b71c640, type: 3}
+    hotspot: {x: 32, y: 32}
+  - type: 1
+    texture: {fileID: 2800000, guid: 2291b8625b762f143a5542eee1922e8a, type: 3}
+    hotspot: {x: 16, y: 4}
+  - type: 2
+    texture: {fileID: 2800000, guid: 96efacc37907f1847ba83819a41f8567, type: 3}
+    hotspot: {x: 32, y: 32}
+  maxNavMeshProjectionDisctance: 1
 --- !u!114 &5477485123267697672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 694e0e087a15a7442b94fa5c908fa46e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelUpExperience: 0
+  currentExperience: 0
+  levelUpEffect: {fileID: 0}
 --- !u!1001 &2337534221390221853
 PrefabInstance:
   m_ObjectHideFlags: 0

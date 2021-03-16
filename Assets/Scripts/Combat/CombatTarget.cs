@@ -1,18 +1,20 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Attributes;
+using RPG.Controller;
 
 namespace RPG.Combat
 {    
-    public class CombatTarget : MonoBehaviour, IAction, ISaveable
+    public class CombatTarget : MonoBehaviour, IAction, ISaveable, IRayCastable
     {
         [SerializeField]float health = -1f;
+        [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
         float maxHealth;
-
+        
         private void Start() 
         {
             maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
@@ -62,7 +64,7 @@ namespace RPG.Combat
         private void DieAnimation()
         {
             Rigidbody rb = gameObject.AddComponent<Rigidbody>();
-            rb.velocity = new Vector3(0,-0.05f,0);
+            rb.velocity = new Vector3(0,-dieAnimSpeed,0);
             rb.useGravity = false;             
             GetComponent<CapsuleCollider>().enabled = false;
             GetComponent<NavMeshAgent>().enabled = false;
@@ -89,6 +91,20 @@ namespace RPG.Combat
             health = (float)state;
             if(health == 0) Die();
             else RiseFromTheDead();
+        }
+
+        public bool HandleRaycast(PlayerController controllerToHandle)
+        {
+            if(Input.GetMouseButton(0))
+            {
+                controllerToHandle.transform.GetComponent<Atacker>().Atack(this);
+            }
+            return true;
+        }
+
+        public CursorType GetHoverCursor()
+        {
+            return tag == "Player" ? CursorType.Movement : CursorType.Attack; 
         }
     }
 }

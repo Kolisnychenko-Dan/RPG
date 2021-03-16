@@ -6,7 +6,7 @@ namespace RPG.Core
     {
         GameObject target;
 
-        private void Start()
+        private void Awake()
         {
             target = GameObject.Find("Player");
         }

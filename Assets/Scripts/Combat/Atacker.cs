@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
+using RPG.Stats;
 
 namespace RPG.Combat
 {
@@ -13,10 +14,10 @@ namespace RPG.Combat
         [SerializeField] float waitTillAttackTime = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        Weapon currentWeapon;
-        GameObject currentWeaponObject;
         [SerializeField] string currentWeaponName = null;
         [SerializeField] string defaultWeaponName;
+        Weapon currentWeapon;
+        GameObject currentWeaponObject;
         float timePassedAfterAttack = Mathf.Infinity;
         CombatTarget target;
 
@@ -88,7 +89,8 @@ namespace RPG.Combat
         // Invoked by an Animator component
         void Hit()
         {
-            target?.TakeDamage(currentWeapon.GetWeaponDamage);
+            float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
+            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier);
         }
         
         // Invoked by an Animator component
@@ -96,9 +98,11 @@ namespace RPG.Combat
         {
             if(target != null)
             {
-                ((RangeWeapon)currentWeapon).Shoot(target,GetTransformOfHandWithWeapon().position);
+                float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
+                ((RangeWeapon)currentWeapon).Shoot(target, GetTransformOfHandWithWeapon().position, damageMultiplier);
             }
         }
+        
         public void Cancel()
         {
             GetComponent<Animator>().ResetTrigger("attack");

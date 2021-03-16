@@ -22,11 +22,14 @@ namespace RPG.Controller
         Vector3 lastEnemyPosition;
         int currentPatrolWaypointNumber = 0;
         
-        private void Start()
+        private void Awake() 
         {
             characters = GameObject.FindGameObjectsWithTag("Player");
-            guardPosition = transform.position;
             mover = GetComponent<Mover>();
+        }
+        private void Start()
+        {
+            guardPosition = transform.position;
             lastEnemyPosition = transform.position;
         }
         

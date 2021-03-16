@@ -17,6 +17,19 @@ namespace RPG.Stats
             return progression.GetStat(character, stat, level);
         }
 
+        public float GetAdditiveModifiers(Stat stat)
+        {
+            float additiveModifier = 0;
+            foreach(var mp  in GetComponents<IAdditiveModifier>())
+            {
+                foreach(float num in mp.GetAdditiveModifier(stat))
+                {
+                    additiveModifier += num;
+                }
+            }
+            return additiveModifier;
+        }
+
         /* Should only be called by Player. Returns new required levelUp experience*/
         public float LevelUp()
         {

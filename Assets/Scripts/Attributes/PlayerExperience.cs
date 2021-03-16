@@ -13,9 +13,13 @@ namespace RPG.Attributes
         BaseStats baseStats;
 
 //        public event Action OnLevelUp;
-        private void Start() 
+
+        private void Awake() 
         {
             baseStats = GetComponent<BaseStats>();
+        }
+        private void Start() 
+        {
             LevelUpExperience = baseStats.GetStat(Stat.Experience);
         }
 
