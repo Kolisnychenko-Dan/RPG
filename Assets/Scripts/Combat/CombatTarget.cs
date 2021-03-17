@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.Core;
@@ -14,7 +15,16 @@ namespace RPG.Combat
         [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
         float maxHealth;
+
+        public event Action<float> OnDamageTaken;
+        public event Action OnDeath;
+        public event Action OnRiseFromTheDead;
         
+        private void Awake() 
+        {
+            GetComponent<BaseStats>().OnAttributesChanged += OnMaxHealthUpdated;
+        }
+
         private void Start() 
         {
             maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
@@ -23,8 +33,6 @@ namespace RPG.Combat
             {
                 health = maxHealth;
             }
-
-            GetComponent<BaseStats>().OnAttributesChanged += OnMaxHealthUpdated;
         }
 
         public bool IsDead 
@@ -32,17 +40,31 @@ namespace RPG.Combat
             get { return isDead; }
         }
 
+        public float MaxHealth
+        {
+            get { return maxHealth; }
+        }
+
+        public float Health
+        {
+            get { return health; }
+        }
+
+        public float GetHealthPercantage()
+        {
+            return health/maxHealth;
+        }
+
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0);
-        
-            if(health == 0)
-            {
-                Die();
-            }
+
+            OnDamageTaken?.Invoke(damage);
+
+            if (health == 0) Die();
         }
 
-        public void OnMaxHealthUpdated()
+        private void OnMaxHealthUpdated()
         {
             float currentMaxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
             health = health * (currentMaxHealth / maxHealth);
@@ -53,6 +75,7 @@ namespace RPG.Combat
         {
             isDead = true;
             GetComponent<ActionScheduler>().StartAction(this);
+            OnDeath?.Invoke();
 
             GetComponent<MobExperience>()?.Die();
             
@@ -70,9 +93,11 @@ namespace RPG.Combat
             GetComponent<NavMeshAgent>().enabled = false;
         }
 
-        private void RiseFromTheDead()
+        private void RiseFromTheDeadAnimation()
         {
             isDead = false;
+            OnRiseFromTheDead?.Invoke();
+
             Destroy(GetComponent<Rigidbody>());
             GetComponent<Animator>().SetTrigger("riseFromTheDead");
             GetComponent<CapsuleCollider>().enabled = true;
@@ -90,7 +115,7 @@ namespace RPG.Combat
         {
             health = (float)state;
             if(health == 0) Die();
-            else RiseFromTheDead();
+            else RiseFromTheDeadAnimation();
         }
 
         public bool HandleRaycast(PlayerController controllerToHandle)

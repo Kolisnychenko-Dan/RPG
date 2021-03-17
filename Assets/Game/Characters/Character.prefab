@@ -132,6 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49dc2b094233189418bdb590f3386854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startinglevel: 1
+  level: 1
   character: 
   progression: {fileID: 11400000, guid: e19d5b2123f6c444dbb8a7d9fe0ebbe7, type: 2}

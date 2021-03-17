@@ -8,7 +8,7 @@ namespace RPG.Core
 
         private void Awake()
         {
-            target = GameObject.Find("Player");
+            target = GameObject.FindWithTag("Player");
         }
         void LateUpdate()
         {
