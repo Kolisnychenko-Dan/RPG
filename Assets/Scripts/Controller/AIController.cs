@@ -11,6 +11,9 @@ namespace RPG.Controller
     {
         [SerializeField] bool startChaseAtChaseDistance;
         [SerializeField] float chaseDistance = 5f;
+        [SerializeField] float suspicionTime = 3f;
+        [SerializeField] float agroTime = 5f;
+        [SerializeField] float callAlliesRadius = 5f;
         [SerializeField] bool returnToGurdPos;
         [SerializeField] PatrolPath patrolPath;
         [SerializeField] float waypointTolerance = 1f;
@@ -18,6 +21,8 @@ namespace RPG.Controller
         GameObject[] characters;
         GameObject target;
         Mover mover;
+        float suspicionTimeElapsed = Mathf.Infinity;
+        float agroTimeElapsed = Mathf.Infinity;
         Vector3 guardPosition;
         Vector3 lastEnemyPosition;
         int currentPatrolWaypointNumber = 0;
@@ -26,6 +31,7 @@ namespace RPG.Controller
         {
             characters = GameObject.FindGameObjectsWithTag("Player");
             mover = GetComponent<Mover>();
+            GetComponent<CombatTarget>().OnDamageTaken += Agro;
         }
         private void Start()
         {
@@ -42,6 +48,19 @@ namespace RPG.Controller
                 if (patrolPath != null) Patrol();
             }
             if (startChaseAtChaseDistance) LocateNewTarget();
+
+            UpdateTimers();
+        }
+
+        public void Agro(float f)
+        {
+            agroTimeElapsed = 0;
+        }
+
+        void UpdateTimers()
+        {
+            suspicionTimeElapsed += Time.deltaTime;
+            agroTimeElapsed += Time.deltaTime;
         }
 
         private void Patrol()
@@ -67,29 +86,54 @@ namespace RPG.Controller
 
         private void ReturnToGuarding()
         {
-            mover.StartMoveAction(guardPosition);
+            mover.Stop();
+            if(suspicionTimeElapsed > suspicionTime)
+                mover.StartMoveAction(guardPosition);
         }
 
         private void LocateNewTarget()
         {
             target = null;
-            foreach (var player in characters)
+            float currentMinChaseDistance = Mathf.Infinity;
+
+            foreach (var playersCharacter in characters)
             {
-                float distance = Vector3.Distance(transform.position,player.transform.position);
-                if(distance < chaseDistance)
+                float distance = Vector3.Distance(transform.position,playersCharacter.transform.position);
+                if((distance < chaseDistance && distance < currentMinChaseDistance) || agroTimeElapsed < agroTime)
                 {
-                    if (target == null || InAttackRangeOfPlayer(distance))
+                    if (target == null || IsInAttackRange(distance))
                     {
-                        target = player;
+                        currentMinChaseDistance = distance;
+
+                        target = playersCharacter;
                         lastEnemyPosition = target.transform.position;
-                        GetComponent<Atacker>().Atack(target.GetComponent<CombatTarget>());
+                        
+                        AttackBehavior();
                     }
                 }
             }
             if(target == null && !returnToGurdPos) MoveToTheLastEnemyPosition();
         }
 
-        private bool InAttackRangeOfPlayer(float distance)
+        private void AttackBehavior()
+        {
+            suspicionTimeElapsed = 0;
+
+            GetComponent<Atacker>().Atack(target.GetComponent<CombatTarget>());
+            AgroAllies();
+        }
+
+        private void AgroAllies()
+        {
+            RaycastHit[] hits = Physics.SphereCastAll(transform.position, callAlliesRadius, Vector3.up,0);
+
+            foreach(var hit in hits)
+            {
+                hit.transform.GetComponent<AIController>()?.Agro(0f);
+            }
+        }
+
+        private bool IsInAttackRange(float distance)
         {
             return Vector3.Distance(transform.position, target.transform.position) < distance;
         }

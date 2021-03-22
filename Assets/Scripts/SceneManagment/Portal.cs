@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using RPG.Controller;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -11,9 +12,9 @@ namespace RPG.SceneManagement
     {
         [SerializeField] int sceneToLoad = -1;
         [SerializeField] int indexOfPortal = 0;
-    //    [SerializeField] bool isOneWayTicket = false;
         [SerializeField] Transform spawnPoint;
         [SerializeField] float fadeInDuration = 0.5f;
+        [SerializeField] float fadeWaitTime = 0.3f;
         [SerializeField] float fadeOutDuration = 1f;
 
         public int IndexOfPortal { get; }
@@ -35,6 +36,9 @@ namespace RPG.SceneManagement
             GameObject.DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
+
+            PlayerController pc = FindObjectOfType<PlayerController>();
+            pc.enabled = false;
             
             yield return fader.FadeOut(fadeOutDuration);
 
@@ -50,8 +54,13 @@ namespace RPG.SceneManagement
 
             wrapper.Save();
 
-            yield return new WaitForSeconds(0.5f);
+            pc = FindObjectOfType<PlayerController>();
+            pc.enabled = false;
+
+            yield return new WaitForSeconds(fadeWaitTime);
             yield return fader.FadeIn(fadeInDuration);
+
+            pc.enabled = true;
 
             GameObject.Destroy(gameObject);
         }
@@ -70,7 +79,7 @@ namespace RPG.SceneManagement
 
         private void MovePlayerToSpawnpoint()
         {
-            Transform player = GameObject.FindWithTag("Player").transform;
+            Transform player = GameObject.Find("Player").transform;
 
             player.GetComponent<NavMeshAgent>().enabled = false;
             player.position = spawnPoint.position;

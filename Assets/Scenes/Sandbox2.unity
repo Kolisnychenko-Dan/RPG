@@ -399,7 +399,7 @@ PrefabInstance:
     - target: {fileID: 2417301520184591688, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4614177281471904208, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
@@ -873,6 +873,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordman (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7107602163254859508, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7107602163254859508, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ee0e8cb7e583243a2ec5f09c0839d4, type: 3}
 --- !u!1001 &1388484639
@@ -955,6 +965,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1179357702}
     m_Modifications:
+    - target: {fileID: 1698194467769933068, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698194467769933068, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698194467769933068, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698194467769933068, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.979
+      objectReference: {fileID: 0}
+    - target: {fileID: 1698194467769933068, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1863611446924542907, guid: 0cc9e3ce1c856064e91b850a882f5445,
         type: 3}
       propertyPath: m_Name
@@ -1454,6 +1489,16 @@ PrefabInstance:
         type: 3}
       propertyPath: sceneToLoad
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016567297059234458, guid: aca4adacf7f121c478c15eb3741f7b00,
+        type: 3}
+      propertyPath: fadeInDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016567297059234458, guid: aca4adacf7f121c478c15eb3741f7b00,
+        type: 3}
+      propertyPath: fadeOutDuration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1016567297059234462, guid: aca4adacf7f121c478c15eb3741f7b00,
         type: 3}
