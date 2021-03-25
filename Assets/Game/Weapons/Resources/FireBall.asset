@@ -17,6 +17,6 @@ MonoBehaviour:
   weaponPrefab: {fileID: 1268238002653513139, guid: c6aad001d933bd344958ef22abb2472d,
     type: 3}
   weaponDamage: 20
-  weaponRange: 5
+  weaponRange: 15
   projectilePrefab: {fileID: 6753371979476425282, guid: 2883571569c8c35489a71482f90b1383,
     type: 3}
