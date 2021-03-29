@@ -20,7 +20,7 @@ namespace RPG.Stats
         public float GetAdditiveModifiers(Stat stat)
         {
             float additiveModifier = 0;
-            foreach(var mp  in GetComponents<IAdditiveModifier>())
+            foreach(var mp in GetComponents<IAdditiveModifier>())
             {
                 foreach(float num in mp.GetAdditiveModifier(stat))
                 {
@@ -37,7 +37,6 @@ namespace RPG.Stats
             OnAttributesChanged.Invoke();
             return progression.GetStat(character, Stat.Experience ,level);
         }
-
         
         public object CaptureState()
         {

@@ -8,21 +8,21 @@ namespace RPG.Stats
     [CreateAssetMenu(fileName = "Progression", menuName = "Stats/Progression", order = 0)]
     public class Progression : ScriptableObject
     {
-        [SerializeField] StringStatsClass[] characterClasses; 
+        [SerializeField] StringStatsClass[] statobjectClasses; 
 
-        public float GetStat(string character, Stat stat, int level)
+        public float GetStat(string statobject, Stat stat, int level)
         {
-            foreach (var el in characterClasses)
+            foreach (var el in statobjectClasses)
             {
-              if(character == el.character) return el.statsClass.GetStat(stat,level);
+              if(statobject == el.statobject) return el.statsClass.GetStat(stat,level);
             }
-            throw new Exception($"Character: \"{character}\" doesn't exist in progression");
+            throw new Exception($"StatObject: \"{statobject}\" doesn't exist in progression");
         }
 
         [Serializable]
         class StringStatsClass
         {
-            public string character;
+            public string statobject;
             public StatsClass statsClass;
         }
     }

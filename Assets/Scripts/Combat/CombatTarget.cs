@@ -37,17 +37,20 @@ namespace RPG.Combat
 
         public bool IsDead 
         {
-            get { return isDead; }
+            get => isDead;
         }
 
         public float MaxHealth
         {
-            get { return maxHealth; }
+            get => maxHealth;
         }
 
         public float Health
         {
-            get { return health; }
+            get => health; 
+            set { 
+                    health = Mathf.Min( maxHealth, health + value ); 
+                }
         }
 
         public float GetHealthPercantage()

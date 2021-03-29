@@ -10,48 +10,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26bc4cbf5840daa448c90d02bace4617, type: 3}
-  m_Name: Progression
+  m_Name: CharacterProgression
   m_EditorClassIdentifier: 
-  characterClasses:
-  - character: Player
+  statobjectClasses:
+  - statobject: Player
     statsClass:
       stats:
       - stat: 0
         levelStats:
         - 100
-        - 120
-        - 150
-      - stat: 1
-        levelStats:
-        - 20
-        - 50
-        - 100
+        - 110
+        - 121
       - stat: 2
         levelStats:
         - 1
         - 1.1
+        - 1.21
+      - stat: 3
+        levelStats:
+        - 200
+        - 250
+        - 300
+      - stat: 4
+        levelStats:
+        - 1
         - 1.2
-  - character: Swordman
+        - 1.4
+  - statobject: Swordman
     statsClass:
       stats:
       - stat: 0
         levelStats:
         - 50
-      - stat: 1
-        levelStats:
-        - 15
       - stat: 2
         levelStats:
-        - 1
-  - character: Archer
+        - 0.5
+      - stat: 3
+        levelStats:
+        - 100
+  - statobject: Archer
     statsClass:
       stats:
       - stat: 0
         levelStats:
         - 35
-      - stat: 1
-        levelStats:
-        - 25
       - stat: 2
         levelStats:
-        - 1
+        - 0.35
+      - stat: 3
+        levelStats:
+        - 150

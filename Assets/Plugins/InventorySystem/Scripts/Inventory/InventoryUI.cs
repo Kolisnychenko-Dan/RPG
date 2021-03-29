@@ -48,7 +48,7 @@ namespace UniversalInventorySystem
         public bool hideDragObj;
         public bool useOnClick;
 
-        //Sahder
+        //Shader
         public Color outlineColor;
 
         public float outlineSize;

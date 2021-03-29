@@ -21,6 +21,7 @@ namespace RPG.Controller
 
         private void Update()
         {
+            if(InteractWithUI()) return;
             if(InteractWithComponent()) return;
             if(InteractWithMovement()) return;
 
@@ -54,7 +55,13 @@ namespace RPG.Controller
             });
             return raycasts;
         }
+        
+        private bool InteractWithUI()
+        {
 
+            SetCursor(CursorType.Movement);
+            return false;
+        }
         private bool InteractWithMovement()
         {
             Vector3 destination;
