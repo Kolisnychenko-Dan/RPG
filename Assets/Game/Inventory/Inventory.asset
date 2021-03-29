@@ -12,13 +12,109 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b278c471a3efbda41a30ef8f936d20a0, type: 3}
   m_Name: Inventory
   m_EditorClassIdentifier: 
-  inventorySlots: []
+  inventorySlots:
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: -1
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
   _slotAmounts: 0
   _id: 0
-  _key: 
-  _interactiable: 63
+  _key: Inventory
+  _interactiable: -1
   seeds: []
-  slots: []
+  slots:
+  - amount: 1
+    item: {fileID: 11400000, guid: 54c3b571f7a62ec4cbd8920423e9b576, type: 2}
+    _itemInstance: {fileID: 0}
+    hasItem: 1
+    _durability: 0
+    isProductSlot: 0
+    interative: -1
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
+  - amount: 0
+    item: {fileID: 0}
+    _itemInstance: {fileID: 0}
+    hasItem: 0
+    _durability: 0
+    isProductSlot: 0
+    interative: 0
+    whitelist: {fileID: 0}
   id: 0
-  key: 
-  interactiable: 63
+  key: Inventory
+  interactiable: -1

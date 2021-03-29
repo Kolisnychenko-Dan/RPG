@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: HealPotion
   id: 1
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 606f1a63e1aec7841a445b4bfc8b75d4, type: 3}
   maxAmount: 0
   destroyOnUse: 0
   useHowManyWhenUsed: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   hasDurability: 0
   showAmount: 0
   _durabilityImages: []
-  onUseFunc: {fileID: 0}
+  onUseFunc: {fileID: 11500000, guid: fbc6a140bc2ae644788371b67a162054, type: 3}
   optionalOnDropBehaviour: {fileID: 0}
   tooltip:
     useTooltip: 0
