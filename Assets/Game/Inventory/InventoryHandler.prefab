@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3d774d6006c4c46a1a396545055f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemObj: {fileID: 0}
+  droppedItemObj: {fileID: 5001826880654016636, guid: 59f22cf4f50c8a6449bffbe26b255758,
+    type: 3}
 --- !u!114 &6707179703051101375
 MonoBehaviour:
   m_ObjectHideFlags: 0

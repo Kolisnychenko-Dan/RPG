@@ -476,10 +476,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4614177281471904208, guid: 8b5e615de3d4f6043a95f467d147bad0,
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
-      propertyPath: uniqueIdentifier
-      value: Player
+      propertyPath: healTextColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: healTextColor.b
+      value: 0.23553754
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: healTextColor.g
+      value: 0.745283
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: healTextColor.r
+      value: 0.39378598
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: damageTextSpawner.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: damageTextSpawner.b
+      value: 0.22921856
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: damageTextSpawner.g
+      value: 0.22921856
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572548146863340354, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: damageTextSpawner.r
+      value: 0.9528302
       objectReference: {fileID: 0}
     - target: {fileID: 5110906515851186188, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
@@ -547,12 +582,6 @@ PrefabInstance:
       propertyPath: currentWeaponName
       value: FireBall
       objectReference: {fileID: 0}
-    - target: {fileID: 8337929729157546860, guid: 8b5e615de3d4f6043a95f467d147bad0,
-        type: 3}
-      propertyPath: levelUpEffect
-      value: 
-      objectReference: {fileID: 6169935915492016514, guid: 3ddf550e128f3464186836b0c05f0d9b,
-        type: 3}
     - target: {fileID: 8421808382034213307, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -661,6 +690,11 @@ PrefabInstance:
       objectReference: {fileID: 1328582780}
     - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
         type: 3}
+      propertyPath: toggleKey
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
       propertyPath: useOnClick
       value: 1
       objectReference: {fileID: 0}
@@ -669,6 +703,41 @@ PrefabInstance:
       propertyPath: hideDragObj
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: outlineSize
+      value: 1.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: hideInventory
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: outlineColor.a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: outlineColor.b
+      value: 0.22841759
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: outlineColor.g
+      value: 0.72073203
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: outlineColor.r
+      value: 0.8207547
+      objectReference: {fileID: 0}
+    - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
+        type: 3}
+      propertyPath: togglableObject
+      value: 
+      objectReference: {fileID: 1328582777}
     - target: {fileID: 5458410783865646762, guid: fd54c2fdcbfecda47bb60e42fcddcc55,
         type: 3}
       propertyPath: DontDropItemRect
@@ -1055,6 +1124,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ee0e8cb7e583243a2ec5f09c0839d4, type: 3}
+--- !u!1 &1328582777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2582702112381980546, guid: ae4a74883de16cb41ad469dc0259e676,
+    type: 3}
+  m_PrefabInstance: {fileID: 2582702113672749051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!223 &1328582780 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 2582702112381980551, guid: ae4a74883de16cb41ad469dc0259e676,

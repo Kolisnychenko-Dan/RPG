@@ -50,10 +50,12 @@ namespace RPG.Combat
             get => health; 
             set {   
                     HealthChangeType type = value > health ? HealthChangeType.Heal : HealthChangeType.Damage;
-                    float healthChange = Mathf.Abs(health - value);
+                    float calculatedHealth = Mathf.Max( 0, Mathf.Min( maxHealth, value));
+                    float healthChange = Mathf.Abs(calculatedHealth - health);
+                    health = calculatedHealth; 
 
-                    health = Mathf.Max( 0, Mathf.Min( maxHealth, value)); 
-                    OnHealthChanged.Invoke(healthChange, type);
+                    if(healthChange != 0) 
+                        OnHealthChanged.Invoke(healthChange, type);
                 }
         }
 
