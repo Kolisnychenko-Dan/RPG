@@ -65,6 +65,21 @@ MonoBehaviour:
     type: 3}
   openingTags: '{size}<shake><fade>'
   closingTags: '{/size}</shake></fade>'
+  damageTextColor: {r: 0.9528302, g: 0.13932894, b: 0.13932894, a: 1}
+  healTextColor: {r: 0.39378598, g: 0.745283, b: 0.23553754, a: 1}
+--- !u!114 &5110906515851186188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417301520184591688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe02c0467f9bdc418dac4ed25f5456d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progression: {fileID: 0}
 --- !u!114 &5477485123267697672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,19 +147,6 @@ MonoBehaviour:
   currentExperience: 0
   levelUpEffect: {fileID: 6169935915492016514, guid: 3ddf550e128f3464186836b0c05f0d9b,
     type: 3}
---- !u!114 &5110906515851186188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2417301520184591688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe02c0467f9bdc418dac4ed25f5456d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  progression: {fileID: 0}
 --- !u!1001 &2337534221390221853
 PrefabInstance:
   m_ObjectHideFlags: 0

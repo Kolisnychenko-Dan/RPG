@@ -16,7 +16,7 @@ namespace RPG.Combat
         bool isDead = false;
         float maxHealth;
 
-        public event Action<float> OnDamageTaken;
+        public event Action<float,HealthChangeType> OnHealthChanged;
         public event Action OnDeath;
         public event Action OnRiseFromTheDead;
         
@@ -48,8 +48,12 @@ namespace RPG.Combat
         public float Health
         {
             get => health; 
-            set { 
-                    health = Mathf.Min( maxHealth, health + value ); 
+            set {   
+                    HealthChangeType type = value > health ? HealthChangeType.Heal : HealthChangeType.Damage;
+                    float healthChange = Mathf.Abs(health - value);
+
+                    health = Mathf.Max( 0, Mathf.Min( maxHealth, value)); 
+                    OnHealthChanged.Invoke(healthChange, type);
                 }
         }
 
@@ -60,9 +64,7 @@ namespace RPG.Combat
 
         public void TakeDamage(float damage)
         {
-            health = Mathf.Max(health - damage, 0);
-
-            OnDamageTaken?.Invoke(damage);
+            Health -= damage;
 
             if (health == 0) Die();
         }
@@ -133,6 +135,12 @@ namespace RPG.Combat
         public CursorType GetHoverCursor()
         {
             return tag == "Player" ? CursorType.Movement : CursorType.Attack; 
+        }
+
+        public enum HealthChangeType
+        {
+            Heal,
+            Damage
         }
     }
 }

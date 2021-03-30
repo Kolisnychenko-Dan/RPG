@@ -48,6 +48,9 @@ MonoBehaviour:
       - stat: 3
         levelStats:
         - 100
+      - stat: 4
+        levelStats:
+        - 1
   - statobject: Archer
     statsClass:
       stats:
@@ -60,3 +63,6 @@ MonoBehaviour:
       - stat: 3
         levelStats:
         - 150
+      - stat: 4
+        levelStats:
+        - 1

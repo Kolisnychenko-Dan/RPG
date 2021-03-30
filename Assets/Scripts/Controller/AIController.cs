@@ -31,7 +31,7 @@ namespace RPG.Controller
         {
             characters = GameObject.FindGameObjectsWithTag("Player");
             mover = GetComponent<Mover>();
-            GetComponent<CombatTarget>().OnDamageTaken += Agro;
+            GetComponent<CombatTarget>().OnHealthChanged += Agro;
         }
         private void Start()
         {
@@ -52,8 +52,9 @@ namespace RPG.Controller
             UpdateTimers();
         }
 
-        public void Agro(float f)
+        public void Agro(float f, CombatTarget.HealthChangeType type)
         {
+            if(CombatTarget.HealthChangeType.Damage != type) return;
             agroTimeElapsed = 0;
         }
 
@@ -129,7 +130,7 @@ namespace RPG.Controller
 
             foreach(var hit in hits)
             {
-                hit.transform.GetComponent<AIController>()?.Agro(0f);
+                hit.transform.GetComponent<AIController>()?.Agro(0f, CombatTarget.HealthChangeType.Damage);
             }
         }
 

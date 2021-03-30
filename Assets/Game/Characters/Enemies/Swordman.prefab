@@ -16,6 +16,8 @@ MonoBehaviour:
     type: 3}
   openingTags: '{size}<shake><fade>'
   closingTags: '{/size}</shake></fade>'
+  damageTextColor: {r: 0.9528302, g: 0.13932894, b: 0.13932894, a: 1}
+  healTextColor: {r: 0.39378598, g: 0.745283, b: 0.23553754, a: 1}
 --- !u!195 &1525788613372867732
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -120,6 +122,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startChaseAtChaseDistance: 1
   chaseDistance: 5
+  suspicionTime: 3
+  agroTime: 5
+  callAlliesRadius: 5
   returnToGurdPos: 1
   patrolPath: {fileID: 0}
   waypointTolerance: 1

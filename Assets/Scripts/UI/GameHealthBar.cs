@@ -7,25 +7,34 @@ namespace RPG.UI
     public class GameHealthBar : MonoBehaviour
     {
         CombatTarget health;
+        bool isEnabled = true;
+
         private void Awake()
         {
             health = GetComponentInParent<CombatTarget>();
 
-            health.OnDamageTaken += UpdateHealthBar;
-            health.OnDeath += DisableBar;
-            health.OnRiseFromTheDead += EnableBar;
+            health.OnHealthChanged += UpdateHealthBar;
+            health.OnDeath += () => {
+                isEnabled = false;
+                DisableBar();
+            };
+            health.OnRiseFromTheDead += () => isEnabled = true;
         }
 
         private void Update()
         {
-            DisableBar();
-            if(Input.GetKey(KeyCode.LeftAlt))
+            if(isEnabled)
             {
-                EnableBar();
+                if(Input.GetKey(KeyCode.LeftAlt))
+                {
+                    EnableBar();
+                }
+                else DisableBar();
             }
+            
         }
 
-        private void UpdateHealthBar(float damage)
+        private void UpdateHealthBar(float healtChange, CombatTarget.HealthChangeType type)
         {
             transform.localScale = new Vector3(health.GetHealthPercantage(),1,1);
         }

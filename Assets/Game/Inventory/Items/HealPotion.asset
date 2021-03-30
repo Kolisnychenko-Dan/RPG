@@ -23,7 +23,7 @@ MonoBehaviour:
   hasDurability: 0
   showAmount: 0
   _durabilityImages: []
-  onUseFunc: {fileID: 11500000, guid: fbc6a140bc2ae644788371b67a162054, type: 3}
+  onUseFunc: {fileID: 11500000, guid: 6f969f06d7f057d408ddc2cbd09c3fec, type: 3}
   optionalOnDropBehaviour: {fileID: 0}
   tooltip:
     useTooltip: 0

@@ -3,6 +3,7 @@ using RPG.Movement;
 using RPG.Combat;
 using System;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 namespace RPG.Controller
 {
@@ -58,8 +59,11 @@ namespace RPG.Controller
         
         private bool InteractWithUI()
         {
-
-            SetCursor(CursorType.Movement);
+            if(EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.Movement);
+                return true;
+            }
             return false;
         }
         private bool InteractWithMovement()
