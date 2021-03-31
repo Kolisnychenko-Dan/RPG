@@ -489,7 +489,9 @@ namespace UniversalInventorySystem
             if (!AcceptsSlotProtection(inv.slots[slot], MethodType.Remove) && !overrideSlotProtecion) return false;
 
             if (itemInstance == null) itemInstance = inv.slots[slot].ItemInstance;
-            if (!ignoreInstance && inv.slots[slot].ItemInstance.ValueEqual(itemInstance)) return false;
+
+            // Have No clue what this check was supposed to do
+            //if (!ignoreInstance && inv.slots[slot].ItemInstance.ValueEqual(itemInstance)) return false; 
 
             dropPosition = (dropPosition ?? new Vector3(0, 0, 0));
             InventoryHandler.RemoveItemEventArgs rea = new InventoryHandler.RemoveItemEventArgs(inv, false, amount, inv.slots[slot].item, slot);

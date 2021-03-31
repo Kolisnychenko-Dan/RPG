@@ -52,6 +52,7 @@ namespace RPG.Combat
                     HealthChangeType type = value > health ? HealthChangeType.Heal : HealthChangeType.Damage;
                     float calculatedHealth = Mathf.Max( 0, Mathf.Min( maxHealth, value));
                     float healthChange = Mathf.Abs(calculatedHealth - health);
+                    
                     health = calculatedHealth; 
 
                     if(healthChange != 0) 

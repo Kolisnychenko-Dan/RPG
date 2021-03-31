@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 1142350260444024692}
   - component: {fileID: 5163896098532321422}
   - component: {fileID: 1541742870271246700}
-  - component: {fileID: 4247596251900811600}
+  - component: {fileID: -5550189606802791139}
   m_Layer: 0
   m_Name: HealPotion
   m_TagString: Untagged
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3253258b479f47848abe92fd62867013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 54c3b571f7a62ec4cbd8920423e9b576, type: 2}
+  item: {fileID: 11400000, guid: 8dfb66da6729c404593d10187c5ae123, type: 2}
 --- !u!135 &5163896098532321422
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4247596251900811600
+--- !u!114 &-5550189606802791139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -246,10 +246,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5001826880654016636}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1c5f57af65bb94ab03d409166553db, type: 3}
+  m_Script: {fileID: 11500000, guid: f01073cc3f8a94142a660cf9c8fbc47e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
 --- !u!1 &5002229152698571430
 GameObject:
   m_ObjectHideFlags: 0
