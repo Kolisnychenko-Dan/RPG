@@ -21,6 +21,7 @@ namespace RPG.Controller
         GameObject[] characters;
         GameObject target;
         Mover mover;
+        CombatTarget combatTarget;
         float suspicionTimeElapsed = Mathf.Infinity;
         float agroTimeElapsed = Mathf.Infinity;
         Vector3 guardPosition;
@@ -31,7 +32,8 @@ namespace RPG.Controller
         {
             characters = GameObject.FindGameObjectsWithTag("Player");
             mover = GetComponent<Mover>();
-            GetComponent<CombatTarget>().OnHealthChanged += Agro;
+            combatTarget = GetComponent<CombatTarget>();
+            combatTarget.OnHealthChanged += Agro;
         }
         private void Start()
         {
@@ -41,7 +43,7 @@ namespace RPG.Controller
         
         void Update()
         {
-            if (GetComponent<CombatTarget>().IsDead) return;
+            if (combatTarget.IsDead) return;
             if(target == null)
             {
                 if (returnToGurdPos) ReturnToGuarding();

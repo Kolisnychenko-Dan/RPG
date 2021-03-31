@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RPG.Movement;
 using UnityEngine;
 using UniversalInventorySystem;
 
@@ -31,12 +32,20 @@ namespace RPG.Item
             }
         }
 
+        void SpawnItem()
+        {
+
+        }
+
         public override void OnDropItem(object sender, InventoryHandler.DropItemEventArgs e)
         {
             var player = GameObject.Find("Player");
-            var droppedItem = Instantiate(((ExpandedItem)e.item).itemPrefab,player.transform.position,Quaternion.identity);
-            droppedItem.GetComponent<ItemDropBehavior>().StartPickUpTimer = true;
-            droppedItem.GetComponent<SphereCollider>().enabled = false;
+            
+            player.GetComponent<Mover>().OnDestinationReached += (Vector3 destination) => {
+                var droppedItem = Instantiate(((ExpandedItem)e.item).itemPrefab,destination,Quaternion.identity);
+                droppedItem.GetComponent<ItemDropBehavior>().StartPickUpTimer = true;
+                droppedItem.GetComponent<SphereCollider>().enabled = false;
+            };
         }
     }
 }

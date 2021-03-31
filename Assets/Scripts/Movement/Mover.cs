@@ -2,12 +2,16 @@
 using UnityEngine.AI;
 using RPG.Core;
 using RPG.Saving;
+using System;
 
 namespace RPG.Movement
 {
     public class Mover : MonoBehaviour, IAction, ISaveable
     {   
+        [SerializeField] float destinationPointTolerance = 1f;
         NavMeshAgent navMeshAgent;
+        Vector3? currentDestination;
+        public event Action<Vector3> OnDestinationReached = null;
         
         private void Awake() 
         {
@@ -20,24 +24,37 @@ namespace RPG.Movement
         void Update()
         {
             UpdateAnimator();
+            if(OnDestinationReached != null && DestinationReached())
+            {
+                OnDestinationReached.Invoke((Vector3)currentDestination);
+                OnDestinationReached = null;
+            }
         }
 
         public void StartMoveAction(Vector3 destination)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
+            currentDestination = destination;
         }
 
         public void Stop()
         {
             GetComponent<ActionScheduler>().StartAction(this);
             navMeshAgent.isStopped = true;
+            currentDestination = null;
         }
 
         public void MoveTo(Vector3 destination)
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.destination = destination;
+        }
+
+        public bool DestinationReached()
+        {
+            float distance = Vector3.Distance(transform.position, (Vector3)currentDestination); 
+            return distance < destinationPointTolerance;
         }
 
         public void Cancel()
