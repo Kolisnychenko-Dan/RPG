@@ -64,13 +64,13 @@ MonoBehaviour:
   _slotAmounts: 0
   _id: 0
   _key: Inventory
-  _interactiable: -1
+  _interactiable: 62
   seeds: []
   slots:
-  - amount: 1
-    item: {fileID: 11400000, guid: 54c3b571f7a62ec4cbd8920423e9b576, type: 2}
+  - amount: 0
+    item: {fileID: 0}
     _itemInstance: {fileID: 0}
-    hasItem: 1
+    hasItem: 0
     _durability: 0
     isProductSlot: 0
     interative: -1
@@ -117,4 +117,4 @@ MonoBehaviour:
     whitelist: {fileID: 0}
   id: 0
   key: Inventory
-  interactiable: -1
+  interactiable: 62

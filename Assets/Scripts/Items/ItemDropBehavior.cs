@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RPG.Controller;
 using RPG.Movement;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UniversalInventorySystem;
 
 namespace RPG.Item
@@ -10,6 +12,7 @@ namespace RPG.Item
     public class ItemDropBehavior : DropBehaviour
     {
         [SerializeField] float timeBeforePickUp = 5f;
+        [SerializeField] float moveItemUp = 0.5f;
         float pickupTimer = 0;
         bool startTimer = false; 
         
@@ -32,20 +35,25 @@ namespace RPG.Item
             }
         }
 
-        void SpawnItem()
-        {
-
-        }
-
         public override void OnDropItem(object sender, InventoryHandler.DropItemEventArgs e)
         {
+            if(EventSystem.current.IsPointerOverGameObject()) return;
+
+            e.inv.RemoveItem(e.item,1);
+
             var player = GameObject.Find("Player");
+            player.GetComponent<PlayerController>().InteractWithMovement(true);
+            player.GetComponent<Mover>().OnDestinationReached += destination => SpawnItem(e, destination);
+        }
+
+        private void SpawnItem(InventoryHandler.DropItemEventArgs e, Vector3 destination)
+        {
+            var droppedItem = Instantiate(((ExpandedItem)e.item).itemPrefab, destination, Quaternion.identity);
             
-            player.GetComponent<Mover>().OnDestinationReached += (Vector3 destination) => {
-                var droppedItem = Instantiate(((ExpandedItem)e.item).itemPrefab,destination,Quaternion.identity);
-                droppedItem.GetComponent<ItemDropBehavior>().StartPickUpTimer = true;
-                droppedItem.GetComponent<SphereCollider>().enabled = false;
-            };
+            droppedItem.transform.position += new Vector3(0,droppedItem.GetComponent<ItemDropBehavior>().moveItemUp,0);
+
+            droppedItem.GetComponent<ItemDropBehavior>().StartPickUpTimer = true;
+            droppedItem.GetComponent<SphereCollider>().enabled = false;
         }
     }
 }

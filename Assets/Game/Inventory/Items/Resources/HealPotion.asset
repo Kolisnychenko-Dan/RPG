@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 893665d639b5ce847b1d13a27fe1a1cc, type: 3}
-  m_Name: HealPotion 1
+  m_Name: HealPotion
   m_EditorClassIdentifier: 
   itemName: HealPotion
   id: 1
   sprite: {fileID: 21300000, guid: 606f1a63e1aec7841a445b4bfc8b75d4, type: 3}
-  maxAmount: 0
+  maxAmount: 5
   destroyOnUse: 1
   useHowManyWhenUsed: 1
-  stackable: 0
+  stackable: 1
   durability: 0
   hasDurability: 0
-  showAmount: 0
+  showAmount: 1
   _durabilityImages: []
   onUseFunc: {fileID: 11500000, guid: 6f969f06d7f057d408ddc2cbd09c3fec, type: 3}
   optionalOnDropBehaviour: {fileID: 11500000, guid: f01073cc3f8a94142a660cf9c8fbc47e,

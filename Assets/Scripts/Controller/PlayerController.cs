@@ -24,7 +24,7 @@ namespace RPG.Controller
         {
             if(InteractWithUI()) return;
             if(InteractWithComponent()) return;
-            if(InteractWithMovement()) return;
+            if(InteractWithMovement(false)) return;
 
             SetCursor(CursorType.None);
         }
@@ -66,12 +66,12 @@ namespace RPG.Controller
             }
             return false;
         }
-        private bool InteractWithMovement()
+        public bool InteractWithMovement(bool ignoreClick)
         {
             Vector3 destination;
             if (RayCastNavMesh(out destination))
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0) || ignoreClick)
                 {
                     GetComponent<Mover>().StartMoveAction(destination);
                 }

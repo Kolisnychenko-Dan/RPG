@@ -8,7 +8,7 @@ namespace RPG.Inventory
     {
         public void OnUse(object sender, InventoryHandler.UseItemEventArgs e)
         {
-            GameObject unit = GameObject.Find("Player");
+            var unit = GameObject.Find("Player");
             string itemName = e.item.name;
             float heal = unit.GetComponent<ItemStats>().GetStat(Stat.HealthInstaHeal,itemName);
 

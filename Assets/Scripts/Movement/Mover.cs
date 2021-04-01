@@ -53,7 +53,7 @@ namespace RPG.Movement
 
         public bool DestinationReached()
         {
-            float distance = Vector3.Distance(transform.position, (Vector3)currentDestination); 
+            float distance = Vector3.Distance(transform.position, (Vector3)currentDestination);
             return distance < destinationPointTolerance;
         }
 
