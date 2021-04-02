@@ -41,7 +41,7 @@
 
             /*
             //Alternative way, moving each vertex manually (same result as the above)
-	        for (byte i = 0; i < data.vertices.Length; i++)
+	        for (byte i = 0; i < data.vertices.Length; ++i)
 	        {
 		        data.vertices[i] += dir;
 	        }
@@ -49,7 +49,7 @@
 
             /*
              // You can also Modify colors
-             for (byte i = 0; i < data.colors.Length; i++)
+             for (byte i = 0; i < data.colors.Length; ++i)
              {
                 data.colors[i] = //change colors
              }

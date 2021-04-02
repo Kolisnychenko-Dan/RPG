@@ -130,7 +130,7 @@ namespace Febucci.UI.Core
                     rotationQua,
                     Vector3.LerpUnclamped(Vector3.one, scale.EvaluateEffect(uniformEffectTime, charIndex), weight));
 
-                for (byte i = 0; i < data.vertices.Length; i++)
+                for (byte i = 0; i < data.vertices.Length; ++i)
                 {
                     data.vertices[i] -= offset;
                     data.vertices[i] = matrix.MultiplyPoint3x4(data.vertices[i]);

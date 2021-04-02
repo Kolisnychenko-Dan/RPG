@@ -28,7 +28,7 @@ namespace Febucci.UI.Core
 
         public override void ApplyEffect(ref CharacterData data, int charIndex)
         {
-            for (byte i = 0; i < data.colors.Length; i++)
+            for (byte i = 0; i < data.colors.Length; ++i)
             {
                 data.colors[i] = Color.HSVToRGB(Mathf.PingPong(time.timeSinceStart * hueShiftSpeed + charIndex * hueShiftWaveSize, 1), 1, 1);
             }

@@ -179,12 +179,12 @@ namespace Febucci.UI.Core.Editors
 
             string[] mergedArray = new string[newProperties.Length + baseProperties.Length];
 
-            for (int i = 0; i < baseProperties.Length; i++)
+            for (int i = 0; i < baseProperties.Length; ++i)
             {
                 mergedArray[i] = baseProperties[i];
             }
 
-            for (int i = 0; i < newProperties.Length; i++)
+            for (int i = 0; i < newProperties.Length; ++i)
             {
                 mergedArray[i + baseProperties.Length] = newProperties[i];
             }

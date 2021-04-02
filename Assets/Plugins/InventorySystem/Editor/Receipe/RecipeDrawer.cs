@@ -67,7 +67,7 @@ namespace UniversalInventorySystem.Editors
 
                         //(pattern.GetArrayElementAtIndex(i * gridSize.y + j).objectReferenceValue as Item).sprite.texture
                         GUIContent content = new GUIContent();
-                        for (int i = 0; i < pattern.arraySize; i++)
+                        for (int i = 0; i < pattern.arraySize; ++i)
                         {
                             //patternPos.x += 36;
                             var item = pattern.GetArrayElementAtIndex(i).objectReferenceValue as Item;

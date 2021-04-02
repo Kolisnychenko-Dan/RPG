@@ -63,7 +63,7 @@
 
         internal void EDITOR_ApplyModifiers()
         {
-            for (int i = 0; i < modifiers.Count; i++)
+            for (int i = 0; i < modifiers.Count; ++i)
             {
                 SetModifier(modifiers[i].name, modifiers[i].value);
             }

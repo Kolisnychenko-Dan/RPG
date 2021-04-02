@@ -20,7 +20,7 @@ namespace Febucci.UI.Core
 
         public void ResetVertices()
         {
-            for (byte i = 0; i < sources.vertices.Length; i++)
+            for (byte i = 0; i < sources.vertices.Length; ++i)
             {
                 data.vertices[i] = sources.vertices[i];
             }
@@ -28,7 +28,7 @@ namespace Febucci.UI.Core
 
         public void ResetColors()
         {
-            for (byte i = 0; i < sources.colors.Length; i++)
+            for (byte i = 0; i < sources.colors.Length; ++i)
             {
                 data.colors[i] = sources.colors[i];
             }

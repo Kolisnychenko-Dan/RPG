@@ -70,7 +70,7 @@ namespace UniversalInventorySystem.Editors
                         Rect patternPos = new Rect(position.x, position.y, position.width, position.height + 18);
                         GUIContent content = new GUIContent();
                         basey = position.y;
-                        for (int i = 0; i < gridSize.y; i++)
+                        for (int i = 0; i < gridSize.y; ++i)
                         {
                             for (int j = 0; j < gridSize.x; j++)
                             {
@@ -106,7 +106,7 @@ namespace UniversalInventorySystem.Editors
                         patternPos.x += (gridSize.x * 36) + 18;
                         EditorGUI.LabelField(patternPos, "=");
                         patternPos.x += 18;
-                        for (int i = 0; i < products.arraySize; i++)
+                        for (int i = 0; i < products.arraySize; ++i)
                         {
                             var productItem = products.GetArrayElementAtIndex(i).objectReferenceValue as Item;
                             var pAmount = productsAmount.GetArrayElementAtIndex(i).intValue;

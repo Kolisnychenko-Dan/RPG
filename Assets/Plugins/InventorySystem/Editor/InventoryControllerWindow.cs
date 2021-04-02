@@ -54,7 +54,7 @@ namespace UniversalInventorySystem.Editors
             if (selected == 0)
             {
                 EditorGUILayout.LabelField("Inventories");
-                for (int i = 0; i < InventoryController.inventories.Count; i++)
+                for (int i = 0; i < InventoryController.inventories.Count; ++i)
                 {
                     var a = InventoryController.inventories[i];
                     EditorGUILayout.BeginVertical();
@@ -147,7 +147,7 @@ namespace UniversalInventorySystem.Editors
                 EditorGUILayout.LabelField("InventoriesUI");
                 if(!Application.isPlaying)
                     EditorGUILayout.LabelField("This only works in play mode");
-                for (int i = 0; i < InventoryController.inventoriesUI.Count; i++)
+                for (int i = 0; i < InventoryController.inventoriesUI.Count; ++i)
                 {
                     InventoryUI ui = InventoryController.inventoriesUI[i];
                     var obj = new SerializedObject(ui);
@@ -404,7 +404,7 @@ namespace UniversalInventorySystem.Editors
             if (mi == null) return;
             EditorGUILayout.LabelField(mi.Name);
             ParameterInfo[] pis = mi.GetParameters();
-            for (int i = 0; i < pis.Length; i++)
+            for (int i = 0; i < pis.Length; ++i)
             {
                 if (param.Count <= i) param.Add(null);
                 HandleParam(pis[i], i);

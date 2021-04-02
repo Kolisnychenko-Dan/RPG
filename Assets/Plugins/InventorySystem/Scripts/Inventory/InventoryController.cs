@@ -121,7 +121,7 @@ namespace UniversalInventorySystem
 
             if (!item.stackable)
             {
-                for (int i = 0; i < inv.slots.Count; i++)
+                for (int i = 0; i < inv.slots.Count; ++i)
                 {
                     if (!AcceptsSlotProtection(inv.slots[i], MethodType.Add) && !overrideSlotProtection) continue;
                     if (!inv.slots[i].whitelist?.itemsList.Contains(item) ?? false) continue;
@@ -158,7 +158,7 @@ namespace UniversalInventorySystem
                 return 0;
             }
 
-            for (int i = 0; i < inv.slots.Count; i++)
+            for (int i = 0; i < inv.slots.Count; ++i)
             {
                 if (inv.slots[i].HasItem) continue;
                 if (!AcceptsSlotProtection(inv.slots[i], MethodType.Add) && !overrideSlotProtection) continue;
@@ -234,7 +234,7 @@ namespace UniversalInventorySystem
             //If the items is not marked as stackable it calls AddItemToNewSlot witch handles the rest
             if (!item.stackable) return AddItemToNewSlot(inv, item, amount, e: e, itemInstance: itemInstance);
 
-            for (int i = 0; i < inv.slots.Count; i++)
+            for (int i = 0; i < inv.slots.Count; ++i)
             {
                 if (inv.slots[i].item != item) continue;                                         // Must be same item
                 if (!inv.slots[i].ItemInstance.ValueEqual(itemInstance)) continue;               // Must be same item instance
@@ -427,7 +427,7 @@ namespace UniversalInventorySystem
             if (itemInstance == null) itemInstance = item;
 
             int total = 0;
-            for (int i = 0; i < inv.slots.Count; i++)
+            for (int i = 0; i < inv.slots.Count; ++i)
             {
                 if (inv.slots[i].item == item && (AcceptsSlotProtection(inv.slots[i], MethodType.Remove) || overrideSlotProtection) && (!ignoreInstance && inv.slots[i].ItemInstance.ValueEqual(itemInstance)))
                 {
@@ -438,7 +438,7 @@ namespace UniversalInventorySystem
             int index = 0;
             if (total >= amount)
             {
-                for (int i = 0; i < inv.slots.Count; i++)
+                for (int i = 0; i < inv.slots.Count; ++i)
                 {
                     if (inv.slots[i].item == item && (AcceptsSlotProtection(inv.slots[i], MethodType.Remove) || overrideSlotProtection))
                     {
@@ -680,7 +680,7 @@ namespace UniversalInventorySystem
 
             if (!AcceptsInventoryProtection(inv, MethodType.Use)) return;
 
-            for(int i = 0; i < inv.slots.Count; i++)
+            for(int i = 0; i < inv.slots.Count; ++i)
             {
                 if (!inv.slots[i].HasItem) continue;
                 if (inv.slots[i].item != item) continue;
@@ -1072,7 +1072,7 @@ namespace UniversalInventorySystem
             //Removing
             int removingTotal = 0;
             List<int> removeIndexes = new List<int>();
-            for(int i = 0; i < nativeInv.slots.Count; i++)
+            for(int i = 0; i < nativeInv.slots.Count; ++i)
             {
                 if (removingTotal >= amount) break;
                 if (!nativeInv.slots[i]) continue;
@@ -1088,7 +1088,7 @@ namespace UniversalInventorySystem
             //Adding
             int addingTotal = 0;
             List<int> addingIndexes = new List<int>();
-            for (int i = 0; i < targetInv.slots.Count; i++)
+            for (int i = 0; i < targetInv.slots.Count; ++i)
             {
                 if (addingTotal >= amount) break;
                 if (targetInv.slots[i]) continue;
@@ -1336,7 +1336,7 @@ namespace UniversalInventorySystem
                 int fit = (gridSize.y - pattern.gridSize.y + 1) * (gridSize.x - pattern.gridSize.x + 1);
 
                 List<int> indexes;
-                for (int i = 0; i < fit; i++)
+                for (int i = 0; i < fit; ++i)
                 {
                     var result = CraftItem(inv, GetSectionFromGrid(grid, gridSize, pattern.gridSize, i, out indexes), pattern.gridSize, false, pattern, productSlots);
                     if (result.items != null)
@@ -1436,13 +1436,13 @@ namespace UniversalInventorySystem
             List<int> tmpjumpIndexes = new List<int>();
             List<int> removeAmount = new List<int>();
             if (recipe.products.Length > productSlots) return CraftItemData.nullData;
-            for (int i = 0; i < grid.items.Length; i++)
+            for (int i = 0; i < grid.items.Length; ++i)
             {
                 for (int j = 0; j < recipe.numberOfFactors; j++)
                 {
                     if (grid.items[i] == recipe.factors[j] && !tmpjumpIndexes.Contains(j))
                     {
-                        //i++;
+                        //++i;
                         tmpjumpIndexes.Add(j);
                         jumpIndexes.Add(i);
                         removeAmount.Add(recipe.amountFactors[j]);
@@ -1460,7 +1460,7 @@ namespace UniversalInventorySystem
                 }
             }
 
-            for (int i = 0; i < jumpIndexes.Count; i++)
+            for (int i = 0; i < jumpIndexes.Count; ++i)
             {
                 if (grid.amounts[jumpIndexes[i]] < recipe.amountFactors[i])
                 {
@@ -1555,7 +1555,7 @@ namespace UniversalInventorySystem
             int fitx = originalGridSize.x - sectionSize.x + 1;
             int offsety = Mathf.FloorToInt(offsetIndex / fitx);
             int offsetx = offsetIndex - (offsety * fitx);
-            for (int i = 0; i < sectionSize.y; i++)
+            for (int i = 0; i < sectionSize.y; ++i)
             {
                 for (int j = 0; j < sectionSize.x; j++)
                 {
@@ -1570,7 +1570,7 @@ namespace UniversalInventorySystem
         private static bool SequenceEqualOrGreter(int[] firstInt, int[] greterInt)
         {
             bool isEqualOrGreter = true;
-            for (int i = 0; i < firstInt.Length; i++)
+            for (int i = 0; i < firstInt.Length; ++i)
             {
                 if (greterInt[i] >= firstInt[i]) continue;
                 isEqualOrGreter = false;
@@ -1607,7 +1607,7 @@ namespace UniversalInventorySystem
 
             List<int> slotsToCheck = new List<int>();
 
-            for (int i = 0; i < inv.slots.Count; i++)
+            for (int i = 0; i < inv.slots.Count; ++i)
             {
                 slotsToCheck.Add(i);
             }

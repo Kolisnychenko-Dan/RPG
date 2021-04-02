@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using RPG.Controller;
 using RPG.Movement;
+using RPG.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UniversalInventorySystem;
@@ -38,6 +39,8 @@ namespace RPG.Item
         public override void OnDropItem(object sender, InventoryHandler.DropItemEventArgs e)
         {
             if(EventSystem.current.IsPointerOverGameObject()) return;
+            // int v = CheckForSwap(e);
+            // if (v != -1) e.inv.SwapItemsInSlots(e.slot,v); 
 
             e.inv.RemoveItem(e.item,1);
 
@@ -54,6 +57,22 @@ namespace RPG.Item
 
             droppedItem.GetComponent<ItemDropBehavior>().StartPickUpTimer = true;
             droppedItem.GetComponent<SphereCollider>().enabled = false;
+        }
+
+        private int CheckForSwap(InventoryHandler.DropItemEventArgs e)
+        {
+            var raycaster = GameObject.FindObjectOfType<UIRaycaster>();
+            var results = raycaster.RaycastOnMousePosition();
+
+            foreach (var result in results)
+            {
+                for(int i = 0; i < e.inv.SlotAmount; ++i)
+                {
+                    if(result.gameObject.name == i.ToString()) return i;
+                }
+            }
+
+            return -1;
         }
     }
 }

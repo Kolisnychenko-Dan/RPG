@@ -187,7 +187,7 @@ namespace Febucci.UI.Core
                     rotationQua,
                     scale.EvaluateEffect(data.passedTime, charIndex));
 
-                for (byte i = 0; i < data.vertices.Length; i++)
+                for (byte i = 0; i < data.vertices.Length; ++i)
                 {
                     data.vertices[i] -= offset;
                     data.vertices[i] = matrix.MultiplyPoint3x4(data.vertices[i]);

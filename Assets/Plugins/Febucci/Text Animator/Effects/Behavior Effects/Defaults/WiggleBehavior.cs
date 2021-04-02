@@ -25,7 +25,7 @@ namespace Febucci.UI.Core
             directions = new Vector3[charactersCount];
 
             //Calculates a random direction for each character (which won't change)
-            for(int i = 0; i < charactersCount; i++)
+            for(int i = 0; i < charactersCount; ++i)
             {
                 directions[i] = TextUtilities.fakeRandoms[Random.Range(0, TextUtilities.fakeRandomsCount - 1)] * Mathf.Sign(Mathf.Sin(i));
             }

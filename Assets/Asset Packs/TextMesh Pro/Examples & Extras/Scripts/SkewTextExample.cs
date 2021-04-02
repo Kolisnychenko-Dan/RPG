@@ -87,7 +87,7 @@ namespace TMPro.Examples
 
 
 
-                for (int i = 0; i < characterCount; i++)
+                for (int i = 0; i < characterCount; ++i)
                 {
                     if (!textInfo.characterInfo[i].isVisible)
                         continue;

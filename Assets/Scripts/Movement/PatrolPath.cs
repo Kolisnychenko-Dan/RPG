@@ -9,7 +9,7 @@ namespace RPG.Movement
         const float waypointGizmoSize = 0.2f;
         private void OnDrawGizmos()
         {
-            for (int i = 0; i < transform.childCount; i++)
+            for (int i = 0; i < transform.childCount; ++i)
             {
                 Gizmos.color = Color.cyan;
                 Gizmos.DrawSphere(GetWaypoint(i), waypointGizmoSize);

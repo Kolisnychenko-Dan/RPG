@@ -101,7 +101,7 @@ namespace TMPro.Examples
         {
             int characterCount = m_TextInfo.characterCount;
 
-            for (int i = 0; i < characterCount; i++)
+            for (int i = 0; i < characterCount; ++i)
             {
                 // Draw visible as well as invisible characters
                 TMP_CharacterInfo characterInfo = m_TextInfo.characterInfo[i];
@@ -259,7 +259,7 @@ namespace TMPro.Examples
         /// <param name="text"></param>
         void DrawWordBounds()
         {
-            for (int i = 0; i < m_TextInfo.wordCount; i++)
+            for (int i = 0; i < m_TextInfo.wordCount; ++i)
             {
                 TMP_WordInfo wInfo = m_TextInfo.wordInfo[i];
 
@@ -365,7 +365,7 @@ namespace TMPro.Examples
         {
             TMP_TextInfo textInfo = m_TextComponent.textInfo;
 
-            for (int i = 0; i < textInfo.linkCount; i++)
+            for (int i = 0; i < textInfo.linkCount; ++i)
             {
                 TMP_LinkInfo linkInfo = textInfo.linkInfo[i];
 
@@ -469,7 +469,7 @@ namespace TMPro.Examples
         {
             int lineCount = m_TextInfo.lineCount;
 
-            for (int i = 0; i < lineCount; i++)
+            for (int i = 0; i < lineCount; ++i)
             {
                 TMP_LineInfo lineInfo = m_TextInfo.lineInfo[i];
                 TMP_CharacterInfo firstCharacterInfo = m_TextInfo.characterInfo[lineInfo.firstCharacterIndex];

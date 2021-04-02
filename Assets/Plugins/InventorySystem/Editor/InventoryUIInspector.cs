@@ -135,14 +135,14 @@ namespace UniversalInventorySystem.Editors
                     {
                         Transform[] go = Selection.transforms;
 
-                        for (int i = 0; i < go.Length; i++)
+                        for (int i = 0; i < go.Length; ++i)
                         {
                             if (slotsProp.GetArrayElementAtIndex(i).objectReferenceValue != null) continue;
                             slotsProp.GetArrayElementAtIndex(i).objectReferenceValue = go[i].gameObject;
                         }
                     }
 
-                    for (int i = 0; i < slotsProp.arraySize; i++)
+                    for (int i = 0; i < slotsProp.arraySize; ++i)
                     {
                         EditorGUILayout.ObjectField(slotsProp.GetArrayElementAtIndex(i), new GUIContent("Slot " + i.ToString()));
                     }

@@ -90,7 +90,7 @@ namespace UniversalInventorySystem.Editors
                     var tmp = EditorGUILayout.IntField("Size", runtimeSlotsProp.arraySize);
                     if (tmp >= 0) runtimeSlotsProp.arraySize = tmp;
 
-                    for (int i = 0; i < runtimeSlotsProp.arraySize; i++)
+                    for (int i = 0; i < runtimeSlotsProp.arraySize; ++i)
                     {
                         EditorGUILayout.PropertyField(runtimeSlotsProp.GetArrayElementAtIndex(i));
                         if (i > tmp - 1)
@@ -129,7 +129,7 @@ namespace UniversalInventorySystem.Editors
                 var tmpsize = EditorGUILayout.IntField("Size", slotsProp.arraySize);
                 if (tmpsize >= 0) slotsProp.arraySize = tmpsize;
 
-                for (int i = 0;i < slotsProp.arraySize; i++)
+                for (int i = 0;i < slotsProp.arraySize; ++i)
                 {
                     EditorGUILayout.PropertyField(slotsProp.GetArrayElementAtIndex(i));
                     if (i > tmpsize - 1)
@@ -152,7 +152,7 @@ namespace UniversalInventorySystem.Editors
                 var tmpseed = EditorGUILayout.IntField("Size", seedsProp.arraySize);
                 if (tmpseed >= 0) seedsProp.arraySize = tmpseed;
 
-                for (int i = 0; i < seedsProp.arraySize; i++)
+                for (int i = 0; i < seedsProp.arraySize; ++i)
                 {
                     EditorGUILayout.PropertyField(seedsProp.GetArrayElementAtIndex(i));
                 }

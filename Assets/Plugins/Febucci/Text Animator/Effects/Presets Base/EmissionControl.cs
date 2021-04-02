@@ -31,7 +31,7 @@ namespace Febucci.UI.Core
                 attackCurve.length + (continueForever ? 0 : decayCurve.length)
                 ];
 
-            for (int i = 0; i < attackCurve.length; i++)
+            for (int i = 0; i < attackCurve.length; ++i)
             {
                 totalKeys[i] = attackCurve[i];
             }
@@ -45,7 +45,7 @@ namespace Febucci.UI.Core
 
                 float attackDuration = attackCurve.CalculateCurveDuration();
 
-                for (int i = attackCurve.length; i < totalKeys.Length; i++)
+                for (int i = attackCurve.length; i < totalKeys.Length; ++i)
                 {
                     totalKeys[i] = decayCurve[i - attackCurve.length];
                     totalKeys[i].time += effectsMaxDuration + attackDuration;

@@ -38,14 +38,14 @@ namespace Febucci.UI.Examples
             string[] behaviors = TAnimBuilder.GetAllBehaviorsTags();
             string[] appearances = TAnimBuilder.GetAllApppearancesTags();
 
-            for (int i = 0; i < behaviors.Length; i++)
+            for (int i = 0; i < behaviors.Length; ++i)
             {
                 builtText += AddEffect(behaviors[i]);
             }
 
             builtText += "\n\nDetected Appearance effects:\n";
 
-            for (int i = 0; i < appearances.Length; i++)
+            for (int i = 0; i < appearances.Length; ++i)
             {
                 builtText += AddAppearanceEffect(appearances[i]);
             }

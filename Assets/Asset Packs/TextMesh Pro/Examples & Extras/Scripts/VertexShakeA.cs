@@ -72,7 +72,7 @@ namespace TMPro.Examples
                     if (copyOfVertices.Length < textInfo.meshInfo.Length)
                         copyOfVertices = new Vector3[textInfo.meshInfo.Length][];
 
-                    for (int i = 0; i < textInfo.meshInfo.Length; i++)
+                    for (int i = 0; i < textInfo.meshInfo.Length; ++i)
                     {
                         int length = textInfo.meshInfo[i].vertices.Length;
                         copyOfVertices[i] = new Vector3[length];
@@ -93,7 +93,7 @@ namespace TMPro.Examples
                 int lineCount = textInfo.lineCount;
 
                 // Iterate through each line of the text.
-                for (int i = 0; i < lineCount; i++)
+                for (int i = 0; i < lineCount; ++i)
                 {
 
                     int first = textInfo.lineInfo[i].firstCharacterIndex;
@@ -147,7 +147,7 @@ namespace TMPro.Examples
                 }
 
                 // Push changes into meshes
-                for (int i = 0; i < textInfo.meshInfo.Length; i++)
+                for (int i = 0; i < textInfo.meshInfo.Length; ++i)
                 {
                     textInfo.meshInfo[i].mesh.vertices = copyOfVertices[i];
                     m_TextComponent.UpdateGeometry(textInfo.meshInfo[i].mesh, i);

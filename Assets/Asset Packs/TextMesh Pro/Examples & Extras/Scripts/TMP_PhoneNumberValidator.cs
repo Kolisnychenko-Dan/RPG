@@ -22,7 +22,7 @@ namespace TMPro
             int length = text.Length;
 
             // Enforce Phone Number format for every character input.
-            for (int i = 0; i < length + 1; i++)
+            for (int i = 0; i < length + 1; ++i)
             {
                 switch (i)
                 {

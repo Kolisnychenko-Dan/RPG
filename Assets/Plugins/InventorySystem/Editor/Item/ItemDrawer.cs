@@ -197,7 +197,7 @@ namespace UniversalInventorySystem.Editors
                                     serializedObject.ApplyModifiedProperties();
                                     total += 2;
 
-                                    for (int i = 0; i < durabilityImagesProp.arraySize; i++)
+                                    for (int i = 0; i < durabilityImagesProp.arraySize; ++i)
                                     {
                                         var old = position.height;
                                         position.height = EditorGUI.GetPropertyHeight(durabilityImagesProp.GetArrayElementAtIndex(i));

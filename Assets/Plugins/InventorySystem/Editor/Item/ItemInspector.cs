@@ -137,7 +137,7 @@ namespace UniversalInventorySystem.Editors
                         EditorGUI.indentLevel++;
                         durabilityImagesProp.arraySize = EditorGUILayout.IntField("Size", durabilityImagesProp.arraySize);
                         serializedObject.ApplyModifiedProperties();
-                        for (int i = 0; i < durabilityImagesProp.arraySize; i++)
+                        for (int i = 0; i < durabilityImagesProp.arraySize; ++i)
                         {
                             EditorGUILayout.PropertyField(durabilityImagesProp.GetArrayElementAtIndex(i));
                             DurabilityImage dur = (target as Item).durabilityImages[i];

@@ -371,7 +371,7 @@ namespace Febucci.UI
 
             latestCharacterShown = textInfo.characterInfo[visibleCharacters];
 
-            for (int i = 0; i < textInfo.characterCount; i++)
+            for (int i = 0; i < textInfo.characterCount; ++i)
             {
                 if (i >= visibleCharacters || !textInfo.characterInfo[i].isVisible)
                 {
@@ -410,7 +410,7 @@ namespace Febucci.UI
             if (eventMarkers.Count <= 0)
                 return;
 
-            for (int i = latestTriggeredEvent; i < eventMarkers.Count; i++)
+            for (int i = latestTriggeredEvent; i < eventMarkers.Count; ++i)
             {
                 if (!eventMarkers[i].triggered)
                 {
@@ -555,13 +555,13 @@ namespace Febucci.UI
             #endregion
 
             //adds local behavior presets
-            for (int i = 0; i < behaviorValues.presets.Length; i++)
+            for (int i = 0; i < behaviorValues.presets.Length; ++i)
             {
                 TAnimBuilder.TryAddingPresetToDictionary(ref localBehaviors, behaviorValues.presets[i].effectTag, typeof(PresetBehavior));
             }
 
             //Adds local appearance presets
-            for (int i = 0; i < appearancesContainer.values.presets.Length; i++)
+            for (int i = 0; i < appearancesContainer.values.presets.Length; ++i)
             {
                 TAnimBuilder.TryAddingPresetToDictionary(ref localAppearances, appearancesContainer.values.presets[i].effectTag, typeof(PresetAppearance));
             }
@@ -573,7 +573,7 @@ namespace Febucci.UI
 
             var temp_fallbackAppearanceEffects = new List<AppearanceBase>();
             //Default appearance effects
-            for (int i = 0; i < appearancesContainer.tags.Length; i++)
+            for (int i = 0; i < appearancesContainer.tags.Length; ++i)
             {
                 if (appearancesContainer.tags[i].Length <= 0)
                 {
@@ -602,7 +602,7 @@ namespace Febucci.UI
 
             var temp_fallbackBehaviorEffects = new List<BehaviorBase>();
             //Default behavior effects
-            for (int i = 0; i < tags_fallbackBehaviors.Length; i++)
+            for (int i = 0; i < tags_fallbackBehaviors.Length; ++i)
             {
                 if (tags_fallbackBehaviors[i].Length <= 0)
                 {
@@ -699,7 +699,7 @@ namespace Febucci.UI
             else
             {
                 //Avoids creating a new class if the same effect has already been instanced
-                for (int i = 0; i < appearanceEffects.Count; i++)
+                for (int i = 0; i < appearanceEffects.Count; ++i)
                 {
                     if (appearanceEffects[i].regionManager.TryReutilizingWithTag(richTextTag, realTextIndex))
                         return true;
@@ -778,7 +778,7 @@ namespace Febucci.UI
                 string firstTag = tags[0];
 
                 //Avoids creating a new effect if the same one has already been instanced
-                for (int i = 0; i < behaviorEffects.Count; i++)
+                for (int i = 0; i < behaviorEffects.Count; ++i)
                 {
                     if (behaviorEffects[i].regionManager.TryReutilizingWithTag(richTextTag, realTextIndex))
                         return true;
@@ -928,7 +928,7 @@ namespace Febucci.UI
             int indexOfNextOpening;
             bool noparseEnabled = false;
 
-            for (int i = 0, realTextIndex = 0; i < text.Length; i++)
+            for (int i = 0, realTextIndex = 0; i < text.Length; ++i)
             {
                 #region Local Methods
                 void AppendCurrentCharacterToText()
@@ -1046,13 +1046,13 @@ namespace Febucci.UI
             #region Adds Fallback Effects
 
             //fallback effects are added at the end of the list
-            for (int i = 0; i < fallbackAppearanceEffects.Length; i++)
+            for (int i = 0; i < fallbackAppearanceEffects.Length; ++i)
             {
                 appearanceEffects.Add(fallbackAppearanceEffects[i]);
             }
 
             //fallback effects are added at the end of the list
-            for (int i = 0; i < fallbackBehaviorEffects.Length; i++)
+            for (int i = 0; i < fallbackBehaviorEffects.Length; ++i)
             {
                 behaviorEffects.Add(fallbackBehaviorEffects[i]);
             }
@@ -1081,7 +1081,7 @@ namespace Febucci.UI
 
                 temp_effectsToApply.Clear();
 
-                for (int i = 0; i < textInfo.characterCount; i++)
+                for (int i = 0; i < textInfo.characterCount; ++i)
                 {
                     characters[i].data.tmp_CharInfo = textInfo.characterInfo[i];
 
@@ -1182,17 +1182,17 @@ namespace Febucci.UI
 
             SetupEffectsIntensity();
 
-            for (int i = 0; i < this.appearanceEffects.Count; i++)
+            for (int i = 0; i < this.appearanceEffects.Count; ++i)
             {
                 this.appearanceEffects[i].SetDefaultValues(appearancesContainer.values);
             }
 
-            for (int i = 0; i < behaviorEffects.Count; i++)
+            for (int i = 0; i < behaviorEffects.Count; ++i)
             {
                 behaviorEffects[i].Initialize(characters.Length);
             }
 
-            for (int i = 0; i < appearanceEffects.Count; i++)
+            for (int i = 0; i < appearanceEffects.Count; ++i)
             {
                 appearanceEffects[i].Initialize(characters.Length);
             }
@@ -1207,7 +1207,7 @@ namespace Febucci.UI
             {
                 visibleCharacters = 0;
 
-                for (int i = 0; i < textInfo.characterCount; i++)
+                for (int i = 0; i < textInfo.characterCount; ++i)
                 {
                     if (i >= visibleCharacters)
                     {
@@ -1227,7 +1227,7 @@ namespace Febucci.UI
                 visibleCharacters = textInfo.characterCount;
 
                 //resets letters time
-                for (int i = 0; i < textInfo.characterCount; i++)
+                for (int i = 0; i < textInfo.characterCount; ++i)
                 {
                     characters[i].data.passedTime = 0;
                 }
@@ -1246,7 +1246,7 @@ namespace Febucci.UI
 
 #if INTEGRATE_NANINOVEL
                     //Hides characters based on naninovel's progress 
-                    for (int i = 0; i < characters.Length; i++)
+                    for (int i = 0; i < characters.Length; ++i)
                     {
                         if (i >= Mathf.CeilToInt(Mathf.Clamp01(reveablelText.RevealProgress) * textInfo.characterCount))
                         {
@@ -1273,7 +1273,7 @@ namespace Febucci.UI
         void TryTriggeringEvent(int maxInternalOrder)
         {
             //Calls all events markers until the current shown visible character
-            for (int i = latestTriggeredEvent; i < eventMarkers.Count; i++)
+            for (int i = latestTriggeredEvent; i < eventMarkers.Count; ++i)
             {
                 if (!eventMarkers[i].triggered && //current event must not be triggered already
                     eventMarkers[i].charIndex <= textInfo.characterInfo[visibleCharacters].index && //triggers any event until the current character
@@ -1303,7 +1303,7 @@ namespace Febucci.UI
                 return false;
             }
 
-            for (int i = latestTriggeredAction; i < typewriterActions.Count; i++)
+            for (int i = latestTriggeredAction; i < typewriterActions.Count; ++i)
             {
                 if (typewriterActions[i].charIndex == textInfo.characterInfo[visibleCharacters].index &&
                     !typewriterActions[i].triggered)
@@ -1339,12 +1339,12 @@ namespace Febucci.UI
                 intensity *= tmproText.fontSize / referenceFontSize;
             }
 
-            for (int i = 0; i < behaviorEffects.Count; i++)
+            for (int i = 0; i < behaviorEffects.Count; ++i)
             {
                 behaviorEffects[i].uniformIntensity = intensity;
             }
 
-            for (int i = 0; i < appearanceEffects.Count; i++)
+            for (int i = 0; i < appearanceEffects.Count; ++i)
             {
                 appearanceEffects[i].uniformIntensity = intensity;
             }
@@ -1364,7 +1364,7 @@ namespace Febucci.UI
             SetupEffectsIntensity();
 
             //Updates the characters sources
-            for (int i = 0; i < textInfo.characterCount; i++)
+            for (int i = 0; i < textInfo.characterCount; ++i)
             {
                 if (!textInfo.characterInfo[i].isVisible)
                     continue;
@@ -1389,7 +1389,7 @@ namespace Febucci.UI
         void UpdateMesh()
         {
             //Updates the mesh
-            for (int i = 0; i < textInfo.characterCount; i++)
+            for (int i = 0; i < textInfo.characterCount; ++i)
             {
                 //Avoids updating if we're on an invisible character, like a spacebar
                 //Do not switch this with "i<visibleCharacters", since the plugin has to update not yet visible characters
@@ -1462,19 +1462,19 @@ namespace Febucci.UI
 
             #region Effects Calculation
 
-            for (int i = 0; i < behaviorEffects.Count; i++)
+            for (int i = 0; i < behaviorEffects.Count; ++i)
             {
                 behaviorEffects[i].SetAnimatorData(m_time);
                 behaviorEffects[i].Calculate();
             }
 
-            for (int i = 0; i < appearanceEffects.Count; i++)
+            for (int i = 0; i < appearanceEffects.Count; ++i)
             {
                 appearanceEffects[i].Calculate();
             }
             #endregion
 
-            for (int i = 0; i < textInfo.characterCount; i++)
+            for (int i = 0; i < textInfo.characterCount; ++i)
             {
 
 #if INTEGRATE_NANINOVEL
@@ -1600,19 +1600,19 @@ namespace Febucci.UI
 
             if (behaviorEffects != null && appearanceEffects != null)
             {
-                for (int i = 0; i < behaviorEffects.Count; i++)
+                for (int i = 0; i < behaviorEffects.Count; ++i)
                 {
                     behaviorEffects[i].SetDefaultValues(behaviorValues);
                 }
 
-                for (int i = 0; i < appearanceEffects.Count; i++)
+                for (int i = 0; i < appearanceEffects.Count; ++i)
                 {
                     appearanceEffects[i].SetDefaultValues(appearancesContainer.values);
                 }
 
                 SetupEffectsIntensity();
 
-                for (int i = 0; i < behaviorEffects.Count; i++)
+                for (int i = 0; i < behaviorEffects.Count; ++i)
                 {
                     behaviorEffects[i].EDITOR_ApplyModifiers();
                 }

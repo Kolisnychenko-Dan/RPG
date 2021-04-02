@@ -45,7 +45,7 @@ namespace TMPro.Examples
                     break;
             }
 
-            for (int i = 0; i < NumberOfSamples; i++)
+            for (int i = 0; i < NumberOfSamples; ++i)
             {
                 switch (Benchmark)
                 {

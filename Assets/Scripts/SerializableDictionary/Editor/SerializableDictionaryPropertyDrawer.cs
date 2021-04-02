@@ -431,7 +431,7 @@ public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 	static object GetPropertyValueArray(SerializedProperty property)
 	{
 		object[] array = new object[property.arraySize];
-		for(int i = 0; i < property.arraySize; i++)
+		for(int i = 0; i < property.arraySize; ++i)
 		{
 			SerializedProperty item = property.GetArrayElementAtIndex(i);
 			array[i] = GetPropertyValue(item);
@@ -460,7 +460,7 @@ public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 	{
 		object[] array = (object[]) v;
 		property.arraySize = array.Length;
-		for(int i = 0; i < property.arraySize; i++)
+		for(int i = 0; i < property.arraySize; ++i)
 		{
 			SerializedProperty item = property.GetArrayElementAtIndex(i);
 			SetPropertyValue(item, array[i]);

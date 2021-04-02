@@ -66,7 +66,7 @@ namespace UniversalInventorySystem.Editors
                 {
                     if (GUILayout.Button("Confirm", GUILayout.Width(150), GUILayout.Height(20)))
                     {
-                        for(int i = 0;i < currentProperty.arraySize;i++)
+                        for(int i = 0;i < currentProperty.arraySize;++i)
                         {
                             if(currentProperty.GetArrayElementAtIndex(i) == selectedProperty)
                             {

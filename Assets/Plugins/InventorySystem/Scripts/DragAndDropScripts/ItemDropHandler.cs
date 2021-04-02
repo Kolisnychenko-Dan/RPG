@@ -25,10 +25,17 @@ namespace UniversalInventorySystem
 {
     public class ItemDropHandler : MonoBehaviour, IDropHandler
     {
+        private UIRaycaster raycaster;
+
+        private void Start()
+        {
+            raycaster = GetComponent<UIRaycaster>();
+        }
         public void OnDrop(PointerEventData eventData)
         {
             List<InventoryUI> invsUI = InventoryController.inventoriesUI;
-            RectTransform invPanel = this.GetComponent<RectTransform>();
+            // Was GetComponent<>
+            RectTransform invPanel = this.GetComponentInChildren<RectTransform>();
             InventoryUI nativeInvUI = null;
             foreach (InventoryUI UI in invsUI)
             {
@@ -41,7 +48,8 @@ namespace UniversalInventorySystem
 
             if (nativeInvUI != null)
             {
-                if (!RectTransformUtility.RectangleContainsScreenPoint(invPanel, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+                //For whatever reason his check always return false
+                if (!ContainsRect(invPanel)/*!RectTransformUtility.RectangleContainsScreenPoint(invPanel, Camera.main.ScreenToWorldPoint(Input.mousePosition))*/)
                 {
                     nativeInvUI.shouldSwap = false;
 
@@ -52,7 +60,7 @@ namespace UniversalInventorySystem
                         {
                             var min = float.MaxValue;
                             int index = 0;
-                            for (int i = 0; i < invUI.slots.Count; i++)
+                            for (int i = 0; i < invUI.slots.Count; ++i)
                             {
                                 var tmp = Vector3.Distance(Camera.main.ScreenToWorldPoint(Input.mousePosition), invUI.slots[i].GetComponent<RectTransform>().position);
                                 if (tmp <= min)
@@ -72,6 +80,17 @@ namespace UniversalInventorySystem
                 }
                 else nativeInvUI.shouldSwap = true;
             }
+        }
+
+        private bool ContainsRect(RectTransform rt)
+        {
+            var results = raycaster.RaycastOnMousePosition();
+
+            foreach (var result in results)
+            {
+                if(result.gameObject.GetComponent<RectTransform>() == rt) return true;
+            }
+            return false;
         }
     }
 }

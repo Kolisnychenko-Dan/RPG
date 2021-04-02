@@ -74,7 +74,7 @@ namespace TMPro.Examples
 
             // Create an Array which contains pre-computed Angle Ranges and Speeds for a bunch of characters.
             VertexAnim[] vertexAnim = new VertexAnim[1024];
-            for (int i = 0; i < 1024; i++)
+            for (int i = 0; i < 1024; ++i)
             {
                 vertexAnim[i].angleRange = Random.Range(10f, 25f);
                 vertexAnim[i].speed = Random.Range(1f, 3f);
@@ -104,7 +104,7 @@ namespace TMPro.Examples
                 }
 
 
-                for (int i = 0; i < characterCount; i++)
+                for (int i = 0; i < characterCount; ++i)
                 {
                     TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
 
@@ -159,7 +159,7 @@ namespace TMPro.Examples
                 }
 
                 // Push changes into meshes
-                for (int i = 0; i < textInfo.meshInfo.Length; i++)
+                for (int i = 0; i < textInfo.meshInfo.Length; ++i)
                 {
                     textInfo.meshInfo[i].mesh.vertices = textInfo.meshInfo[i].vertices;
                     m_TextComponent.UpdateGeometry(textInfo.meshInfo[i].mesh, i);

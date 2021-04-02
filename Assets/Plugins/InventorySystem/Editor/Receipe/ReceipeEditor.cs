@@ -56,7 +56,7 @@ namespace UniversalInventorySystem.Editors
             {
                 EditorGUI.indentLevel++;
 
-                for (int i = 0; i < factorsProp.arraySize; i++)
+                for (int i = 0; i < factorsProp.arraySize; ++i)
                 {
 
                     EditorGUILayout.ObjectField(factorsProp.GetArrayElementAtIndex(i), new GUIContent($"Input Item {i}"));
@@ -83,7 +83,7 @@ namespace UniversalInventorySystem.Editors
             {
                 EditorGUI.indentLevel++;
 
-                for (int i = 0; i < productsProp.arraySize; i++)
+                for (int i = 0; i < productsProp.arraySize; ++i)
                 {
 
                     EditorGUILayout.ObjectField(productsProp.GetArrayElementAtIndex(i), new GUIContent($"Output Item {i}"));
@@ -111,7 +111,7 @@ namespace UniversalInventorySystem.Editors
 
             EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
 
-            for (int i = 0; i < pattern.arraySize; i++)
+            for (int i = 0; i < pattern.arraySize; ++i)
             {
                 //patternPos.x += 36;
                 var item = pattern.GetArrayElementAtIndex(i).objectReferenceValue as Item;

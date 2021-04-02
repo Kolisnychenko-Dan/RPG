@@ -17,7 +17,7 @@ namespace TMPro.Examples
         void Start()
         {
 
-            for (int i = 0; i < NumberOfNPC; i++)
+            for (int i = 0; i < NumberOfNPC; ++i)
             {
 
 

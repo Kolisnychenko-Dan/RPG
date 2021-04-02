@@ -93,7 +93,7 @@ namespace TMPro.Examples
                 modifiedCharScale.Clear();
                 scaleSortingOrder.Clear();
 
-                for (int i = 0; i < characterCount; i++)
+                for (int i = 0; i < characterCount; ++i)
                 {
                     TMP_CharacterInfo charInfo = textInfo.characterInfo[i];
 
@@ -169,7 +169,7 @@ namespace TMPro.Examples
                 }
 
                 // Push changes into meshes
-                for (int i = 0; i < textInfo.meshInfo.Length; i++)
+                for (int i = 0; i < textInfo.meshInfo.Length; ++i)
                 {
                     //// Sort Quads based modified scale
                     scaleSortingOrder.Sort((a, b) => modifiedCharScale[a].CompareTo(modifiedCharScale[b]));

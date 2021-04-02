@@ -63,7 +63,7 @@ namespace UniversalInventorySystem.Editors
             {
                 EditorGUI.indentLevel++;
                 itemsListProp.arraySize = EditorGUILayout.IntField(new GUIContent("Size"), itemsListProp.arraySize);
-                for (int i = 0; i < itemsListProp.arraySize; i++)
+                for (int i = 0; i < itemsListProp.arraySize; ++i)
                 {
                     EditorGUILayout.ObjectField(itemsListProp.GetArrayElementAtIndex(i), new GUIContent($"Item {i}"));
                 }

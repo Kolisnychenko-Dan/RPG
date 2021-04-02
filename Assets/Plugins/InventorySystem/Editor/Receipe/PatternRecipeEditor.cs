@@ -39,7 +39,7 @@ namespace UniversalInventorySystem.Editors
 
             EditorGUILayout.BeginVertical("box");
 
-            for (int i = 0; i < gridSize.y; i++)
+            for (int i = 0; i < gridSize.y; ++i)
             {
                 EditorGUILayout.BeginHorizontal();
                 for (int j = 0; j < gridSize.x; j++)
@@ -70,7 +70,7 @@ namespace UniversalInventorySystem.Editors
             EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField("=", GUILayout.Width(10), GUILayout.Height(36));
 
-            for (int i = 0; i < products.arraySize; i++)
+            for (int i = 0; i < products.arraySize; ++i)
             {
                 var productItem = products.GetArrayElementAtIndex(i).objectReferenceValue as Item;
                 if (productItem == null)

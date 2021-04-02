@@ -45,7 +45,7 @@ namespace Febucci.UI.Core
 
             fakeRandoms = new Vector3[fakeRandomsCount];
             int randomIndex;
-            for (int i = 0; i < fakeRandoms.Length; i++)
+            for (int i = 0; i < fakeRandoms.Length; ++i)
             {
                 randomIndex = Random.Range(0, randomDirections.Count);
                 fakeRandoms[i] = randomDirections[randomIndex];

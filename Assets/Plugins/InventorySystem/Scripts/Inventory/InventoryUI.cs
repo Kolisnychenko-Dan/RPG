@@ -103,7 +103,7 @@ namespace UniversalInventorySystem
             InventoryController.inventoriesUI.Add(this);
             if (!generateUIFromSlotPrefab)
             {
-                for (int i = 0; i < slots.Count; i++)
+                for (int i = 0; i < slots.Count; ++i)
                 {
                     slots[i].name = i.ToString();
                     for (int j = 0; j < slots[i].transform.childCount; j++)
@@ -146,13 +146,13 @@ namespace UniversalInventorySystem
          
             if (isCraftInventory)
             {
-                for (int i = 0; i < gridSize.x * gridSize.y; i++)
+                for (int i = 0; i < gridSize.x * gridSize.y; ++i)
                 {
                     pattern.Add(null);
                     amount.Add(0);
                 }
 
-                for (int i = 0; i < productSlotsIndex.Length; i++)
+                for (int i = 0; i < productSlotsIndex.Length; ++i)
                 { 
                     inv.slots[productSlotsIndex[i]] = Slot.SetSlotProperties(inv[i], true, SlotProtection.Remove | SlotProtection.Swap, null);
                 }
@@ -163,7 +163,7 @@ namespace UniversalInventorySystem
         List<GameObject> GenerateUI(int slotAmount)
         {
             List<GameObject> gb = new List<GameObject>();
-            for (int i = 0; i < slotAmount; i++)
+            for (int i = 0; i < slotAmount; ++i)
             {
                 var g = Instantiate(slotPrefab, Vector3.zero, Quaternion.identity);
                 g.transform.SetParent(generatedUIParent.transform);
@@ -236,7 +236,7 @@ namespace UniversalInventorySystem
                 {
                     if (isCraftInventory && dropOnCloseCrafting)
                     {
-                        for (int i = 0; i < inv.slots.Count; i++)
+                        for (int i = 0; i < inv.slots.Count; ++i)
                         {
                             var item = inv.slots[i];
                             Vector3 finalDropPos = dropPos;
@@ -251,7 +251,7 @@ namespace UniversalInventorySystem
             }
 
             //Iterating slots go
-            for (int i = 0; i < inv.slots.Count; i++)
+            for (int i = 0; i < inv.slots.Count; ++i)
             {
                 // Create pattern grid
                 if (isCraftInventory && i < pattern.Count)
@@ -368,7 +368,7 @@ namespace UniversalInventorySystem
                     }
                     else
                     {
-                        for(int i = 0; i < productSlotsIndex.Length - products.items.Length + 1; i++)
+                        for(int i = 0; i < productSlotsIndex.Length - products.items.Length + 1; ++i)
                         {
                             productsItem = new List<Item>();
                             for (int k = 0; k < products.items.Length; k++)
@@ -390,7 +390,7 @@ namespace UniversalInventorySystem
                 }
 
                 int productIndex = 0;
-                for (int i = 0; i < productSlotsIndex.Length; i++)
+                for (int i = 0; i < productSlotsIndex.Length; ++i)
                 {
                     // If there is a item in the product slot it renders it and go to the next one
                     if (inv.slots[productSlotsIndex[i]].HasItem)

@@ -80,7 +80,7 @@ namespace UniversalInventorySystem
 
         static List<ItemGroup> InsertionSort(List<ItemGroup> inputArray)
         {
-            for (int i = 0; i < inputArray.Count - 1; i++)
+            for (int i = 0; i < inputArray.Count - 1; ++i)
             {
                 for (int j = i + 1; j > 0; j--)
                 {
@@ -145,7 +145,7 @@ namespace UniversalInventorySystem
 
         static List<RecipeGroup> InsertionSort(List<RecipeGroup> inputArray)
         {
-            for (int i = 0; i < inputArray.Count - 1; i++)
+            for (int i = 0; i < inputArray.Count - 1; ++i)
             {
                 for (int j = i + 1; j > 0; j--)
                 {

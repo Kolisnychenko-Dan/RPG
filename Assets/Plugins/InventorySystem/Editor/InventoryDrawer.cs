@@ -92,7 +92,7 @@ namespace UniversalInventorySystem.Editors
                             if (slots.arraySize > 0)
                             {
                                 float childHeight = 0;
-                                for (int i = 0; i < slots.arraySize; i++)
+                                for (int i = 0; i < slots.arraySize; ++i)
                                 {
                                     childHeight += EditorGUI.GetPropertyHeight(slots.GetArrayElementAtIndex(i)) / 18;
                                     EditorGUI.PropertyField(position, slots.GetArrayElementAtIndex(i));
@@ -113,7 +113,7 @@ namespace UniversalInventorySystem.Editors
                         {
                             if (slots.arraySize > 0)
                             {
-                                for (int i = tmp - 1; i < slots.arraySize; i++)
+                                for (int i = tmp - 1; i < slots.arraySize; ++i)
                                 {
                                     if (i > tmp - 1)
                                     {

@@ -10,21 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 893665d639b5ce847b1d13a27fe1a1cc, type: 3}
-  m_Name: Cuirass
+  m_Name: HealPotion
   m_EditorClassIdentifier: 
-  itemName: 
-  id: 0
-  sprite: {fileID: 0}
-  maxAmount: 0
-  destroyOnUse: 0
-  useHowManyWhenUsed: 0
-  stackable: 0
+  itemName: HealPotion
+  id: 1
+  sprite: {fileID: 21300000, guid: 606f1a63e1aec7841a445b4bfc8b75d4, type: 3}
+  maxAmount: 5
+  destroyOnUse: 1
+  useHowManyWhenUsed: 1
+  stackable: 1
   durability: 0
   hasDurability: 0
-  showAmount: 0
+  showAmount: 1
   _durabilityImages: []
-  onUseFunc: {fileID: 0}
-  optionalOnDropBehaviour: {fileID: 0}
+  onUseFunc: {fileID: 11500000, guid: 6f969f06d7f057d408ddc2cbd09c3fec, type: 3}
+  optionalOnDropBehaviour: {fileID: 11500000, guid: f01073cc3f8a94142a660cf9c8fbc47e,
+    type: 3}
   tooltip:
     useTooltip: 0
     usePrefab: 0
@@ -46,4 +47,5 @@ MonoBehaviour:
     margin: {x: 0, y: 0}
     maxWidth: 0
     texts: []
-  itemPrefab: {fileID: 0}
+  itemPrefab: {fileID: 2399395126675829814, guid: 06614c4d7d0cc5f4da42c693d872416a,
+    type: 3}

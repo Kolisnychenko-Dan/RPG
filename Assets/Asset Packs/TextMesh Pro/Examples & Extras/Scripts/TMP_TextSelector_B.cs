@@ -174,7 +174,7 @@ namespace TMPro.Examples
                     TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[m_selectedWord];
 
                     // Iterate through each of the characters of the word.
-                    for (int i = 0; i < wInfo.characterCount; i++)
+                    for (int i = 0; i < wInfo.characterCount; ++i)
                     {
                         int characterIndex = wInfo.firstCharacterIndex + i;
 
@@ -210,7 +210,7 @@ namespace TMPro.Examples
                     TMP_WordInfo wInfo = m_TextMeshPro.textInfo.wordInfo[wordIndex];
 
                     // Iterate through each of the characters of the word.
-                    for (int i = 0; i < wInfo.characterCount; i++)
+                    for (int i = 0; i < wInfo.characterCount; ++i)
                     {
                         int characterIndex = wInfo.firstCharacterIndex + i;
 
@@ -347,7 +347,7 @@ namespace TMPro.Examples
                 UIVertex[] uiVertices = m_TextMeshPro.textInfo.meshInfo.uiVertices;
 
                 // Iterate through each of the characters of the word.
-                for (int i = 0; i < wInfo.characterCount; i++)
+                for (int i = 0; i < wInfo.characterCount; ++i)
                 {
                     int vertexIndex = m_TextMeshPro.textInfo.characterInfo[wInfo.firstCharacterIndex + i].vertexIndex;
 
@@ -375,7 +375,7 @@ namespace TMPro.Examples
                 UIVertex[] uiVertices = m_TextMeshPro.textInfo.meshInfo.uiVertices;
 
                 // Iterate through each of the characters of the word.
-                for (int i = 0; i < wInfo.characterCount; i++)
+                for (int i = 0; i < wInfo.characterCount; ++i)
                 {
                     int vertexIndex = m_TextMeshPro.textInfo.characterInfo[wInfo.firstCharacterIndex + i].vertexIndex;
 
@@ -425,7 +425,7 @@ namespace TMPro.Examples
                 UIVertex[] uiVertices = m_TextMeshPro.textInfo.meshInfo.uiVertices;
 
                 Color32 c = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
-                for (int i = 0; i < linkInfo.characterCount; i++)
+                for (int i = 0; i < linkInfo.characterCount; ++i)
                 {
                     TMP_CharacterInfo cInfo = m_TextMeshPro.textInfo.characterInfo[linkInfo.firstCharacterIndex + i];
 

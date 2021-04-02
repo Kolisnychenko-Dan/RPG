@@ -105,7 +105,7 @@ namespace UniversalInventorySystem
                 if (slots == null) slots = new List<Slot>();
                 if (slots.Count != SlotAmount)
                 {
-                    for (int i = 0; i < SlotAmount; i++)
+                    for (int i = 0; i < SlotAmount; ++i)
                     {
                         if (i < slots.Count) continue;
                         else

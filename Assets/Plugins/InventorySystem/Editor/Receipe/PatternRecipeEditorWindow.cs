@@ -98,7 +98,7 @@ namespace UniversalInventorySystem.Editors
                 if (serializedObject.FindProperty("factors").isExpanded)
                 {
                     EditorGUI.indentLevel++;
-                    for (int i = 0; i < serializedObject.FindProperty("factors").arraySize; i++)
+                    for (int i = 0; i < serializedObject.FindProperty("factors").arraySize; ++i)
                     {
                         var item = serializedObject.FindProperty("factors").GetArrayElementAtIndex(i).objectReferenceValue as Item;
                         GUIContent content = new GUIContent();
@@ -125,7 +125,7 @@ namespace UniversalInventorySystem.Editors
                 if (serializedObject.FindProperty("products").isExpanded)
                 {
                     EditorGUI.indentLevel++;
-                    for (int i = 0; i < serializedObject.FindProperty("products").arraySize; i++)
+                    for (int i = 0; i < serializedObject.FindProperty("products").arraySize; ++i)
                     {
                         var item = serializedObject.FindProperty("products").GetArrayElementAtIndex(i).objectReferenceValue as Item;
                         GUIContent content = new GUIContent();
@@ -156,7 +156,7 @@ namespace UniversalInventorySystem.Editors
                 slectablesItem = EditorGUILayout.BeginScrollView(slectablesItem);
 
                 List<Item> items = new List<Item>();
-                for (int i = 0; i < serializedObject.FindProperty("factors").arraySize; i++)
+                for (int i = 0; i < serializedObject.FindProperty("factors").arraySize; ++i)
                 {
                     items.Add(serializedObject.FindProperty("factors").GetArrayElementAtIndex(i).objectReferenceValue as Item);
                 }
@@ -218,7 +218,7 @@ namespace UniversalInventorySystem.Editors
 
                 var gridRect = EditorGUILayout.BeginVertical(GUILayout.ExpandHeight(true));
 
-                for (int i = 0; i < gridSize.y; i++)
+                for (int i = 0; i < gridSize.y; ++i)
                 {
                     EditorGUILayout.BeginHorizontal();
                     for (int j = 0; j < gridSize.x; j++)

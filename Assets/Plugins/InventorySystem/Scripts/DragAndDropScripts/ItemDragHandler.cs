@@ -64,7 +64,7 @@ namespace UniversalInventorySystem
             {
                 var min = float.MaxValue;
                 int index = 0;
-                for (int i = 0; i < invUI.slots.Count; i++)
+                for (int i = 0; i < invUI.slots.Count; ++i)
                 {
                     var tmp = Vector3.Distance(invUI.dragObj.transform.position, invUI.slots[i].GetComponent<RectTransform>().position);
                     if (tmp <= min)
@@ -83,7 +83,7 @@ namespace UniversalInventorySystem
         {
             var min = float.MaxValue;
             index = 0;
-            for (int i = 0; i < invUI.slots.Count; i++)
+            for (int i = 0; i < invUI.slots.Count; ++i)
             {
                 var tmp = Vector3.Distance(rectTransform.position, invUI.slots[i].GetComponent<RectTransform>().position);
                 if (tmp <= min)
@@ -105,7 +105,7 @@ namespace UniversalInventorySystem
 
                 var sd = invUI.slots[index].GetComponent<RectTransform>().sizeDelta;
                 r.sizeDelta = sd;
-                for (int i = 0; i < o.transform.childCount; i++)
+                for (int i = 0; i < o.transform.childCount; ++i)
                 {
                     var c = o.transform.GetChild(i);
 

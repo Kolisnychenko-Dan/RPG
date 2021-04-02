@@ -100,7 +100,7 @@ namespace UniversalInventorySystem.Editors
                         if (unfold[property.propertyPath].editorAssignSize < 0) unfold[property.propertyPath].editorAssignSize = 0;
 
                         unfold[property.propertyPath].objs = new List<Object>(unfold[property.propertyPath].editorAssignSize);
-                        for (int i = 0; i < unfold[property.propertyPath].objs.Capacity; i++)
+                        for (int i = 0; i < unfold[property.propertyPath].objs.Capacity; ++i)
                         {
                             if (i >= unfold[property.propertyPath].objs.Count) unfold[property.propertyPath].objs.Add(null);
                         }
@@ -119,7 +119,7 @@ namespace UniversalInventorySystem.Editors
                                 var ia = whitelistProp.objectReferenceValue as ItemGroup;
 
                                 if (unfold[property.propertyPath].editorAssignSize < ia.itemsList.Count) unfold[property.propertyPath].editorAssignSize = ia.itemsList.Count;
-                                for (int i = 0; i < ia.itemsList.Count; i++)
+                                for (int i = 0; i < ia.itemsList.Count; ++i)
                                 {
                                     if (i < unfold[property.propertyPath].objs.Count)
                                     {
@@ -152,7 +152,7 @@ namespace UniversalInventorySystem.Editors
                         if (unfold[property.propertyPath].objs.Count != unfold[property.propertyPath].editorAssignSize)
                         {
                             unfold[property.propertyPath].objs = new List<Object>(unfold[property.propertyPath].editorAssignSize);
-                            for(int i = 0; i < unfold[property.propertyPath].objs.Capacity; i++)
+                            for(int i = 0; i < unfold[property.propertyPath].objs.Capacity; ++i)
                             {
                                 if (i >= unfold[property.propertyPath].objs.Count) unfold[property.propertyPath].objs.Add(null);
                             }
@@ -164,7 +164,7 @@ namespace UniversalInventorySystem.Editors
                         {
                             unfold[property.propertyPath].fieldAmount = 3.5f + unfold[property.propertyPath].editorAssignSize;
 
-                            for (int i = 0; i < unfold[property.propertyPath].editorAssignSize; i++)
+                            for (int i = 0; i < unfold[property.propertyPath].editorAssignSize; ++i)
                             {
                                 ias.y += 18f;
                                 var objRect = new Rect(position.x + 120, ias.y, position.width - 140, ias.height);
@@ -236,7 +236,7 @@ namespace UniversalInventorySystem.Editors
                         if (unfold[property.propertyPath].objs.Count != unfold[property.propertyPath].editorAssignSize)
                         {
                             unfold[property.propertyPath].objs = new List<Object>(unfold[property.propertyPath].editorAssignSize);
-                            for (int i = 0; i < unfold[property.propertyPath].objs.Capacity; i++)
+                            for (int i = 0; i < unfold[property.propertyPath].objs.Capacity; ++i)
                             {
                                 if (i >= unfold[property.propertyPath].objs.Count) unfold[property.propertyPath].objs.Add(null);
                             }
@@ -247,7 +247,7 @@ namespace UniversalInventorySystem.Editors
                         {
                             unfold[property.propertyPath].fieldAmount = 3.5f + unfold[property.propertyPath].editorAssignSize;
 
-                            for (int i = 0; i < unfold[property.propertyPath].editorAssignSize; i++)
+                            for (int i = 0; i < unfold[property.propertyPath].editorAssignSize; ++i)
                             {
                                 ias.y += 18f;
                                 var objRect = new Rect(position.x + 120, ias.y, position.width - 140, ias.height);

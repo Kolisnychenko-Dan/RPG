@@ -41,7 +41,7 @@ namespace Febucci.UI.Core
         internal static string[] GetAllBehaviorsTags()
         {
             List<string> tags = new List<string>();
-            for(int i = 0; i < behaviorsData.Count; i++)
+            for(int i = 0; i < behaviorsData.Count; ++i)
             {
                 tags.Add(behaviorsData.Keys.ElementAt(i));
             }
@@ -52,7 +52,7 @@ namespace Febucci.UI.Core
         internal static string[] GetAllApppearancesTags()
         {
             List<string> tags = new List<string>();
-            for (int i = 0; i < appearancesData.Count; i++)
+            for (int i = 0; i < appearancesData.Count; ++i)
             {
                 tags.Add(appearancesData.Keys.ElementAt(i));
             }
@@ -91,7 +91,7 @@ namespace Febucci.UI.Core
                 EffectInfoAttribute attribute;
                 string effectTag;
 
-                for (int i = 0; i < effectsInAssembly.Count; i++)
+                for (int i = 0; i < effectsInAssembly.Count; ++i)
                 {
                     effectTag = string.Empty;
                     attribute = effectsInAssembly[i].GetCustomAttribute<EffectInfoAttribute>();
@@ -144,13 +144,13 @@ namespace Febucci.UI.Core
 
                 #region Global Effects
                 //Adds global effects
-                for (int i = 0; i < data.globalBehaviorPresets.Length; i++)
+                for (int i = 0; i < data.globalBehaviorPresets.Length; ++i)
                 {
                     TryAddingPresetToDictionary(ref behaviorsData, data.globalBehaviorPresets[i].effectTag, typeof(PresetBehavior));
                 }
 
                 //Adds global effects
-                for (int i = 0; i < data.globalAppearancePresets.Length; i++)
+                for (int i = 0; i < data.globalAppearancePresets.Length; ++i)
                 {
                     TryAddingPresetToDictionary(ref appearancesData, data.globalAppearancePresets[i].effectTag, typeof(PresetAppearance));
                 }
@@ -161,7 +161,7 @@ namespace Febucci.UI.Core
 
                 if (data.customActions != null && data.customActions.Length > 0)
                 {
-                    for (int i = 0; i < data.customActions.Length; i++)
+                    for (int i = 0; i < data.customActions.Length; ++i)
                     {
                         if (data.customActions[i].Length <= 0)
                         {
@@ -211,7 +211,7 @@ namespace Febucci.UI.Core
         {
             if (presets.Length > 0)
             {
-                for (int i = 0; i < presets.Length; i++)
+                for (int i = 0; i < presets.Length; ++i)
                 {
                     if (tag.Equals(presets[i].effectTag))
                     {

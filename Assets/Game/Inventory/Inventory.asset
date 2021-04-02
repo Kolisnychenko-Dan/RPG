@@ -27,7 +27,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -59,12 +59,12 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   _slotAmounts: 0
   _id: 0
   _key: Inventory
-  _interactiable: 62
+  _interactiable: -1
   seeds: []
   slots:
   - amount: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -97,7 +97,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -105,7 +105,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -113,8 +113,8 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: -1
     whitelist: {fileID: 0}
   id: 0
   key: Inventory
-  interactiable: 62
+  interactiable: -1

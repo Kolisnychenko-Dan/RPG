@@ -39,7 +39,7 @@ public class DurabilityBarModifier : BaseUIModifier
     public void LateUpdate()
     {
         if (target.GetInventory() == null) return;
-        for(int i = 0; i < target.slots.Count; i++)
+        for(int i = 0; i < target.slots.Count; ++i)
         {
             if (!target.GetInventory()[i]) continue;
             if (!target.GetInventory()[i].item.hasDurability) continue;
@@ -78,7 +78,7 @@ public class DurabilityBarModifier : BaseUIModifier
         }
 
         GoBack:
-        for(int i = 0; i < gos.Count; i++)
+        for(int i = 0; i < gos.Count; ++i)
         {
             if (!target.GetInventory()[gos[i].index].HasItem)
             {

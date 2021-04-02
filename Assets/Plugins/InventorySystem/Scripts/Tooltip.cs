@@ -62,7 +62,7 @@ namespace UniversalInventorySystem
                         float width = 0;
 
                         List<GameObject> tttexts = new List<GameObject>();
-                        for (int i = 0; i < item.tooltip.texts.Count; i++)
+                        for (int i = 0; i < item.tooltip.texts.Count; ++i)
                         {
                             var toolTipText = new GameObject();
                             toolTipText.name = $"text {i}";
@@ -85,7 +85,7 @@ namespace UniversalInventorySystem
                         }
 
                         float tmpheight = 0;
-                        for(int i = 0; i < tttexts.Count;i++)
+                        for(int i = 0; i < tttexts.Count;++i)
                         {
                             GameObject g = tttexts[i];
                             float addingheight = -(tmpheight - (height / 2) + g.GetComponent<TextMeshProUGUI>().preferredHeight / 2);
@@ -383,7 +383,7 @@ namespace UniversalInventorySystem
             Vector3[] corners = new Vector3[4];
             tooltipRect.GetWorldCorners(corners);
             //Debug.Log($"Gizmos 2: {Camera.main.WorldToViewportPoint(corners[2]).x} 3: {Camera.main.WorldToViewportPoint(corners[3]).x}");
-            for (var i = 0; i < corners.Length; i++)
+            for (var i = 0; i < corners.Length; ++i)
             {
                     //Debug.Log($"Corner {i} {corners[i]}");
                 if (Camera.main.WorldToViewportPoint(corners[i]).x > 1 || Camera.main.WorldToViewportPoint(corners[i]).x < 0 || Camera.main.WorldToViewportPoint(corners[i]).y > 1 || Camera.main.WorldToViewportPoint(corners[i]).y < 0)

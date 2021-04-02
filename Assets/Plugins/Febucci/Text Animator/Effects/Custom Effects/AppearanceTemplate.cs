@@ -21,7 +21,7 @@ namespace Febucci.UI.Examples
             /*
             pct = charPCTs[charIndex] / showDuration;
 
-            for (int i = 0; i < data.vertices.Length; i++)
+            for (int i = 0; i < data.vertices.Length; ++i)
             {
                 //copies the current char position (e.g. if the character is waving etc)
                 vert = data.vertices[i];

@@ -101,7 +101,7 @@ namespace Febucci.UI.Core.Editors
                 properties = new List<SerializedProperty>();
                 propLabels = new List<GUIContent>();
 
-                for (int i = 0; i < values.Length; i++)
+                for (int i = 0; i < values.Length; ++i)
                 {
                     properties.Add(parentProperty.FindPropertyRelative(values[i].valueName));
                     propLabels.Add(new GUIContent(values[i].label));
@@ -126,7 +126,7 @@ namespace Febucci.UI.Core.Editors
                         EditorGUILayout.LabelField(alertTextSizeDep, EditorStyles.centeredGreyMiniLabel);
                     }
 
-                    for (int i = 0; i < properties.Count; i++)
+                    for (int i = 0; i < properties.Count; ++i)
                     {
                         EditorGUILayout.PropertyField(properties[i], propLabels[i]);
                     }
@@ -966,7 +966,7 @@ namespace Febucci.UI.Core.Editors
             {
                 drawers = new UserPresetDrawer[arrayProperty.arraySize];
 
-                for (int i = 0; i < arrayProperty.arraySize; i++)
+                for (int i = 0; i < arrayProperty.arraySize; ++i)
                 {
                     drawers[i] = new UserPresetDrawer(arrayProperty.GetArrayElementAtIndex(i), isAppearance);
                 }
@@ -1001,7 +1001,7 @@ namespace Febucci.UI.Core.Editors
                 EditorGUI.indentLevel++;
 
                 SerializedProperty temp;
-                for (int i = 0; i < tagsContainer.arraySize; i++)
+                for (int i = 0; i < tagsContainer.arraySize; ++i)
                 {
                     temp = tagsContainer.GetArrayElementAtIndex(i);
 
@@ -1038,7 +1038,7 @@ namespace Febucci.UI.Core.Editors
             scriptable_globalBehaviorsValues = serializedObject.FindProperty("scriptable_globalBehaviorsValues");
 
             availableAppBuiltinTagsLongText = string.Empty;
-            for (int i = 0; i < TAnimTags.defaultAppearances.Length; i++)
+            for (int i = 0; i < TAnimTags.defaultAppearances.Length; ++i)
             {
                 availableAppBuiltinTagsLongText += TAnimTags.defaultAppearances[i] + ", ";
             }
@@ -1164,7 +1164,7 @@ namespace Febucci.UI.Core.Editors
             if (EditorGUI.EndChangeCheck())
             {
                 //Resets "confirmation to delete effect" button
-                for (int i = 0; i < userPresets.Length; i++)
+                for (int i = 0; i < userPresets.Length; ++i)
                 {
                     userPresets[i].wantsToRemove = false;
                 }
@@ -1177,7 +1177,7 @@ namespace Febucci.UI.Core.Editors
                 //Checks for error
                 MatchPresetsDrawersWithComponent(ref userPresets, arrayProperty, isAppearance);
 
-                for (int i = 0; i < userPresets.Length; i++)
+                for (int i = 0; i < userPresets.Length; ++i)
                 {
 
                     #region Header
