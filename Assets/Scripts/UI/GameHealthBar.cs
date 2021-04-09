@@ -13,7 +13,6 @@ namespace RPG.UI
         {
             health = GetComponentInParent<CombatTarget>();
 
-            health.OnHealthChanged += UpdateHealthBar;
             health.OnDeath += () => {
                 isEnabled = false;
                 DisableBar();
@@ -28,13 +27,14 @@ namespace RPG.UI
                 if(Input.GetKey(KeyCode.LeftAlt))
                 {
                     EnableBar();
+                    UpdateHealthBar();
                 }
                 else DisableBar();
             }
             
         }
 
-        private void UpdateHealthBar(float healtChange, CombatTarget.HealthChangeType type)
+        private void UpdateHealthBar()
         {
             transform.localScale = new Vector3(health.GetHealthPercantage(),1,1);
         }

@@ -15,6 +15,8 @@ namespace RPG.Combat
         [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
         float maxHealth;
+        float healthRegen;
+        BaseStats baseStats;
 
         public event Action<float,HealthChangeType> OnHealthChanged;
         public event Action OnDeath;
@@ -22,18 +24,23 @@ namespace RPG.Combat
         
         private void Awake() 
         {
-            GetComponent<BaseStats>().OnAttributesChanged += OnMaxHealthUpdated;
+            baseStats = GetComponent<BaseStats>();
+            baseStats.OnAttributesChanged += OnMaxHealthUpdated;
         }
 
         private void Start() 
         {
-            maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
-            maxHealth += GetComponent<BaseStats>().GetAdditiveModifiers(Stat.Health);
+            maxHealth = baseStats.GetCalculatedStat(Stat.Health);
 
             if(health == -1) 
             {
                 health = maxHealth;
             }
+        }
+
+        private void Update()
+        {
+            RegenerateHealth();
         }
 
         public bool IsDead 
@@ -61,6 +68,11 @@ namespace RPG.Combat
                 }
         }
 
+        private void RegenerateHealth()
+        {
+            health = Mathf.Min(health + Time.deltaTime * baseStats.GetCalculatedStat(Stat.HealthRegen), maxHealth);
+        }
+
         public float GetHealthPercantage()
         {
             return health/maxHealth;
@@ -75,8 +87,7 @@ namespace RPG.Combat
 
         private void OnMaxHealthUpdated()
         {
-            float currentMaxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
-            currentMaxHealth += GetComponent<BaseStats>().GetAdditiveModifiers(Stat.Health);
+            float currentMaxHealth = baseStats.GetCalculatedStat(Stat.Health);
 
             health = health * (currentMaxHealth / maxHealth);
             maxHealth = currentMaxHealth;
@@ -146,7 +157,8 @@ namespace RPG.Combat
         public enum HealthChangeType
         {
             Heal,
-            Damage
+            Damage,
+            IgnoreType
         }
     }
 }

@@ -30,6 +30,11 @@ namespace RPG.Stats
             return additiveModifier;
         }
 
+        public float GetCalculatedStat(Stat stat)
+        {
+            return GetStat(stat) + GetAdditiveModifiers(stat); 
+        }
+
         /* Should only be called by Player. Returns new required levelUp experience*/
         public float LevelUp()
         {

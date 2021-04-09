@@ -23,14 +23,24 @@ MonoBehaviour:
         - 121
       - stat: 2
         levelStats:
-        - 1
+        - 10
         - 1.1
         - 1.21
-      - stat: 3
+      - stat: 4
         levelStats:
         - 200
         - 250
         - 300
+      - stat: 5
+        levelStats:
+        - 1
+        - 1.2
+        - 1.4
+      - stat: 3
+        levelStats:
+        - 1
+        - 1.2
+        - 1.4
       - stat: 4
         levelStats:
         - 1
@@ -45,9 +55,12 @@ MonoBehaviour:
       - stat: 2
         levelStats:
         - 0.5
-      - stat: 3
+      - stat: 4
         levelStats:
         - 100
+      - stat: 5
+        levelStats:
+        - 1
       - stat: 4
         levelStats:
         - 1
@@ -60,9 +73,12 @@ MonoBehaviour:
       - stat: 2
         levelStats:
         - 0.35
-      - stat: 3
+      - stat: 4
         levelStats:
         - 150
+      - stat: 5
+        levelStats:
+        - 1
       - stat: 4
         levelStats:
         - 1
