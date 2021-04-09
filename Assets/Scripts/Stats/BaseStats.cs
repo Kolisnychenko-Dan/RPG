@@ -34,10 +34,15 @@ namespace RPG.Stats
         public float LevelUp()
         {
             level += 1;
-            OnAttributesChanged.Invoke();
-            return progression.GetStat(character, Stat.Experience ,level);
+            InvokeOnAttributesChanged();
+            return progression.GetStat(character, Stat.Experience, level);
         }
-        
+
+        public void InvokeOnAttributesChanged()
+        {
+            OnAttributesChanged.Invoke();
+        }
+
         public object CaptureState()
         {
             return (object)level;

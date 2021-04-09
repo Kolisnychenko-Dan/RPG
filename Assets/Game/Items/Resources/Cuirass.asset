@@ -47,5 +47,5 @@ MonoBehaviour:
     margin: {x: 0, y: 0}
     maxWidth: 0
     texts: []
-  itemPrefab: {fileID: 9201445711762661085, guid: 5acb75c46ee31b64d8d31c6220eee06b,
+  itemPrefab: {fileID: 2722411536072157827, guid: c6793caeefa64ee4096e5e1a51df8f3d,
     type: 3}

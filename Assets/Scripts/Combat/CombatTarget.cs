@@ -28,6 +28,7 @@ namespace RPG.Combat
         private void Start() 
         {
             maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            maxHealth += GetComponent<BaseStats>().GetAdditiveModifiers(Stat.Health);
 
             if(health == -1) 
             {
@@ -75,6 +76,8 @@ namespace RPG.Combat
         private void OnMaxHealthUpdated()
         {
             float currentMaxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
+            currentMaxHealth += GetComponent<BaseStats>().GetAdditiveModifiers(Stat.Health);
+
             health = health * (currentMaxHealth / maxHealth);
             maxHealth = currentMaxHealth;
         }
@@ -91,7 +94,7 @@ namespace RPG.Combat
             GetComponent<Animator>().SetTrigger("die");
         }
 
-
+        // Too much of a pain to do it through animation
         private void DieAnimation()
         {
             Rigidbody rb = gameObject.AddComponent<Rigidbody>();

@@ -15,7 +15,10 @@ namespace RPG.Item
             if (other.gameObject.name == "Player")
             {
                 PlayerInventory pi = GameObject.FindObjectOfType<PlayerInventory>();
+
                 pi.inventory.AddItem( (UniversalInventorySystem.Item)item, amount);
+                other.gameObject.GetComponent<Stats.BaseStats>().InvokeOnAttributesChanged();
+
                 Destroy(gameObject);
             }
         }

@@ -447,6 +447,17 @@ PrefabInstance:
       propertyPath: damageTextSpawner.r
       value: 0.9528302
       objectReference: {fileID: 0}
+    - target: {fileID: 3389266827878770189, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110906515851186188, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
+      propertyPath: inv
+      value: 
+      objectReference: {fileID: 11400000, guid: eb5ce5c9db7d8334fb4e21733dff69ed,
+        type: 2}
     - target: {fileID: 5110906515851186188, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: progression
@@ -471,7 +482,7 @@ PrefabInstance:
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.777794
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
@@ -481,17 +492,17 @@ PrefabInstance:
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5691750183960672194, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
@@ -1205,7 +1216,7 @@ PrefabInstance:
     - target: {fileID: 8550702860531806513, guid: 0cc9e3ce1c856064e91b850a882f5445,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.11528492
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8550702860531806513, guid: 0cc9e3ce1c856064e91b850a882f5445,
         type: 3}
@@ -1266,6 +1277,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 591387004039632051, guid: c6793caeefa64ee4096e5e1a51df8f3d,
+        type: 3}
+      propertyPath: moveItemUp
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1442891585541193260, guid: c6793caeefa64ee4096e5e1a51df8f3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -1325,6 +1341,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cuirass
+      objectReference: {fileID: 0}
+    - target: {fileID: 8741752566438939889, guid: c6793caeefa64ee4096e5e1a51df8f3d,
+        type: 3}
+      propertyPath: amount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6793caeefa64ee4096e5e1a51df8f3d, type: 3}
@@ -1834,6 +1855,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealPotion
       objectReference: {fileID: 0}
+    - target: {fileID: 9068946028998332996, guid: 06614c4d7d0cc5f4da42c693d872416a,
+        type: 3}
+      propertyPath: amount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06614c4d7d0cc5f4da42c693d872416a, type: 3}
 --- !u!1001 &2110198540
@@ -2167,6 +2193,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_BlockingObjects
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2582702112381980545, guid: ae4a74883de16cb41ad469dc0259e676,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2582702112381980546, guid: ae4a74883de16cb41ad469dc0259e676,
         type: 3}

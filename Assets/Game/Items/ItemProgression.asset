@@ -19,3 +19,9 @@ MonoBehaviour:
       - stat: 1
         levelStats:
         - 10
+  - statobject: Cuirass
+    statsClass:
+      stats:
+      - stat: 0
+        levelStats:
+        - 100

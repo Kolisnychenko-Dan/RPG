@@ -10,13 +10,14 @@ namespace RPG.Stats
     {
         [SerializeField] StringStatsClass[] statobjectClasses; 
 
-        public float GetStat(string statobject, Stat stat, int level)
+        public float GetStat(string statobject, Stat stat, int level, bool strictStat = true)
         {
             foreach (var el in statobjectClasses)
             {
               if(statobject == el.statobject) return el.statsClass.GetStat(stat,level);
             }
-            throw new Exception($"StatObject: \"{statobject}\" doesn't exist in progression");
+            if(strictStat) throw new Exception($"StatObject: \"{statobject}\" doesn't exist in progression");
+            return 0;
         }
 
         [Serializable]
