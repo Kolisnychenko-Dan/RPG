@@ -52,11 +52,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d87708d471604887622dbb3f21bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTillAttackTime: 1.2
   rightHandTransform: {fileID: 7531633153581122456}
   leftHandTransform: {fileID: 7531633153581196272}
   currentWeaponName: Sword
   defaultWeaponName: Unarmed
+  attackStateName: Attack
 --- !u!114 &5027952805885928698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74cc1617d219314f83988620b0d4906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  destinationPointTolerance: 1
 --- !u!114 &9038638666948864030
 MonoBehaviour:
   m_ObjectHideFlags: 0

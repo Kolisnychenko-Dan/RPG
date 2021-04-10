@@ -23,7 +23,7 @@ MonoBehaviour:
         - 121
       - stat: 2
         levelStats:
-        - 10
+        - 1
         - 1.1
         - 1.21
       - stat: 4
@@ -41,11 +41,14 @@ MonoBehaviour:
         - 1
         - 1.2
         - 1.4
-      - stat: 4
+      - stat: 7
+        levelStats:
+        - 1000
+        - 110
+        - 121
+      - stat: 8
         levelStats:
         - 1
-        - 1.2
-        - 1.4
   - statobject: Swordman
     statsClass:
       stats:
@@ -61,7 +64,13 @@ MonoBehaviour:
       - stat: 5
         levelStats:
         - 1
-      - stat: 4
+      - stat: 3
+        levelStats:
+        - 1
+      - stat: 7
+        levelStats:
+        - 100
+      - stat: 8
         levelStats:
         - 1
   - statobject: Archer
@@ -79,6 +88,12 @@ MonoBehaviour:
       - stat: 5
         levelStats:
         - 1
-      - stat: 4
+      - stat: 3
+        levelStats:
+        - 1
+      - stat: 7
+        levelStats:
+        - 100
+      - stat: 8
         levelStats:
         - 1

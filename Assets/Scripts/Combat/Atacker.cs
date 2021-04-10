@@ -5,24 +5,39 @@ using RPG.Movement;
 using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
+using RPG.Attributes;
+using System;
 
 namespace RPG.Combat
 {
     [RequireComponent(typeof(Mover))]
     public class Atacker : MonoBehaviour, IAction, ISaveable
     {
-        [SerializeField] float waitTillAttackTime = 1f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] string currentWeaponName = null;
         [SerializeField] string defaultWeaponName;
+        [SerializeField] string attackStateName = "Attack";
         Weapon currentWeapon;
         GameObject currentWeaponObject;
+        float waitTillAttackTime;
         float timePassedAfterAttack = Mathf.Infinity;
+        float attackTime;
         CombatTarget target;
+        BaseStats baseStats;
+        Animator animator;
+
+        private void Awake()
+        {
+            baseStats = GetComponent<BaseStats>();
+            animator = GetComponent<Animator>();
+            baseStats.OnAttributesChanged += CalulateAttackSpeed;
+        }
 
         private void Start()
         {
+            CalulateAttackSpeed();
+
             if(currentWeaponName == null) currentWeaponName = defaultWeaponName;
             EquipWeapon(currentWeaponName);
         }
@@ -46,6 +61,22 @@ namespace RPG.Combat
             }
         }
 
+        private void CalulateAttackSpeed()
+        {
+            waitTillAttackTime = 1/AttributeFormulas.AttacksPerSecond(baseStats.GetCalculatedStat(Stat.BasicAttackTime),baseStats.GetCalculatedStat(Stat.AttackSpeed));
+            attackTime = AttributeFormulas.AttackTime(baseStats.GetCalculatedStat(Stat.BasicAttackTime),baseStats.GetCalculatedStat(Stat.AttackSpeed));
+        }
+
+        private float? GetAttackAnimClipLength()
+        {
+            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            if(stateInfo.IsName(attackStateName))
+            {
+                return stateInfo.length;
+            }
+            return null;
+        }
+
         private void EquipWeapon(string weaponName)
         {
             if(currentWeapon != null)
@@ -62,7 +93,7 @@ namespace RPG.Combat
                 currentWeapon = Resources.Load<Weapon>(defaultWeaponName);
             }
 
-            currentWeaponObject = currentWeapon.SpawnWeapon(GetTransformOfHandWithWeapon(),GetComponent<Animator>());
+            currentWeaponObject = currentWeapon.SpawnWeapon(GetTransformOfHandWithWeapon(),animator);
         }
 
         private Transform GetTransformOfHandWithWeapon()
@@ -75,8 +106,9 @@ namespace RPG.Combat
             if(timePassedAfterAttack < waitTillAttackTime) return;
             timePassedAfterAttack = 0;
 
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("attack");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("attack");
+            animator.speed = (GetAttackAnimClipLength() ?? attackTime)/attackTime;   
         }
 
         public void Atack(CombatTarget target)
@@ -90,7 +122,7 @@ namespace RPG.Combat
         void Hit()
         {
             float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
-            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier);
+            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier, DamageType.Physical);
         }
         
         // Invoked by an Animator component
@@ -105,8 +137,8 @@ namespace RPG.Combat
         
         public void Cancel()
         {
-            GetComponent<Animator>().ResetTrigger("attack");
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
             target = null;
         }
 

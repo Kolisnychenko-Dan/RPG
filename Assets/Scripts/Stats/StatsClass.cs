@@ -15,7 +15,7 @@ namespace RPG.Stats
             {
                 if(stat == el.Stat) return el.LevelStat(level-1);
             }
-            throw new Exception($"Stat: \"{stat}\" doesn't exist");
+            return 0;
         }
 
         [Serializable]

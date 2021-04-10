@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progression: {fileID: 0}
+  inv: {fileID: 0}
 --- !u!114 &5477485123267697672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,11 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d87708d471604887622dbb3f21bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTillAttackTime: 0
   rightHandTransform: {fileID: 3389266827878764155}
   leftHandTransform: {fileID: 3389266827878837881}
   currentWeaponName: Sword
   defaultWeaponName: Unarmed
+  attackStateName: Attack
 --- !u!114 &8337929729157546860
 MonoBehaviour:
   m_ObjectHideFlags: 0

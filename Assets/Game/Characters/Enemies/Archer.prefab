@@ -77,11 +77,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 064d87708d471604887622dbb3f21bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTillAttackTime: 1.2
   rightHandTransform: {fileID: 1232804499513997286}
   leftHandTransform: {fileID: 1232804499514054542}
   currentWeaponName: Bow
   defaultWeaponName: Unarmed
+  attackStateName: Attack
 --- !u!114 &5117392819244870032
 MonoBehaviour:
   m_ObjectHideFlags: 0

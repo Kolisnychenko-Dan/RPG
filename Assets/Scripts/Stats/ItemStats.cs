@@ -22,7 +22,7 @@ namespace RPG.Stats
 
         public float GetStat(Stat stat, string item)
         {
-            return progression.GetStat(item, stat, 1, true);
+            return progression.GetStat(item, stat, 1, false);
         }
     }
 }

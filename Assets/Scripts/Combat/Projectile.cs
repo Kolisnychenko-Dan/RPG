@@ -10,6 +10,7 @@ namespace RPG.Combat
         [SerializeField] float projectileHitTolerance = 0.5f;
         [SerializeField] Vector3 projectileFlyHeight = Vector3.up;
         [SerializeField] GameObject impactEffect = null;
+        [SerializeField] DamageType projectileDamageType = DamageType.Physical;
         float projectileDamage = 0f;
         CombatTarget target;
 
@@ -44,7 +45,7 @@ namespace RPG.Combat
                 Instantiate(impactEffect,target.transform.position,transform.rotation);
             }
 
-            if(!target.IsDead) target.TakeDamage(projectileDamage);
+            if(!target.IsDead) target.TakeDamage(projectileDamage, projectileDamageType);
             Destroy(gameObject);
         }
     }

@@ -23,6 +23,8 @@ namespace RPG.UI
         public void Spawn(float healthChangeValue, CombatTarget.HealthChangeType type)
         {
             if(type == CombatTarget.HealthChangeType.IgnoreType) return;
+
+            healthChangeValue = Mathf.Round(healthChangeValue);
             var textObject = GameObject.Instantiate(damageTextPrefab,transform);
             var text = textObject.GetComponentInChildren<TextAnimatorPlayer>();
             

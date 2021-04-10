@@ -5,8 +5,11 @@ namespace RPG.Stats
         Health,
         HealthInstaHeal, // Item Only
         HealthRegen,
-        Protection,
+        Armor,
         Experience,
-        DamageMultiplier
+        DamageMultiplier,
+        MagDefence,
+        AttackSpeed,
+        BasicAttackTime
     }
 }

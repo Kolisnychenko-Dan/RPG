@@ -521,6 +521,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7228101384074533104, guid: 8b5e615de3d4f6043a95f467d147bad0,
         type: 3}
+      propertyPath: attackClipName
+      value: Attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228101384074533104, guid: 8b5e615de3d4f6043a95f467d147bad0,
+        type: 3}
       propertyPath: currentWeaponName
       value: FireBall
       objectReference: {fileID: 0}
@@ -1012,7 +1017,7 @@ PrefabInstance:
     - target: {fileID: 1095575003612628303, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 38.54835
+      value: 46.9
       objectReference: {fileID: 0}
     - target: {fileID: 1095575003612628303, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
         type: 3}
@@ -1053,6 +1058,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945001542555910913, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
+        type: 3}
+      propertyPath: attackClipName
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 6936266798559983557, guid: 23ee0e8cb7e583243a2ec5f09c0839d4,
         type: 3}
@@ -1197,6 +1207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Archer (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3945001542150025392, guid: 0cc9e3ce1c856064e91b850a882f5445,
+        type: 3}
+      propertyPath: attackClipName
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 5527988541547167560, guid: 0cc9e3ce1c856064e91b850a882f5445,
         type: 3}

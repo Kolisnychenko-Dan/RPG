@@ -78,10 +78,11 @@ namespace RPG.Combat
             return health/maxHealth;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage, DamageType damageType)
         {
+            damage *= AttributeFormulas.ArmorDamageMultiplier(baseStats.GetCalculatedStat(Stat.Armor));
             Health -= damage;
-
+ 
             if (health == 0) Die();
         }
 
