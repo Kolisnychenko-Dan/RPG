@@ -44,6 +44,8 @@ namespace RPG.Combat
 
         private void Update()
         {  
+            if(target == null) animator.SetTrigger("stopAttack");
+
             timePassedAfterAttack += Time.deltaTime;
             if(target != null && !target.IsDead && target != GetComponent<CombatTarget>())
             {
@@ -100,6 +102,7 @@ namespace RPG.Combat
         {
             return currentWeapon.IsRightHandedWeapon ? rightHandTransform : leftHandTransform;
         }
+
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
@@ -108,7 +111,7 @@ namespace RPG.Combat
 
             animator.ResetTrigger("attack");
             animator.SetTrigger("attack");
-            animator.speed = (GetAttackAnimClipLength() ?? attackTime)/attackTime;   
+            animator.speed = (GetAttackAnimClipLength() ?? attackTime)/attackTime;
         }
 
         public void Atack(CombatTarget target)
