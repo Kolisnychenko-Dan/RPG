@@ -152,7 +152,6 @@ namespace RPG.Combat
                     animator.speed = 1; 
                 }
                 else {
-                    Debug.Log("qwe");
                     Attack(target);
                     target.OnDeath -= AttackNearestEnemy;
                     target.OnDeath += AttackNearestEnemy;

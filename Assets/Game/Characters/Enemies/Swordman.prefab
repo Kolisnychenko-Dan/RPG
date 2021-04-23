@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac03943200e3874ebe0827d486982f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageTextPrefab: {fileID: 7966771711761835478, guid: b074239a1c50ba341a458f0ed9014075,
+  critTextPrefab: {fileID: 7966771711761835478, guid: b074239a1c50ba341a458f0ed9014075,
+    type: 3}
+  TextPrefab: {fileID: 2691199572150892804, guid: 797c5913c50c6234699ee6466a981d43,
     type: 3}
   openingTags: '{size}<shake><fade>'
   closingTags: '{/size}</shake></fade>'
-  damageTextColor: {r: 0.9528302, g: 0.13932894, b: 0.13932894, a: 1}
+  critDamageTextColor: {r: 0.7735849, g: 0.14960839, b: 0.14960839, a: 1}
+  damageTextColor: {r: 200, g: 200, b: 200, a: 1}
   healTextColor: {r: 0.39378598, g: 0.745283, b: 0.23553754, a: 1}
 --- !u!195 &1525788613372867732
 NavMeshAgent:
@@ -56,7 +59,7 @@ MonoBehaviour:
   leftHandTransform: {fileID: 7531633153581196272}
   currentWeaponName: Sword
   defaultWeaponName: Unarmed
-  attackStateName: Attack
+  attackNearestDistance: 5
 --- !u!114 &5027952805885928698
 MonoBehaviour:
   m_ObjectHideFlags: 0

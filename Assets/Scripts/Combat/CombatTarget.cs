@@ -53,19 +53,21 @@ namespace RPG.Combat
             get => maxHealth;
         }
 
-        public float Health
+        public void ChangeHealth(float value, HealthChangeType type)
         {
-            get => health; 
-            set {   
-                    HealthChangeType type = value > health ? HealthChangeType.Heal : HealthChangeType.Damage;
-                    float calculatedHealth = Mathf.Max( 0, Mathf.Min( maxHealth, value));
-                    float healthChange = Mathf.Abs(calculatedHealth - health);
-                    
-                    health = calculatedHealth; 
+            float calculatedHealth = 0;
 
-                    if(healthChange != 0) 
-                        OnHealthChanged.Invoke(healthChange, type);
-                }
+            if(type == HealthChangeType.Heal)
+            {
+                calculatedHealth = Mathf.Min( maxHealth, health + value);
+            }
+            else calculatedHealth = Mathf.Max( 0, health - value);
+            
+            float healthChange = Mathf.Abs(calculatedHealth - health);
+            health = calculatedHealth; 
+
+            if(healthChange != 0) 
+                OnHealthChanged.Invoke(healthChange, type);
         }
 
         private void RegenerateHealth()
@@ -80,8 +82,38 @@ namespace RPG.Combat
 
         public void TakeDamage(float damage, DamageType damageType)
         {
-            damage *= AttributeFormulas.ArmorDamageMultiplier(baseStats.GetCalculatedStat(Stat.Armor));
-            Health -= damage;
+            if(damage < 0) return;
+
+            switch (damageType)
+            {
+                case DamageType.Critical:
+                {
+                    damage *= AttributeFormulas.ArmorDamageMultiplier(baseStats.GetCalculatedStat(Stat.Armor));
+                    ChangeHealth(damage,HealthChangeType.CritDamage);
+                }
+                break;
+                case DamageType.Physical:
+                {
+                    damage *= AttributeFormulas.ArmorDamageMultiplier(baseStats.GetCalculatedStat(Stat.Armor));
+                    ChangeHealth(damage,HealthChangeType.Damage);
+                }
+                break;
+                case DamageType.Heal:
+                {
+                    ChangeHealth(damage,HealthChangeType.Heal);
+                }
+                break;
+                case DamageType.Magical:
+                {
+                    ChangeHealth(damage,HealthChangeType.Damage);
+                }
+                break;
+                case DamageType.Pure:
+                {
+                    ChangeHealth(damage,HealthChangeType.Damage);
+                }
+                break;
+            }
  
             if (health == 0) Die();
         }
@@ -163,6 +195,7 @@ namespace RPG.Combat
         {
             Heal,
             Damage,
+            CritDamage,
             IgnoreType
         }
     }

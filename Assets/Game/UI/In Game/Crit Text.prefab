@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 7966771711761835473}
   - component: {fileID: 2985333658487120478}
   m_Layer: 5
-  m_Name: Damage Text
+  m_Name: Crit Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -301,7 +301,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

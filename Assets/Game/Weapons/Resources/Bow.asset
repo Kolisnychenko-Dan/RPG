@@ -18,5 +18,6 @@ MonoBehaviour:
     type: 3}
   weaponDamage: 10
   weaponRange: 6
+  attackClipLength: 0.8
   projectilePrefab: {fileID: 7576318060246454697, guid: a54d3ad9505d1bf42ad2995607209614,
     type: 3}

@@ -12,7 +12,7 @@ namespace RPG.Inventory
             string itemName = e.item.name;
             float heal = unit.GetComponent<ItemStats>().GetStat(Stat.HealthInstaHeal,itemName);
 
-            unit.GetComponent<Combat.CombatTarget>().Health += heal;
+            unit.GetComponent<Combat.CombatTarget>().ChangeHealth(heal,Combat.CombatTarget.HealthChangeType.Heal);
         }
     }
 }
