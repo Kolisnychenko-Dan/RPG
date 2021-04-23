@@ -122,7 +122,7 @@ namespace RPG.Controller
         {
             suspicionTimeElapsed = 0;
 
-            GetComponent<Atacker>().Atack(target.GetComponent<CombatTarget>());
+            GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
             AgroAllies();
         }
 

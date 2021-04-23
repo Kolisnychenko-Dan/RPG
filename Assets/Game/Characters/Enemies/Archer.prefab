@@ -339,6 +339,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 6966710831967275939, guid: a42e3199f2655b1448c071113b4efe54,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8126603208095418541, guid: a42e3199f2655b1448c071113b4efe54,
         type: 3}
       propertyPath: character

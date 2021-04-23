@@ -10,6 +10,7 @@ namespace RPG.Combat
         [SerializeField] GameObject weaponPrefab = null;
         [SerializeField] float weaponDamage = 0;
         [SerializeField] float weaponRange = 0;
+        [SerializeField] float attackClipLength;
         
         const string fileName = "Weapon";
         public bool IsRightHandedWeapon
@@ -26,6 +27,8 @@ namespace RPG.Combat
         {
             get { return weaponRange; }
         }
+
+        public float AttackClipLength { get => attackClipLength;}
 
         public GameObject SpawnWeapon(Transform handTransform, Animator animator)
         {

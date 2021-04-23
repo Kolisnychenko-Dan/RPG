@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Unarmed
   m_EditorClassIdentifier: 
   weaponOverride: {fileID: 22100000, guid: 68d935f18c9f8064985063f90e3ec309, type: 2}
+  isRightHandedWeapon: 1
   weaponPrefab: {fileID: 0}
   weaponDamage: 5
   weaponRange: 1.05
+  attackClipLength: 0.8

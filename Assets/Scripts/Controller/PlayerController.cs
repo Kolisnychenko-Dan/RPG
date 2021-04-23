@@ -19,6 +19,9 @@ namespace RPG.Controller
 
         [SerializeField] CursorMapping[] cursorMappings = null;
         [SerializeField] float maxNavMeshProjectionDisctance = 1f;
+        [SerializeField] bool autoAttack;
+
+        public bool AutoAttack { get => autoAttack; set => autoAttack = value; }
 
         private void Update()
         {
@@ -51,9 +54,8 @@ namespace RPG.Controller
         private RaycastHit[] GetSortedRaycast()
         {
             var raycasts = Physics.RaycastAll(GetMouseRay());
-            Array.Sort<RaycastHit>(raycasts, (RaycastHit f, RaycastHit l) => {
-                return (int)(f.distance - l.distance);
-            });
+            Array.Sort<RaycastHit>(raycasts, (RaycastHit f, RaycastHit l) => 
+                (int)(f.distance - l.distance));
             return raycasts;
         }
         
@@ -66,6 +68,7 @@ namespace RPG.Controller
             }
             return false;
         }
+
         public bool InteractWithMovement(bool ignoreClick)
         {
             Vector3 destination;

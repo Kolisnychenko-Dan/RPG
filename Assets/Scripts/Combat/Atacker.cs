@@ -17,7 +17,7 @@ namespace RPG.Combat
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] string currentWeaponName = null;
         [SerializeField] string defaultWeaponName;
-        [SerializeField] string attackStateName = "Attack";
+        [SerializeField] float attackNearestDistance = 5f;
         Weapon currentWeapon;
         GameObject currentWeaponObject;
         float waitTillAttackTime;
@@ -26,6 +26,8 @@ namespace RPG.Combat
         CombatTarget target;
         BaseStats baseStats;
         Animator animator;
+        bool isInAutoAttackMode;
+        string enemyTag;
 
         private void Awake()
         {
@@ -69,16 +71,6 @@ namespace RPG.Combat
             attackTime = AttributeFormulas.AttackTime(baseStats.GetCalculatedStat(Stat.BasicAttackTime),baseStats.GetCalculatedStat(Stat.AttackSpeed));
         }
 
-        private float? GetAttackAnimClipLength()
-        {
-            var stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            if(stateInfo.IsName(attackStateName))
-            {
-                return stateInfo.length;
-            }
-            return null;
-        }
-
         private void EquipWeapon(string weaponName)
         {
             if(currentWeapon != null)
@@ -111,14 +103,61 @@ namespace RPG.Combat
 
             animator.ResetTrigger("attack");
             animator.SetTrigger("attack");
-            animator.speed = (GetAttackAnimClipLength() ?? attackTime)/attackTime;
+
+            animator.speed = currentWeapon.AttackClipLength / attackTime;
         }
 
-        public void Atack(CombatTarget target)
+        public void Attack(CombatTarget target)
         {
             // void Hit(), void Shoot() is triggered here
             GetComponent<ActionScheduler>().StartAction(this);
             this.target = target;
+        }
+
+        public void StartAutoAtacking(CombatTarget target)
+        {
+            isInAutoAttackMode = true;
+            enemyTag = target.tag;
+
+            Attack(target);
+            target.OnDeath -= AttackNearestEnemy;
+            target.OnDeath += AttackNearestEnemy;
+        }
+
+        private void AttackNearestEnemy()
+        {
+            if(isInAutoAttackMode)
+            {
+                var characters = GameObject.FindGameObjectsWithTag(enemyTag);
+
+                target = null;
+                float currentMinChaseDistance = Mathf.Infinity;
+
+                foreach (var character in characters)
+                {
+                    if(character.GetComponent<CombatTarget>().IsDead) continue;
+
+                    float distance = Vector3.Distance(transform.position,character.transform.position);
+                    if((distance < attackNearestDistance && distance < currentMinChaseDistance))
+                    {
+                        currentMinChaseDistance = distance;
+
+                        target = character.GetComponent<CombatTarget>();                        
+                    }
+                }
+
+                if(target == null) 
+                {
+                    isInAutoAttackMode = false;
+                    animator.speed = 1; 
+                }
+                else {
+                    Debug.Log("qwe");
+                    Attack(target);
+                    target.OnDeath -= AttackNearestEnemy;
+                    target.OnDeath += AttackNearestEnemy;
+                }
+            }
         }
 
         // Invoked by an Animator component

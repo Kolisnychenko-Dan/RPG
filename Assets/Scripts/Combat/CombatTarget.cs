@@ -145,7 +145,11 @@ namespace RPG.Combat
         {
             if(Input.GetMouseButton(0))
             {
-                controllerToHandle.transform.GetComponent<Atacker>().Atack(this);
+                if(controllerToHandle.AutoAttack) 
+                {
+                   controllerToHandle.gameObject.GetComponent<Atacker>().StartAutoAtacking(this);
+                }
+                else controllerToHandle.transform.GetComponent<Atacker>().Attack(this);
             }
             return true;
         }
