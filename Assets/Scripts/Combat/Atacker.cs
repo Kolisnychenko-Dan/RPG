@@ -6,7 +6,6 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Stats;
 using RPG.Attributes;
-using System;
 
 namespace RPG.Combat
 {
@@ -163,15 +162,19 @@ namespace RPG.Combat
         void Hit()
         {
             float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
-            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier, DamageType.Physical);
+            float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
+
+            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier * critMultiplier, critMultiplier == 1f ? DamageType.Physical : DamageType.Critical);
         }
         
         // Invoked by an Animator component
         void Shoot()
         {
             if(target != null)
-            {
+            {///////////////////////////////////////////////////////////////////////////////////////////////////
                 float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
+                float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
+
                 ((RangeWeapon)currentWeapon).Shoot(target, GetTransformOfHandWithWeapon().position, damageMultiplier);
             }
         }
