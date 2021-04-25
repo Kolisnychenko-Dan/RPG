@@ -164,18 +164,20 @@ namespace RPG.Combat
             float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
             float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
 
-            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier * critMultiplier, critMultiplier == 1f ? DamageType.Physical : DamageType.Critical);
+            target?.TakeDamage(currentWeapon.GetWeaponDamage * damageMultiplier * critMultiplier,
+                critMultiplier == 1f ? DamageType.Physical : DamageType.Critical);
         }
         
         // Invoked by an Animator component
         void Shoot()
         {
             if(target != null)
-            {///////////////////////////////////////////////////////////////////////////////////////////////////
+            {
                 float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
                 float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
 
-                ((RangeWeapon)currentWeapon).Shoot(target, GetTransformOfHandWithWeapon().position, damageMultiplier);
+                ((RangeWeapon)currentWeapon).Shoot(target, GetTransformOfHandWithWeapon().position, damageMultiplier * critMultiplier,
+                    critMultiplier == 1f ? DamageType.Physical : DamageType.Critical);
             }
         }
         

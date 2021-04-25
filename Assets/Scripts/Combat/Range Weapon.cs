@@ -9,14 +9,13 @@ namespace RPG.Combat
     {
         [SerializeField] GameObject projectilePrefab = null;
         
-        public void Shoot(CombatTarget target, Vector3 weaponPosition, float damageMultiplier)
+        public void Shoot(CombatTarget target, Vector3 weaponPosition, float damageMultiplier, DamageType type)
         {
-            GameObject projectile = Instantiate(projectilePrefab);
+            var projectile = Instantiate(projectilePrefab);
             projectile.transform.position = weaponPosition;
             
-            Projectile projectileComponent = projectile.GetComponent<Projectile>();
-            projectileComponent.ProjectileDamage = base.GetWeaponDamage * damageMultiplier;
-            projectileComponent.Target = target;
+            var projectileComponent = projectile.GetComponent<Projectile>();
+            projectileComponent.SetUpProjectile(base.GetWeaponDamage * damageMultiplier, target, type);
         }
     }
 }

@@ -16,36 +16,41 @@ namespace RPG.Combat
 
         void Update()
         {
-            transform.LookAt(target.transform.position + projectileFlyHeight);
+            transform.LookAt(Target.transform.position + projectileFlyHeight);
             transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
             
-            bool hasHitTheTarget = Vector3.Distance(transform.position,target.transform.position) < projectileHitTolerance; 
+            bool hasHitTheTarget = Vector3.Distance(transform.position,Target.transform.position) < projectileHitTolerance; 
             if(hasHitTheTarget)
             {
                 OnHitTheTarget();
             }
         }
 
-        public CombatTarget Target
-        {
-            set { target = value; }
-            get { return target; }
-        }
 
         public float ProjectileDamage
         {
             set { projectileDamage = Mathf.Max(value,0); }
-            get { return ProjectileDamage; }
+            get => ProjectileDamage; 
+        }
+
+        public CombatTarget Target { get => target; set => target = value; }
+        public DamageType ProjectileDamageType { get => projectileDamageType; set => projectileDamageType = value; }
+
+        public void SetUpProjectile(float damage, CombatTarget target, DamageType type)
+        {
+            ProjectileDamage = damage;
+            Target = target;
+            ProjectileDamageType = type;
         }
 
         void OnHitTheTarget()
         {
             if(impactEffect != null)
             {
-                Instantiate(impactEffect,target.transform.position,transform.rotation);
+                Instantiate(impactEffect,Target.transform.position,transform.rotation);
             }
 
-            if(!target.IsDead) target.TakeDamage(projectileDamage, projectileDamageType);
+            if(!Target.IsDead) Target.TakeDamage(projectileDamage, ProjectileDamageType);
             Destroy(gameObject);
         }
     }
