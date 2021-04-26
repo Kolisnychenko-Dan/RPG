@@ -17,5 +17,7 @@ MonoBehaviour:
   weaponPrefab: {fileID: 2473427166388248752, guid: 16453fc25fbde1840b1e215e7fc988de,
     type: 3}
   weaponDamage: 15
+  critChance: 0.615
+  critMultiplier: 1.5
   weaponRange: 2
   attackClipLength: 1.2

@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5200837094770483495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4421180849781543310}
+  - component: {fileID: 6259680005630901033}
+  m_Layer: 0
+  m_Name: Skills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4421180849781543310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200837094770483495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6259680005630901033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200837094770483495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955734dc528cdf3428fdddd0f015f49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateUIFromSlotPrefab: 0
+  generatedUIParent: {fileID: 0}
+  slotPrefab: {fileID: 4676626297327902047, guid: 190af5ce39ca9824191677bd7d614e99,
+    type: 3}
+  canvas: {fileID: 0}
+  DontDropItemRect: {fileID: 0}
+  slots: []
+  showAmount: 0
+  dragObj: {fileID: 3097009595704270652, guid: ddbb2e07767f1b64482dd94fbc9202bd, type: 3}
+  hideDragObj: 1
+  useOnClick: 1
+  outlineColor: {r: 0, g: 0, b: 0, a: 0}
+  outlineSize: 0
+  hideInventory: 1
+  toggleKey: 0
+  togglableObject: {fileID: 0}
+  dropOnCloseCrafting: 0
+  dropPos: {x: 0, y: 0, z: 0}
+  randomFactor: {x: 0, y: 0, z: 0}
+  inv: {fileID: 0}
+  isCraftInventory: 0
+  gridSize: {x: 0, y: 0}
+  allowsPatternCrafting: 0
+  productSlotsIndex: 
+  isDraging: 0
+  shouldSwap: 0
+  pattern: []
+  amount: 

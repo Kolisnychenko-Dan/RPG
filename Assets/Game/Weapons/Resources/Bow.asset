@@ -17,6 +17,8 @@ MonoBehaviour:
   weaponPrefab: {fileID: 2823566898905436996, guid: e3d2b34b12aa64f40ba908eada491bf5,
     type: 3}
   weaponDamage: 10
+  critChance: 0
+  critMultiplier: 1
   weaponRange: 6
   attackClipLength: 0.8
   projectilePrefab: {fileID: 7576318060246454697, guid: a54d3ad9505d1bf42ad2995607209614,
