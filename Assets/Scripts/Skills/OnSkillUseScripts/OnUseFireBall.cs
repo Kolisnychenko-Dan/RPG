@@ -13,7 +13,8 @@ namespace RPG.Skills
         {
             var skill = (Skill)e.item;
             var player = GameObject.Find("Player");
-            float damage = 5;//player.GetComponent<SkillStats>().GetStat(Stat.HealthInstaHeal,skillName);
+            
+            float damage = skill.Damage;
 
             player.GetComponent<PlayerController>().PointChoosingMode = (Vector3 destination) => 
                 {

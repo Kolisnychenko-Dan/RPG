@@ -1,5 +1,20 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6188891843797061570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417301520184591688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902f21c3a663a7e429ff5d0ad7129b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills: {fileID: 11400000, guid: 8bc828bb957fadf43a70340fb0750809, type: 2}
+  rightHandTransform: {fileID: 3389266827878764155}
+  leftHandTransform: {fileID: 3389266827878837881}
 --- !u!114 &273608954337778009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +152,19 @@ MonoBehaviour:
   currentWeaponName: Sword
   defaultWeaponName: Unarmed
   attackNearestDistance: 5
+--- !u!114 &7257552700082151605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417301520184591688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90d01d07d9b0516489afa3304865bbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: eb5ce5c9db7d8334fb4e21733dff69ed, type: 2}
 --- !u!114 &8337929729157546860
 MonoBehaviour:
   m_ObjectHideFlags: 0

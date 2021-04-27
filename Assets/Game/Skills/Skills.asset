@@ -27,7 +27,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -35,7 +35,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -43,7 +43,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   _slotAmounts: 0
   _id: 2
@@ -65,7 +65,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -73,7 +73,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   - amount: 0
     item: {fileID: 0}
@@ -81,7 +81,7 @@ MonoBehaviour:
     hasItem: 0
     _durability: 0
     isProductSlot: 0
-    interative: 0
+    interative: 8
     whitelist: {fileID: 0}
   id: 2
   key: Skills

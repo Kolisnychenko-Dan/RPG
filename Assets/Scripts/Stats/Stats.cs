@@ -10,6 +10,7 @@ namespace RPG.Stats
         DamageMultiplier,
         MagDefence,
         AttackSpeed,
-        BasicAttackTime
+        BasicAttackTime,
+        Damage
     }
 }
