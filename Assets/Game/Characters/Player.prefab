@@ -69,7 +69,7 @@ MonoBehaviour:
   openingTags: '{size}<shake><fade>'
   closingTags: '{/size}</shake></fade>'
   critDamageTextColor: {r: 0.7735849, g: 0.14960839, b: 0.14960839, a: 1}
-  damageText: {r: 200, g: 200, b: 200, a: 1}
+  damageTextColor: {r: 200, g: 200, b: 200, a: 1}
   healTextColor: {r: 0.39378598, g: 0.745283, b: 0.23553754, a: 1}
 --- !u!114 &5110906515851186188
 MonoBehaviour:
@@ -358,6 +358,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3488164460393853802, guid: a42e3199f2655b1448c071113b4efe54,
+        type: 3}
+      propertyPath: leftHandTransform
+      value: 
+      objectReference: {fileID: 3389266827878837881}
+    - target: {fileID: 3488164460393853802, guid: a42e3199f2655b1448c071113b4efe54,
+        type: 3}
+      propertyPath: rightHandTransform
+      value: 
+      objectReference: {fileID: 3389266827878764155}
     - target: {fileID: 6966710831967275939, guid: a42e3199f2655b1448c071113b4efe54,
         type: 3}
       propertyPath: m_Name

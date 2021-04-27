@@ -17,22 +17,24 @@ namespace RPG.Combat
         float aOERAdius;
 
         void Update()
-        {
-            transform.LookAt(Target.transform.position + projectileFlyHeight);
-            transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
-            
-            if(target == null)
+        {   
+            if(target != null)
             {
+                transform.LookAt(Target.transform.position + projectileFlyHeight);
+                transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+
                 bool hasHitTheTarget = Vector3.Distance(transform.position,Target.transform.position) < projectileHitTolerance; 
                 if(hasHitTheTarget) OnHitTheTarget();
             }
             else
             {
+                transform.LookAt(vectorTarget + projectileFlyHeight);
+                transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
+
                 bool hasHitTheVectorTarget = Vector3.Distance(transform.position,vectorTarget) < projectileHitTolerance;
                 if(hasHitTheVectorTarget) OnHitVectorTarget();
             }
         }
-
 
         public float ProjectileDamage
         {
@@ -62,15 +64,15 @@ namespace RPG.Combat
         {
             if(impactEffect != null)
             {
-                Instantiate(impactEffect,Target.transform.position,transform.rotation);
+                Instantiate(impactEffect,vectorTarget,transform.rotation);
             }
             
-            foreach(var target in GameObject.FindObjectsOfType<CombatTarget>())
+            foreach(var hit in Physics.SphereCastAll(transform.position, aOERAdius, Vector3.up,0))
             {
-                if(!target.IsDead)
+                CombatTarget target = hit.transform.GetComponent<CombatTarget>();
+                if(target != null && !target.IsDead)
                 {
-                    bool isInRadius = Vector3.Distance(transform.position,Target.transform.position) < aOERAdius;
-                    if(isInRadius) target.TakeDamage(projectileDamage, ProjectileDamageType);
+                    target.TakeDamage(projectileDamage, ProjectileDamageType);
                 }
             }
 

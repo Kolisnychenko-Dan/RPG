@@ -54,9 +54,9 @@ namespace RPG.Controller
             UpdateTimers();
         }
 
-        public void Agro(float f, CombatTarget.HealthChangeType type)
+        public void Agro(float damage, CombatTarget.HealthChangeType type)
         {
-            if(CombatTarget.HealthChangeType.Damage != type) return;
+            if(CombatTarget.HealthChangeType.Heal == type || CombatTarget.HealthChangeType.IgnoreType == type) return;
             agroTimeElapsed = 0;
         }
 
@@ -104,26 +104,34 @@ namespace RPG.Controller
                 float distance = Vector3.Distance(transform.position,playersCharacter.transform.position);
                 if((distance < chaseDistance && distance < currentMinChaseDistance) || agroTimeElapsed < agroTime)
                 {
-                    if (target == null || IsInAttackRange(distance))
-                    {
-                        currentMinChaseDistance = distance;
+                    currentMinChaseDistance = distance;
 
-                        target = playersCharacter;
-                        lastEnemyPosition = target.transform.position;
-                        
-                        AttackBehavior();
-                    }
+                    target = playersCharacter;
+                    lastEnemyPosition = target.transform.position;
+                    
+                    AttackBehavior();
                 }
             }
+
             if(target == null && !returnToGurdPos) MoveToTheLastEnemyPosition();
         }
 
-        private void AttackBehavior()
+        private void AttackBehavior(GameObject explicitTarget = null)
         {
-            suspicionTimeElapsed = 0;
+            if(explicitTarget == null)
+            {
+                suspicionTimeElapsed = 0;
 
-            GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
-            AgroAllies();
+                GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
+                AgroAllies();
+            }
+            else
+            {
+                suspicionTimeElapsed = 0;
+                target = explicitTarget;
+                lastEnemyPosition = target.transform.position;
+                GetComponent<Atacker>().Attack(explicitTarget.GetComponent<CombatTarget>());
+            }
         }
 
         private void AgroAllies()
@@ -132,7 +140,7 @@ namespace RPG.Controller
 
             foreach(var hit in hits)
             {
-                hit.transform.GetComponent<AIController>()?.Agro(0f, CombatTarget.HealthChangeType.Damage);
+                if(hit.transform != transform) hit.transform.GetComponent<AIController>()?.AttackBehavior(target);
             }
         }
 

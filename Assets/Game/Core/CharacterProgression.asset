@@ -43,9 +43,9 @@ MonoBehaviour:
         - 1.4
       - stat: 7
         levelStats:
-        - 2000
-        - 2000
-        - 2000
+        - 100
+        - 110
+        - 120
       - stat: 8
         levelStats:
         - 1
