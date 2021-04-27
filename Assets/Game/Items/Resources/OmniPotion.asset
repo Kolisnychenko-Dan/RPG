@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 893665d639b5ce847b1d13a27fe1a1cc, type: 3}
-  m_Name: HealPotion
+  m_Name: OmniPotion
   m_EditorClassIdentifier: 
-  itemName: HealPotion
-  id: 1
-  sprite: {fileID: 21300000, guid: 606f1a63e1aec7841a445b4bfc8b75d4, type: 3}
+  itemName: OmniPotion
+  id: 0
+  sprite: {fileID: 21300000, guid: 0f023f6fe0b15b84f8427b3f0aa1e649, type: 3}
   maxAmount: 3
   destroyOnUse: 1
   useHowManyWhenUsed: 1
@@ -47,5 +47,5 @@ MonoBehaviour:
     margin: {x: 0, y: 0}
     maxWidth: 0
     texts: []
-  itemPrefab: {fileID: 2399395126675829814, guid: 06614c4d7d0cc5f4da42c693d872416a,
+  itemPrefab: {fileID: 4570732229429705695, guid: 9f4dd80090806e44584e7daa59e40b2e,
     type: 3}

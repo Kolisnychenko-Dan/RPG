@@ -15,7 +15,7 @@ namespace RPG.Combat
             projectile.transform.position = weaponPosition;
             
             var projectileComponent = projectile.GetComponent<Projectile>();
-            projectileComponent.SetUpProjectile(base.GetWeaponDamage * damageMultiplier, target, type);
+            projectileComponent.SetUpHomingProjectile(base.GetWeaponDamage * damageMultiplier, target, type);
         }
     }
 }

@@ -12,17 +12,24 @@ namespace RPG.Combat
         [SerializeField] GameObject impactEffect = null;
         [SerializeField] DamageType projectileDamageType = DamageType.Physical;
         float projectileDamage = 0f;
-        CombatTarget target;
+        CombatTarget target = null;
+        Vector3 vectorTarget;
+        float aOERAdius;
 
         void Update()
         {
             transform.LookAt(Target.transform.position + projectileFlyHeight);
             transform.Translate(Vector3.forward * projectileSpeed * Time.deltaTime);
             
-            bool hasHitTheTarget = Vector3.Distance(transform.position,Target.transform.position) < projectileHitTolerance; 
-            if(hasHitTheTarget)
+            if(target == null)
             {
-                OnHitTheTarget();
+                bool hasHitTheTarget = Vector3.Distance(transform.position,Target.transform.position) < projectileHitTolerance; 
+                if(hasHitTheTarget) OnHitTheTarget();
+            }
+            else
+            {
+                bool hasHitTheVectorTarget = Vector3.Distance(transform.position,vectorTarget) < projectileHitTolerance;
+                if(hasHitTheVectorTarget) OnHitVectorTarget();
             }
         }
 
@@ -36,11 +43,38 @@ namespace RPG.Combat
         public CombatTarget Target { get => target; set => target = value; }
         public DamageType ProjectileDamageType { get => projectileDamageType; set => projectileDamageType = value; }
 
-        public void SetUpProjectile(float damage, CombatTarget target, DamageType type)
+        public void SetUpHomingProjectile(float damage, CombatTarget target, DamageType type)
         {
             ProjectileDamage = damage;
             Target = target;
             ProjectileDamageType = type;
+        }
+
+        public void SetUpAOEProjectile(float damage, Vector3 destination, DamageType type, float radius)
+        {
+            ProjectileDamage = damage;
+            vectorTarget = destination;
+            ProjectileDamageType = type;
+            aOERAdius = radius;
+        }
+
+        void OnHitVectorTarget()
+        {
+            if(impactEffect != null)
+            {
+                Instantiate(impactEffect,Target.transform.position,transform.rotation);
+            }
+            
+            foreach(var target in GameObject.FindObjectsOfType<CombatTarget>())
+            {
+                if(!target.IsDead)
+                {
+                    bool isInRadius = Vector3.Distance(transform.position,Target.transform.position) < aOERAdius;
+                    if(isInRadius) target.TakeDamage(projectileDamage, ProjectileDamageType);
+                }
+            }
+
+            Destroy(gameObject);
         }
 
         void OnHitTheTarget()

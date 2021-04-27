@@ -22,9 +22,9 @@ MonoBehaviour:
     interative: -1
     whitelist: {fileID: 0}
   - amount: 0
-    item: {fileID: 11400000, guid: 8dfb66da6729c404593d10187c5ae123, type: 2}
+    item: {fileID: 0}
     _itemInstance: {fileID: 0}
-    hasItem: 1
+    hasItem: 0
     _durability: 0
     isProductSlot: 0
     interative: -1
@@ -67,16 +67,16 @@ MonoBehaviour:
   _interactiable: -1
   seeds: []
   slots:
-  - amount: 0
-    item: {fileID: 0}
+  - amount: 1
+    item: {fileID: 11400000, guid: 8dfb66da6729c404593d10187c5ae123, type: 2}
     _itemInstance: {fileID: 0}
-    hasItem: 0
+    hasItem: 1
     _durability: 0
     isProductSlot: 0
     interative: -1
     whitelist: {fileID: 0}
-  - amount: 0
-    item: {fileID: 11400000, guid: 8dfb66da6729c404593d10187c5ae123, type: 2}
+  - amount: 1
+    item: {fileID: 11400000, guid: de51d8d78b073c7478ac5cb45656a8e7, type: 2}
     _itemInstance: {fileID: 0}
     hasItem: 1
     _durability: 0

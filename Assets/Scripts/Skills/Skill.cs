@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using RPG.Combat;
 using UnityEngine;
 using UniversalInventorySystem;
 
@@ -11,6 +12,22 @@ namespace RPG.Skills
     ]
     public class Skill : UniversalInventorySystem.Item
     {
-        [SerializeField] public float coolDown = 0f;       
+        [Min(0)] [SerializeField] float coolDown = 0f;
+        [Min(0)] [SerializeField] float aOERadius = 0f;
+        [SerializeField] bool isCastedByRightHand;
+        [SerializeField] GameObject projectilePrefab = null;
+
+        public float CoolDown { get => coolDown; set => coolDown = value; }
+        public float AOERadius { get => aOERadius; }
+        public bool IsCastedByRightHand { get => isCastedByRightHand; }
+
+        public void CastAOESpell(Vector3 destination, Vector3 casterPos, float damage, DamageType type)
+        {
+            var projectile = Instantiate(projectilePrefab);
+            projectile.transform.position = casterPos;
+
+            var projectileComponent = projectile.GetComponent<Projectile>();
+            projectileComponent.SetUpAOEProjectile(damage, destination, type, AOERadius);
+        }
     }
 }

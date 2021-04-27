@@ -59,7 +59,7 @@ namespace RPG.Item
             droppedItem.GetComponent<SphereCollider>().enabled = false;
         }
 
-        private int CheckForSwap(InventoryHandler.DropItemEventArgs e)
+        /*private int CheckForSwap(InventoryHandler.DropItemEventArgs e)
         {
             var raycaster = GameObject.FindObjectOfType<UIRaycaster>();
             var results = raycaster.RaycastOnMousePosition();
@@ -73,6 +73,6 @@ namespace RPG.Item
             }
 
             return -1;
-        }
+        }*/
     }
 }

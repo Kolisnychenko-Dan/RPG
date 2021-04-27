@@ -6,8 +6,14 @@ namespace RPG.Skills
 {
     public class PlayerSkills : MonoBehaviour
     {
-        public UniversalInventorySystem.Inventory skills;
-            
+        [SerializeField] UniversalInventorySystem.Inventory skills;
+
+        [SerializeField] Transform rightHandTransform;
+        [SerializeField] Transform leftHandTransform;
+
+        public Transform RightHandTransform { get => rightHandTransform; }
+        public Transform LeftHandTransform { get => leftHandTransform; }
+
         private void Start()
         {
             skills.Initialize();

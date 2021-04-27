@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -3658172655721715021}
   - component: {fileID: 84892955912222523}
   - component: {fileID: 8126603208095418541}
+  - component: {fileID: 3488164460393853802}
   m_Layer: 0
   m_Name: Character
   m_TagString: Enemy
@@ -135,3 +136,16 @@ MonoBehaviour:
   level: 1
   character: 
   progression: {fileID: 11400000, guid: e19d5b2123f6c444dbb8a7d9fe0ebbe7, type: 2}
+--- !u!114 &3488164460393853802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6966710831967275939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902f21c3a663a7e429ff5d0ad7129b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills: {fileID: 11400000, guid: 8bc828bb957fadf43a70340fb0750809, type: 2}
