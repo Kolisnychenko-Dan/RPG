@@ -15,6 +15,7 @@ namespace RPG.Combat
         CombatTarget target = null;
         Vector3 vectorTarget;
         float aOERAdius;
+        string noDamageTag = null;
 
         void Update()
         {   
@@ -52,12 +53,13 @@ namespace RPG.Combat
             ProjectileDamageType = type;
         }
 
-        public void SetUpAOEProjectile(float damage, Vector3 destination, DamageType type, float radius)
+        public void SetUpAOEProjectile(float damage, Vector3 destination, DamageType type, float radius, string noDamageTag = null)
         {
             ProjectileDamage = damage;
             vectorTarget = destination;
             ProjectileDamageType = type;
             aOERAdius = radius;
+            this.noDamageTag = noDamageTag;
         }
 
         void OnHitVectorTarget()
@@ -70,7 +72,7 @@ namespace RPG.Combat
             foreach(var hit in Physics.SphereCastAll(transform.position, aOERAdius, Vector3.up,0))
             {
                 CombatTarget target = hit.transform.GetComponent<CombatTarget>();
-                if(target != null && !target.IsDead)
+                if(target != null && !target.IsDead && target.tag != noDamageTag)
                 {
                     target.TakeDamage(projectileDamage, ProjectileDamageType);
                 }

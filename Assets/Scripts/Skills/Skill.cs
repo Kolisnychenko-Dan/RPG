@@ -25,13 +25,14 @@ namespace RPG.Skills
         public DamageType Type { get => type; set => type = value; }
         public float Damage { get => damage; set => damage = value; }
 
-        public void CastAOESpell(Vector3 destination, Vector3 casterPos, float damage)
+        public void CastAOESpell(Vector3 destination, Transform casterTransform, float damage)
         {
             var projectile = Instantiate(projectilePrefab);
-            projectile.transform.position = casterPos;
+            projectile.transform.position = casterTransform.position;
+            projectile.tag = casterTransform.tag;
 
             var projectileComponent = projectile.GetComponent<Projectile>();
-            projectileComponent.SetUpAOEProjectile(damage, destination, type, AOERadius);
+            projectileComponent.SetUpAOEProjectile(damage, destination, type, AOERadius, casterTransform.tag);
         }
     }
 }

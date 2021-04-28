@@ -18,12 +18,12 @@ namespace RPG.Skills
 
             player.GetComponent<PlayerController>().PointChoosingMode = (Vector3 destination) => 
                 {
-                    Vector3 castingPoint;
+                    Transform castingPoint;
                     if(skill.IsCastedByRightHand)
                     {
-                        castingPoint = player.GetComponent<PlayerSkills>().RightHandTransform.position;
+                        castingPoint = player.GetComponent<PlayerSkills>().RightHandTransform;
                     }
-                    else castingPoint = player.GetComponent<PlayerSkills>().LeftHandTransform.position;
+                    else castingPoint = player.GetComponent<PlayerSkills>().LeftHandTransform;
                     skill.CastAOESpell(destination, castingPoint, damage);
                 };
         }
