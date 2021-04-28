@@ -13,6 +13,7 @@ namespace RPG.Controller
         [SerializeField] float chaseDistance = 5f;
         [SerializeField] float suspicionTime = 3f;
         [SerializeField] float agroTime = 5f;
+        [SerializeField] float reAgroTime = 10f;
         [SerializeField] float callAlliesRadius = 5f;
         [SerializeField] bool returnToGurdPos;
         [SerializeField] PatrolPath patrolPath;
@@ -24,17 +25,24 @@ namespace RPG.Controller
         CombatTarget combatTarget;
         float suspicionTimeElapsed = Mathf.Infinity;
         float agroTimeElapsed = Mathf.Infinity;
+        bool isAgrevated = false;
         Vector3 guardPosition;
         Vector3 lastEnemyPosition;
         int currentPatrolWaypointNumber = 0;
-        
+
         private void Awake() 
         {
-            characters = GameObject.FindGameObjectsWithTag("Player");
+            characters = Array.FindAll<GameObject>(GameObject.FindGameObjectsWithTag("Player"), obj => {
+                if (obj.GetComponent<CombatTarget>() != null) return gameObject;
+                else return false;
+            });
+            
+
             mover = GetComponent<Mover>();
             combatTarget = GetComponent<CombatTarget>();
             combatTarget.OnHealthChanged += Agro;
         }
+
         private void Start()
         {
             guardPosition = transform.position;
@@ -59,6 +67,8 @@ namespace RPG.Controller
             if(CombatTarget.HealthChangeType.Heal == type || CombatTarget.HealthChangeType.IgnoreType == type) return;
             agroTimeElapsed = 0;
         }
+
+        public void Agrevate() => isAgrevated = true;
 
         void UpdateTimers()
         {
@@ -102,36 +112,32 @@ namespace RPG.Controller
             foreach (var playersCharacter in characters)
             {
                 float distance = Vector3.Distance(transform.position,playersCharacter.transform.position);
-                if((distance < chaseDistance && distance < currentMinChaseDistance) || agroTimeElapsed < agroTime)
+                if((distance < chaseDistance || agroTimeElapsed < agroTime || isAgrevated) && distance < currentMinChaseDistance)
                 {
-                    currentMinChaseDistance = distance;
+                    if (target == null || IsInAttackRange(distance))
+                    {
+                        currentMinChaseDistance = distance;
 
-                    target = playersCharacter;
-                    lastEnemyPosition = target.transform.position;
-                    
-                    AttackBehavior();
+                        target = playersCharacter;
+                        lastEnemyPosition = target.transform.position;
+
+                        AttackBehavior();
+                    }
                 }
             }
 
             if(target == null && !returnToGurdPos) MoveToTheLastEnemyPosition();
         }
 
-        private void AttackBehavior(GameObject explicitTarget = null)
+        private void AttackBehavior()
         {
-            if(explicitTarget == null)
-            {
-                suspicionTimeElapsed = 0;
+            suspicionTimeElapsed = 0;
 
-                GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
-                AgroAllies();
-            }
-            else
-            {
-                suspicionTimeElapsed = 0;
-                target = explicitTarget;
-                lastEnemyPosition = target.transform.position;
-                GetComponent<Atacker>().Attack(explicitTarget.GetComponent<CombatTarget>());
-            }
+            Debug.Log(target.name);
+            GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
+            
+            if(!isAgrevated) AgroAllies();
+            isAgrevated = false;
         }
 
         private void AgroAllies()
@@ -140,7 +146,7 @@ namespace RPG.Controller
 
             foreach(var hit in hits)
             {
-                if(hit.transform != transform) hit.transform.GetComponent<AIController>()?.AttackBehavior(target);
+                if(hit.transform != transform) hit.transform.GetComponent<AIController>()?.Agrevate();
             }
         }
 
