@@ -3,7 +3,7 @@ namespace RPG.Stats
     public enum Stat
     {
         Health,
-        HealthInstaHeal, // Item Only
+        HealthInstaHeal,
         HealthRegen,
         Armor,
         Experience,
@@ -11,6 +11,8 @@ namespace RPG.Stats
         MagDefence,
         AttackSpeed,
         BasicAttackTime,
-        Damage
+        Damage,
+        Mana,
+        ManaRegen
     }
 }

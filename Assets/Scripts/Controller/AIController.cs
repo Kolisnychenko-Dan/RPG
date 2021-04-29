@@ -37,7 +37,6 @@ namespace RPG.Controller
                 else return false;
             });
             
-
             mover = GetComponent<Mover>();
             combatTarget = GetComponent<CombatTarget>();
             combatTarget.OnHealthChanged += Agro;

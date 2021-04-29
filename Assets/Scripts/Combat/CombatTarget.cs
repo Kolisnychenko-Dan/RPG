@@ -15,7 +15,6 @@ namespace RPG.Combat
         [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
         float maxHealth;
-        float healthRegen;
         BaseStats baseStats;
 
         public event Action<float,HealthChangeType> OnHealthChanged;
@@ -43,15 +42,9 @@ namespace RPG.Combat
             RegenerateHealth();
         }
 
-        public bool IsDead 
-        {
-            get => isDead;
-        }
+        public bool IsDead { get => isDead; }
 
-        public float MaxHealth
-        {
-            get => maxHealth;
-        }
+        public float MaxHealth { get => maxHealth; }
 
         public void ChangeHealth(float value, HealthChangeType type)
         {
@@ -68,11 +61,6 @@ namespace RPG.Combat
 
             if(healthChange != 0) 
                 OnHealthChanged.Invoke(healthChange, type);
-        }
-
-        private void RegenerateHealth()
-        {
-            health = Mathf.Min(health + Time.deltaTime * baseStats.GetCalculatedStat(Stat.HealthRegen), maxHealth);
         }
 
         public float GetHealthPercantage()
@@ -105,6 +93,7 @@ namespace RPG.Combat
                 break;
                 case DamageType.Magical:
                 {
+                    damage *= baseStats.GetCalculatedStat(Stat.MagDefence);
                     ChangeHealth(damage,HealthChangeType.Damage);
                 }
                 break;
@@ -116,6 +105,11 @@ namespace RPG.Combat
             }
  
             if (health == 0) Die();
+        }
+
+        private void RegenerateHealth()
+        {
+            health = Mathf.Min(health + Time.deltaTime * baseStats.GetCalculatedStat(Stat.HealthRegen), maxHealth);
         }
 
         private void OnMaxHealthUpdated()
