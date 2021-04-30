@@ -54,13 +54,13 @@ namespace RPG.Combat
             {
                 calculatedHealth = Mathf.Min( maxHealth, health + value);
             }
+            else if(type == HealthChangeType.IgnoreType) return;
             else calculatedHealth = Mathf.Max( 0, health - value);
             
             float healthChange = Mathf.Abs(calculatedHealth - health);
             health = calculatedHealth; 
 
-            if(healthChange != 0) 
-                OnHealthChanged.Invoke(healthChange, type);
+            if(healthChange != 0) OnHealthChanged.Invoke(healthChange, type);
         }
 
         public float GetHealthPercantage()

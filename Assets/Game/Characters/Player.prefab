@@ -181,6 +181,18 @@ MonoBehaviour:
   currentExperience: 0
   levelUpEffect: {fileID: 6169935915492016514, guid: 3ddf550e128f3464186836b0c05f0d9b,
     type: 3}
+--- !u!114 &1858225259371606219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2417301520184591688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184e9c75962dde74e8dd9de5e394e411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3276427263838507918
 PrefabInstance:
   m_ObjectHideFlags: 0

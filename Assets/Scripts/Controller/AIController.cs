@@ -132,7 +132,6 @@ namespace RPG.Controller
         {
             suspicionTimeElapsed = 0;
 
-            Debug.Log(target.name);
             GetComponent<Atacker>().Attack(target.GetComponent<CombatTarget>());
             
             if(!isAgrevated) AgroAllies();

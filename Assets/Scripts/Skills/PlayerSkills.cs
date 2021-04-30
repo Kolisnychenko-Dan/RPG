@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RPG.Attributes;
 using UnityEngine;
 
 namespace RPG.Skills
@@ -12,10 +13,20 @@ namespace RPG.Skills
 
         [SerializeField] Transform rightHandTransform;
         [SerializeField] Transform leftHandTransform;
-        coolDown[] coolDowns;
+        CoolDown[] coolDowns;
+        Mana mana;
+        
 
         public Transform RightHandTransform { get => rightHandTransform; }
         public Transform LeftHandTransform { get => leftHandTransform; }
+
+        public Action[] OnEnaughMana;
+        public Action[] OnCoolDownEnded;
+
+        private void Awake()
+        {
+            mana = GetComponent<Mana>();
+        }
 
         private void Start()
         {
@@ -33,7 +44,6 @@ namespace RPG.Skills
                     if(coolDowns[i].currentTimer > coolDowns[i].itemCooldownTime)
                     {
                         coolDowns[i].isTimerRunning = false;
-                        MakeSkillActive(i);
                     }
                 }
             }
@@ -44,29 +54,20 @@ namespace RPG.Skills
             return coolDowns[slot].isTimerRunning ? coolDowns[slot].currentTimer/coolDowns[slot].itemCooldownTime : -1;
         }
 
+        public bool CanCastSkill(int slot)
+        {
+            return !coolDowns[slot].isTimerRunning && mana.TryConsuming(((Skill)skills[slot].item).ManaRequired); 
+        }
+
         public void SkillCasted(int slot)
         {
             coolDowns[slot].StartTimer();
-            MakeSkillUnActive(slot);  
-        }
-
-        private void MakeSkillActive(int slot)
-        {
-            UniversalInventorySystem.Slot newSlot = skills.slots[slot];
-            newSlot.interative = UniversalInventorySystem.SlotProtection.Use;
-            skills.slots[slot] = newSlot;
-        }
-
-        private void MakeSkillUnActive(int slot)
-        {
-            UniversalInventorySystem.Slot newSlot = skills.slots[slot];
-            newSlot.interative = UniversalInventorySystem.SlotProtection.Locked;
-            skills.slots[slot] = newSlot;
+            mana.Consume(((Skill)skills[slot].item).ManaRequired);
         }
 
         private void InitializeCoolDowns()
         {
-            coolDowns = new coolDown[skills.SlotAmount];
+            coolDowns = new CoolDown[skills.SlotAmount];
             for(int i = 0; i < skills.SlotAmount; ++i)
             {
                 coolDowns[i].isTimerRunning = false;
@@ -75,7 +76,7 @@ namespace RPG.Skills
             }
         }
 
-        struct coolDown
+        struct CoolDown
         {
             public bool isTimerRunning;
             public float currentTimer;

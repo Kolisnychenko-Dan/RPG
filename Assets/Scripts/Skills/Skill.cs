@@ -15,6 +15,7 @@ namespace RPG.Skills
         [Min(0)] [SerializeField] float coolDown = 0f;
         [Min(0)] [SerializeField] float aOERadius = 0f;
         [Min(0)] [SerializeField] float damage = 0f;
+        [Min(0)] [SerializeField] float manaRequired = 0f;
         [SerializeField] DamageType type;
         [SerializeField] bool isCastedByRightHand;
         [SerializeField] GameObject projectilePrefab = null;
@@ -24,6 +25,7 @@ namespace RPG.Skills
         public bool IsCastedByRightHand { get => isCastedByRightHand; }
         public DamageType Type { get => type; set => type = value; }
         public float Damage { get => damage; set => damage = value; }
+        public float ManaRequired { get => manaRequired; set => manaRequired = value; }
 
         public void CastAOESpell(Vector3 destination, Transform casterTransform, float damage)
         {

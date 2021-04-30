@@ -49,6 +49,7 @@ MonoBehaviour:
   coolDown: 15
   aOERadius: 5
   damage: 30
+  manaRequired: 100
   type: 3
   isCastedByRightHand: 1
   projectilePrefab: {fileID: 925432594524096081, guid: 48a5062f42ab0bc4b952c2459f9f6039,
