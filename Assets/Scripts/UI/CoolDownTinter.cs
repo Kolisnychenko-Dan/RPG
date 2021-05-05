@@ -7,22 +7,38 @@ namespace RPG.UI
 {
     public class CoolDownTinter : MonoBehaviour
     {
-        [SerializeField] GameObject Tinter;
+        [SerializeField] GameObject tinter;
+        Animation coolDownPassedAnimation;
         PlayerSkills playerSkills;
+        int slot;
+        float lastTinterValue = 0;
         
         private void Awake()
         {
             playerSkills = FindObjectOfType<PlayerSkills>();
-            Tinter.transform.localScale = Vector3.zero;
+            coolDownPassedAnimation = GetComponentInChildren<Animation>();
+
+            tinter.transform.localScale = Vector3.zero;
         }
 
-        private void LateUpdate()
+        private void Start()
         {
-            float coolDownProgress = playerSkills.GetCooldownProgress(int.Parse(gameObject.name));
-            if(coolDownProgress != -1)
+            slot = int.Parse(gameObject.name);
+        }
+
+        private void Update()
+        {
+            float coolDownProgress = playerSkills.GetCooldownProgress(slot);
+            if(coolDownProgress == -1)
             {
-                Tinter.transform.localScale = new Vector3(1, 1 - coolDownProgress,1);
+                if(lastTinterValue != -1)
+                {
+                    coolDownPassedAnimation.Play();
+                }
             }
+            else tinter.transform.localScale = new Vector3(1, 1 - coolDownProgress,1);
+
+            lastTinterValue = coolDownProgress;
         }
     }   
 }

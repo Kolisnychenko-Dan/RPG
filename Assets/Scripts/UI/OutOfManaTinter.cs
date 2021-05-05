@@ -3,18 +3,32 @@ using System.Collections.Generic;
 using RPG.Skills;
 using UnityEngine;
 
-public class OutOfManaTinter : MonoBehaviour
+namespace RPG.UI
 {
-    [SerializeField] GameObject Tinter;
-    PlayerSkills playerSkills;
-    
-    private void Awake()
+    public class OutOfManaTinter : MonoBehaviour
     {
-        playerSkills = FindObjectOfType<PlayerSkills>();
-    }
+        [SerializeField] GameObject tinter;
+        PlayerSkills playerSkills;
+        int slot;
+        
+        private void Awake()
+        {
+            playerSkills = FindObjectOfType<PlayerSkills>();
+            tinter.transform.localScale = Vector3.zero;
+        }
 
-    private void LateUpdate()
-    {
+        private void Start()
+        {
+            slot = int.Parse(gameObject.name);
+        }
 
+        private void Update()
+        {
+            if(playerSkills.IsEnaughManaForCast(slot))
+            {
+                tinter.transform.localScale = new Vector3(1, 0 ,1);
+            }
+            else tinter.transform.localScale = Vector3.one;
+        }
     }
 }

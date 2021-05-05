@@ -20,9 +20,6 @@ namespace RPG.Skills
         public Transform RightHandTransform { get => rightHandTransform; }
         public Transform LeftHandTransform { get => leftHandTransform; }
 
-        public Action[] OnEnaughMana;
-        public Action[] OnCoolDownEnded;
-
         private void Awake()
         {
             mana = GetComponent<Mana>();
@@ -54,9 +51,14 @@ namespace RPG.Skills
             return coolDowns[slot].isTimerRunning ? coolDowns[slot].currentTimer/coolDowns[slot].itemCooldownTime : -1;
         }
 
+        public bool IsEnaughManaForCast(int slot)
+        {
+            return skills.slots[slot].HasItem && mana.TryConsuming(((Skill)skills[slot].item).ManaRequired);
+        }
+
         public bool CanCastSkill(int slot)
         {
-            return !coolDowns[slot].isTimerRunning && mana.TryConsuming(((Skill)skills[slot].item).ManaRequired); 
+            return !coolDowns[slot].isTimerRunning && IsEnaughManaForCast(slot); 
         }
 
         public void SkillCasted(int slot)
@@ -76,13 +78,11 @@ namespace RPG.Skills
             }
         }
 
-        struct CoolDown
+        public struct CoolDown
         {
             public bool isTimerRunning;
             public float currentTimer;
             public float itemCooldownTime;
-
-            //public event Action OnCoolDownPassed;
 
             public void StartTimer()
             {
