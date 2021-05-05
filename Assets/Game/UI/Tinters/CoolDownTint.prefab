@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1386889339177282046}
   - component: {fileID: 4698292885201815405}
   - component: {fileID: 6592372289061422949}
+  - component: {fileID: 3950016145286145026}
   m_Layer: 5
   m_Name: CoolDownTint
   m_TagString: Untagged
@@ -74,6 +75,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!111 &3950016145286145026
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386488177951691789}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f5c677a5a0e341f4485690aaa9df155a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f5c677a5a0e341f4485690aaa9df155a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &3437600435775739432
 GameObject:
   m_ObjectHideFlags: 0

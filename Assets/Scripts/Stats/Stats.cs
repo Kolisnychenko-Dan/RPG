@@ -13,6 +13,7 @@ namespace RPG.Stats
         BasicAttackTime,
         Damage,
         Mana,
-        ManaRegen
+        ManaRegen,
+        ManaInsta
     }
 }

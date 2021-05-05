@@ -44,17 +44,18 @@ namespace RPG.UI
                     var textObject = GameObject.Instantiate(TextPrefab,transform);
                     var text = textObject.GetComponentInChildren<Text>();
                     
-                    text.color = damageTextColor;
                     text.text = healthChangeValue.ToString();
+                    text.color = damageTextColor;
                 }
                 break;
                 case CombatTarget.HealthChangeType.Heal:
                 {
-                    var textObject = GameObject.Instantiate(TextPrefab,transform);
-                    var text = textObject.GetComponentInChildren<Text>();
+                    var textObject = GameObject.Instantiate(critTextPrefab,transform);
+                    var text = textObject.GetComponentInChildren<TextAnimatorPlayer>();
                     
-                    text.color = healTextColor;
-                    text.text = healthChangeValue.ToString();
+                    textObject.GetComponentInChildren<TextMeshProUGUI>().color = healTextColor;
+                    
+                    text.ShowText(openingTags + healthChangeValue.ToString() + closingTags);
                 }
                 break;
             }       

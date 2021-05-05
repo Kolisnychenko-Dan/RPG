@@ -36,6 +36,7 @@ namespace RPG.Movement
             GetComponent<ActionScheduler>().StartAction(this);
             MoveTo(destination);
             currentDestination = destination;
+            OnDestinationReached = null;
         }
 
         public void Stop()

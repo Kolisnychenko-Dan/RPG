@@ -285,23 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tinter: {fileID: 2825911180521223504}
-  coolDownPassedAnimation: {fileID: 0}
---- !u!111 &3261481172245989366
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2825911180521223504}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: f5c677a5a0e341f4485690aaa9df155a, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: f5c677a5a0e341f4485690aaa9df155a, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 0
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &3681919704262469714
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,11 +606,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OutOfManaTint
-      objectReference: {fileID: 0}
-    - target: {fileID: 5788926836630373513, guid: 8c92a8dd3972d9144809e76eb5e2dcbd,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c92a8dd3972d9144809e76eb5e2dcbd, type: 3}
