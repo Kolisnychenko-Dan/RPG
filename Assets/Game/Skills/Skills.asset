@@ -22,9 +22,9 @@ MonoBehaviour:
     interative: 8
     whitelist: {fileID: 0}
   - amount: 0
-    item: {fileID: 0}
+    item: {fileID: 11400000, guid: 87fd9293993d42449834f89e8938a57f, type: 2}
     _itemInstance: {fileID: 0}
-    hasItem: 0
+    hasItem: 1
     _durability: 0
     isProductSlot: 0
     interative: 8
@@ -60,9 +60,9 @@ MonoBehaviour:
     interative: 8
     whitelist: {fileID: 0}
   - amount: 0
-    item: {fileID: 0}
+    item: {fileID: 11400000, guid: 87fd9293993d42449834f89e8938a57f, type: 2}
     _itemInstance: {fileID: 0}
-    hasItem: 0
+    hasItem: 1
     _durability: 0
     isProductSlot: 0
     interative: 8

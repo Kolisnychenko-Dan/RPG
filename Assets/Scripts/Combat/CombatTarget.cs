@@ -15,6 +15,7 @@ namespace RPG.Combat
         [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
         float maxHealth;
+        float healthRegen;
         BaseStats baseStats;
 
         public event Action<float,HealthChangeType> OnHealthChanged;
@@ -25,11 +26,13 @@ namespace RPG.Combat
         {
             baseStats = GetComponent<BaseStats>();
             baseStats.OnAttributesChanged += OnMaxHealthUpdated;
+            baseStats.OnAttributesChanged += () => healthRegen = baseStats.GetCalculatedStat(Stat.HealthRegen);
         }
 
         private void Start() 
         {
             maxHealth = baseStats.GetCalculatedStat(Stat.Health);
+            healthRegen = baseStats.GetCalculatedStat(Stat.HealthRegen);
 
             if(health == -1) 
             {
@@ -54,7 +57,6 @@ namespace RPG.Combat
             {
                 calculatedHealth = Mathf.Min( maxHealth, health + value);
             }
-            else if(type == HealthChangeType.IgnoreType) return;
             else calculatedHealth = Mathf.Max( 0, health - value);
             
             float healthChange = Mathf.Abs(calculatedHealth - health);
@@ -70,7 +72,7 @@ namespace RPG.Combat
 
         public void TakeDamage(float damage, DamageType damageType)
         {
-            if(damage < 0) return;
+            if(damage < 0 && damageType != DamageType.IgnoreType) return;
 
             switch (damageType)
             {
@@ -93,13 +95,18 @@ namespace RPG.Combat
                 break;
                 case DamageType.Magical:
                 {
-                    damage *= baseStats.GetCalculatedStat(Stat.MagDefence);
+                    damage *= 1 - baseStats.GetCalculatedStat(Stat.MagDefence);
                     ChangeHealth(damage,HealthChangeType.Damage);
                 }
                 break;
                 case DamageType.Pure:
                 {
                     ChangeHealth(damage,HealthChangeType.Damage);
+                }
+                break;
+                case DamageType.IgnoreType:
+                {
+                    ChangeHealth(damage,HealthChangeType.IgnoreType);
                 }
                 break;
             }
@@ -109,7 +116,7 @@ namespace RPG.Combat
 
         private void RegenerateHealth()
         {
-            health = Mathf.Min(health + Time.deltaTime * baseStats.GetCalculatedStat(Stat.HealthRegen), maxHealth);
+            health = Mathf.Min(health + Time.deltaTime * healthRegen, maxHealth);
         }
 
         private void OnMaxHealthUpdated()

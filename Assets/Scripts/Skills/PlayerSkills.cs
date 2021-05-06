@@ -16,7 +16,6 @@ namespace RPG.Skills
         CoolDown[] coolDowns;
         Mana mana;
         
-
         public Transform RightHandTransform { get => rightHandTransform; }
         public Transform LeftHandTransform { get => leftHandTransform; }
 
@@ -28,6 +27,7 @@ namespace RPG.Skills
         private void Start()
         {
             skills.Initialize();
+            IntitializeBuffs();
             InitializeCoolDowns();
         }
 
@@ -75,6 +75,17 @@ namespace RPG.Skills
                 coolDowns[i].isTimerRunning = false;
                 coolDowns[i].currentTimer = Mathf.Infinity;
                 if(skills.slots[i].HasItem) coolDowns[i].itemCooldownTime = ((Skill)skills.slots[i].item).CoolDown;
+            }
+        }
+
+        private void IntitializeBuffs()
+        {
+            foreach(var skill in skills.slots)
+            {
+                if(skill.HasItem && ((Skill)skill.item).ps != null && ((Skill)skill.item).ps.Buffs.Count != 0)
+                {
+                    ((Skill)skill.item).ps.CreateBuff(transform);
+                }
             }
         }
 

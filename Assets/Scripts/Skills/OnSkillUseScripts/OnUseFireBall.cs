@@ -10,16 +10,14 @@ namespace RPG.Skills
         public override void OnUse(object sender, InventoryHandler.UseItemEventArgs e) => base.OnUse(sender, e);
         public override void OnSkillUsed(Vector3 destination, Skill skill, GameObject player)
         {
-            float damage = skill.Damage;
-
             Transform castingPoint;
-            if(skill.IsCastedByRightHand)
+            if(skill.dps.IsCastedByRightHand)
             {
                 castingPoint = player.GetComponent<PlayerSkills>().RightHandTransform;
             }
             else castingPoint = player.GetComponent<PlayerSkills>().LeftHandTransform;
 
-            skill.CastAOESpell(destination, castingPoint, damage);
+            skill.dps.CastAOESpell(destination, castingPoint);
         }
     }
 }

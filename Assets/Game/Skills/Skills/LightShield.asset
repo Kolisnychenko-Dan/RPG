@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99c33715d4b15c4c8ec534e233daff7, type: 3}
-  m_Name: FireBall
+  m_Name: LightShield
   m_EditorClassIdentifier: 
-  itemName: Fire Ball
-  id: 3
-  sprite: {fileID: 21300000, guid: f00b714c193edd94eb84202899613d94, type: 3}
+  itemName: Light Shield
+  id: 0
+  sprite: {fileID: 21300000, guid: 789b2a19015376f49ade07ff5ff56cfb, type: 3}
   maxAmount: 0
   destroyOnUse: 0
   useHowManyWhenUsed: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   hasDurability: 0
   showAmount: 0
   _durabilityImages: []
-  onUseFunc: {fileID: 11500000, guid: 36c727b9b7ffefa4782cd8915b7041a3, type: 3}
+  onUseFunc: {fileID: 11500000, guid: 6f389863e6c670b44bc02cd4a78d18a6, type: 3}
   optionalOnDropBehaviour: {fileID: 0}
   tooltip:
     useTooltip: 0
@@ -47,21 +47,23 @@ MonoBehaviour:
     maxWidth: 0
     texts: []
   dps:
-    aOERadius: 5
-    damage: 35
-    type: 3
-    isCastedByRightHand: 1
-    projectilePrefab: {fileID: 925432594524096081, guid: 48a5062f42ab0bc4b952c2459f9f6039,
-      type: 3}
+    aOERadius: 0
+    damage: 0
+    type: 0
+    isCastedByRightHand: 0
+    projectilePrefab: {fileID: 0}
   bs:
-    effect: {fileID: 0}
+    effect: {fileID: 4045754856622764926, guid: ebabf9104541cb04280653e9dc8ecd2a,
+      type: 3}
     buffs:
-      m_keys: 
-      m_values: []
-    duration: 0
+      m_keys: 0d00000002000000
+      m_values:
+      - 20
+      - 2
+    duration: 5
   ps:
     buffs:
       m_keys: 
       m_values: []
-  manaRequired: 100
-  coolDown: 15
+  manaRequired: 50
+  coolDown: 20

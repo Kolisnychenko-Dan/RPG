@@ -14,6 +14,7 @@ namespace RPG.Stats
         Damage,
         Mana,
         ManaRegen,
-        ManaInsta
+        ManaInsta,
+        DamageBlock
     }
 }

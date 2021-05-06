@@ -6,6 +6,7 @@ namespace RPG.Combat
         Heal,
         Critical,
         Magical,
-        Pure
+        Pure,
+        IgnoreType
     }
 }

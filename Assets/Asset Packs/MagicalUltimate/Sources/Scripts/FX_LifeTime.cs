@@ -81,12 +81,18 @@ namespace MagicalFX
 				}
 			}
 			if (Time.time > timeTemp + LifeTime) {
-				
-				if (SpawnAfterDead != null) {
-					GameObject.Destroy (this.gameObject);
-					GameObject.Instantiate (SpawnAfterDead, this.transform.position, SpawnAfterDead.transform.rotation);
-				}
-			}
+                    OnSpawnAfterDead();
+            }
 		}
-	}
+
+        public void OnSpawnAfterDead()
+        {
+			if(SpawnAfterDead != null)
+			{
+				var obj = GameObject.Instantiate(SpawnAfterDead, this.transform.position, SpawnAfterDead.transform.rotation);
+            	obj.transform.localScale = gameObject.transform.localScale;
+            	GameObject.Destroy(this.gameObject);
+			}
+        }
+    }
 }

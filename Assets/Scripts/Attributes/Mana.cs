@@ -12,6 +12,7 @@ namespace RPG.Attributes
     {
         [SerializeField]float mana = -1f;
         float maxMana;
+        float manaRegen;
         BaseStats baseStats;
 
         public float CurrentMana 
@@ -26,11 +27,13 @@ namespace RPG.Attributes
         {
             baseStats = GetComponent<BaseStats>();
             baseStats.OnAttributesChanged += OnMaxManaUpdated;
+            baseStats.OnAttributesChanged += () => manaRegen = baseStats.GetCalculatedStat(Stat.ManaRegen);
         }
 
         private void Start()
         {
             maxMana = baseStats.GetCalculatedStat(Stat.Mana);
+            manaRegen = baseStats.GetCalculatedStat(Stat.ManaRegen);
             
             if(mana == -1f)
             {
@@ -56,12 +59,12 @@ namespace RPG.Attributes
 
         private void RegenerateMana()
         {
-            CurrentMana += Time.deltaTime * baseStats.GetCalculatedStat(Stat.ManaRegen);
+            CurrentMana += Time.deltaTime * manaRegen;
         }
 
         private void OnMaxManaUpdated()
         {
-            float currentMaxMana = baseStats.GetCalculatedStat(Stat.Health);
+            float currentMaxMana = baseStats.GetCalculatedStat(Stat.Mana);
 
             mana = mana * (currentMaxMana / maxMana);
             maxMana = currentMaxMana;
