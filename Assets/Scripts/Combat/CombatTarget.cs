@@ -11,10 +11,10 @@ namespace RPG.Combat
 {    
     public class CombatTarget : MonoBehaviour, IAction, ISaveable, IRayCastable
     {
-        [SerializeField]float health = -1f;
-        [SerializeField]float dieAnimSpeed = 0.05f;
+        [SerializeField] float health = -1f;
+        [SerializeField] float dieAnimSpeed = 0.05f;
         bool isDead = false;
-        [SerializeField]bool isStunned = false;
+        [SerializeField] bool isStunned = false;
         float maxHealth;
         float healthRegen;
         BaseStats baseStats;

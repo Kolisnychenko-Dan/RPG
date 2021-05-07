@@ -51,7 +51,7 @@ namespace RPG.Controller
         void Update()
         {
             if (combatTarget.IsDead) return;
-            if(combatTarget.IsStunned)
+            if(!combatTarget.IsStunned)
             {
                 if (target == null)
                 {

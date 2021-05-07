@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Fire Ball
   id: 3
-  sprite: {fileID: 21300000, guid: f00b714c193edd94eb84202899613d94, type: 3}
+  sprite: {fileID: 21300000, guid: bce3079773fab3f469b8414a50bd3110, type: 3}
   maxAmount: 0
   destroyOnUse: 0
   useHowManyWhenUsed: 0

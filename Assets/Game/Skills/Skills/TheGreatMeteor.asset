@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99c33715d4b15c4c8ec534e233daff7, type: 3}
-  m_Name: Skill
+  m_Name: TheGreatMeteor
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: The Great Meteor
   id: 0
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f00b714c193edd94eb84202899613d94, type: 3}
   maxAmount: 0
   destroyOnUse: 0
   useHowManyWhenUsed: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   hasDurability: 0
   showAmount: 0
   _durabilityImages: []
-  onUseFunc: {fileID: 0}
+  onUseFunc: {fileID: 11500000, guid: 7e87e4c4d64053b40a7c7f7e0a7b4d95, type: 3}
   optionalOnDropBehaviour: {fileID: 0}
   tooltip:
     useTooltip: 0
@@ -47,11 +47,12 @@ MonoBehaviour:
     maxWidth: 0
     texts: []
   dps:
-    aOERadius: 0
-    damage: 0
-    type: 0
-    isCastedByRightHand: 0
-    projectilePrefab: {fileID: 0}
+    aOERadius: 8
+    damage: 100
+    type: 2
+    isCastedByRightHand: 1
+    projectilePrefab: {fileID: 4388650834861261065, guid: 90946975126c74f439d7e72385d7112c,
+      type: 3}
   bs:
     effect: {fileID: 0}
     buffs:
@@ -62,5 +63,5 @@ MonoBehaviour:
     buffs:
       m_keys: 
       m_values: []
-  manaRequired: 0
-  coolDown: 0
+  manaRequired: 300
+  coolDown: 60

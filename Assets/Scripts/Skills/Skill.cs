@@ -28,7 +28,6 @@ namespace RPG.Skills
         {
             [Min(0)] [SerializeField] private float aOERadius;
             [Min(0)] [SerializeField] private float damage;
-
             [SerializeField] private DamageType type;
             [SerializeField] private bool isCastedByRightHand;
             [SerializeField] private GameObject projectilePrefab;
@@ -39,7 +38,7 @@ namespace RPG.Skills
             public bool IsCastedByRightHand { get => isCastedByRightHand; }
             public GameObject ProjectilePrefab { get => projectilePrefab; }
 
-            public void CastAOESpell(Vector3 destination, Transform casterTransform)
+            public void CastProjectileAOESpell(Vector3 destination, Transform casterTransform)
             {
                 var projectile = Instantiate(ProjectilePrefab);
                 projectile.transform.position = casterTransform.position;

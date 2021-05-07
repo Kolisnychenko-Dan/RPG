@@ -17,7 +17,7 @@ namespace RPG.Skills
             }
             else castingPoint = player.GetComponent<PlayerSkills>().LeftHandTransform;
 
-            skill.dps.CastAOESpell(destination, castingPoint);
+            skill.dps.CastProjectileAOESpell(destination, castingPoint);
         }
     }
 }

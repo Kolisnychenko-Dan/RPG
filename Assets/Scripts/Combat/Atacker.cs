@@ -168,6 +168,8 @@ namespace RPG.Combat
         // Invoked by an Animator component
         void Hit()
         {
+            if(GetComponent<CombatTarget>() != target) return;
+            
             float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
             float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
 
@@ -178,7 +180,7 @@ namespace RPG.Combat
         // Invoked by an Animator component
         void Shoot()
         {
-            if(target != null)
+            if(target != null && GetComponent<CombatTarget>() != target)
             {
                 float damageMultiplier = GetComponent<BaseStats>().GetStat(Stat.DamageMultiplier);
                 float critMultiplier = currentWeapon.CritChance > Random.value ? currentWeapon.CritMultiplier : 1f;
