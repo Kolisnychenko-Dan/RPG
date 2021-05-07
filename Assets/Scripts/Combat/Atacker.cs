@@ -45,7 +45,8 @@ namespace RPG.Combat
 
         private void Update()
         {  
-            if(target == null) animator.SetTrigger("stopAttack");
+            if(target == null) 
+                animator.SetTrigger("stopAttackLight");
 
             timePassedAfterAttack += Time.deltaTime;
             if(target != null && !target.IsDead && target != GetComponent<CombatTarget>())
@@ -96,6 +97,12 @@ namespace RPG.Combat
 
         private void AttackBehaviour()
         {
+            if(GetComponent<CombatTarget>().IsStunned)
+            {
+                animator.SetTrigger("stopAttack");
+                return;
+            }
+
             transform.LookAt(target.transform);
             if(timePassedAfterAttack < waitTillAttackTime) return;
             timePassedAfterAttack = 0;

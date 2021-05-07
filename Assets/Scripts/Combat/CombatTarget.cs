@@ -14,6 +14,7 @@ namespace RPG.Combat
         [SerializeField]float health = -1f;
         [SerializeField]float dieAnimSpeed = 0.05f;
         bool isDead = false;
+        [SerializeField]bool isStunned = false;
         float maxHealth;
         float healthRegen;
         BaseStats baseStats;
@@ -48,6 +49,7 @@ namespace RPG.Combat
         public bool IsDead { get => isDead; }
 
         public float MaxHealth { get => maxHealth; }
+        public bool IsStunned { get => isStunned; set => isStunned = value; }
 
         public void ChangeHealth(float value, HealthChangeType type)
         {

@@ -51,13 +51,15 @@ namespace RPG.Controller
         void Update()
         {
             if (combatTarget.IsDead) return;
-            if(target == null)
+            if(combatTarget.IsStunned)
             {
-                if (returnToGurdPos) ReturnToGuarding();
-                if (patrolPath != null) Patrol();
+                if (target == null)
+                {
+                    if (returnToGurdPos) ReturnToGuarding();
+                    if (patrolPath != null) Patrol();
+                }
+                if (startChaseAtChaseDistance) LocateNewTarget();
             }
-            if (startChaseAtChaseDistance) LocateNewTarget();
-
             UpdateTimers();
         }
 

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f99c33715d4b15c4c8ec534e233daff7, type: 3}
-  m_Name: LaplaceFactor
+  m_Name: Skill
   m_EditorClassIdentifier: 
-  itemName: LaplaceFactor
+  itemName: 
   id: 0
-  sprite: {fileID: 21300000, guid: 107a048224b4eb14689c44fb9eb8bf91, type: 3}
+  sprite: {fileID: 0}
   maxAmount: 0
   destroyOnUse: 0
   useHowManyWhenUsed: 0
@@ -60,9 +60,7 @@ MonoBehaviour:
     duration: 0
   ps:
     buffs:
-      m_keys: 0a0000000b000000
-      m_values:
-      - 200
-      - 3
+      m_keys: 
+      m_values: []
   manaRequired: 0
   coolDown: 0
